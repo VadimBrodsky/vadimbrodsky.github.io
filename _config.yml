@@ -1,11 +1,12 @@
 # Site settings
-title: Learning Simplicity
+title: 'Vadim Brodsky'
 author:
   name: Vadim Brodsky
   email: vadim.brodsky@gmail.com 
+tagline: 'Designer, Developer, Thinker'
 description: "This a personal blog of Vadim Brodsky, disucssing design, development and all things remarkable."
 baseurl: ""
-url: "http://yourdomain.com"
+url: "http://vadimbrodsky.github.io"
 twitter_username: vadimbrodsky
 github_username:  vadimbrodsky
 
@@ -31,4 +32,8 @@ markdown: redcarpet
 redcarpet:
   extensions: ['fenced_code_blocks', 'smart', 'tables', 'autolink']
 
+github:
+  repo:           https://github.com/VadimBrodsky/vadimbrodsky.github.io
 
+# Custom vars
+version:          1.0.0
