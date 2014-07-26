@@ -9,13 +9,6 @@ url: "http://yourdomain.com"
 twitter_username: vadimbrodsky
 github_username:  vadimbrodsky
 
-
-source:      ./_src
-destination: ./_site
-plugins:     ./_src/_plugins
-layouts:     ./_src/_layouts
-
-
 # Default post path style
 # date  /:categories/:year/:month/:day/:title.html
 # pretty  /:categories/:year/:month/:day/:title/
