@@ -13,5 +13,6 @@ Recently I got interested in Ruby and I have started playing with the language. 
 6. [Codewars](http://www.codewars.com/)
 7. [Ruby Koans](http://koans.heroku.com/en)
 8. [Codelearn](http://www.codelearn.org/)
+9. [Hackety Hack](http://hackety.com/)
 
 Education as an interactive process really makes sense.
