@@ -30,3 +30,9 @@ title: 'Quick and Dirty Way to Create a Select Drop Down Navigation'
 <input type="button" onclick="window.open(this.form.mySelectbox.options[this.form.mySelectbox.selectedIndex].value,'_top')" value="Go">
 </form>
 ```
+
+## References
+- [Responsive Navigation Patterns](http://bradfrostweb.com/blog/web/responsive-nav-patterns/)
+- [Complex Navigation Patterns for Responsive Design](http://bradfrostweb.com/blog/web/complex-navigation-patterns-for-responsive-design/)
+- [Unobtrusive Dropdown Page Changer](http://css-tricks.com/unobtrusive-page-changer/)
+- [Dropdown/Select Box Navigation with JavaScript](http://lab.artlung.com/dropdown/)
