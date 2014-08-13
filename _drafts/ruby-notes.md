@@ -71,7 +71,7 @@ x += 2
 
 ### Object Types: Strings
 - Sequence of characters.
-- Characters that are strung together to create words of sentances.
+- Characters that are strung together to create words of sentences.
 - Double quoted strings do additional evaluation.
 
 ```ruby
@@ -265,3 +265,193 @@ CONST               #=> "Changed"
 
 ### Control Structures: Conditionals
 - If something true, do this.
+
+```ruby
+if boolean
+	...
+end
+```
+
+```ruby
+if boolean
+	...
+else
+	...
+end
+```
+
+```ruby
+if boolean
+	...
+elsif boolean
+	...
+else
+	...
+end
+```
+
+```ruby
+if x < 10
+	puts "Below 10"
+elsif x > 20
+	puts "Over 20"
+else
+	puts "10-20"
+end
+```
+
+```ruby
+puts "This is Vadim" if name == "Vadim"  # inline conditional
+```
+
+### Control Structures: Shorthand Conditionals
+- unless
+- case
+- tenary operator
+- or/or-equals
+
+```ruby
+unless boolean  # same as: if !boolean
+	...
+end
+```
+
+```ruby
+case
+when boolean
+	...
+when boolean
+	...
+else
+	...
+end
+```
+
+```ruby
+case test_value
+when value
+	...
+when value
+	...
+else
+	...
+end
+```
+
+```ruby
+boolean ? code1 : code2
+puts x==1 ? "one" : "not one"
+```
+
+```ruby
+if y
+	x = y
+else
+	x = z
+end
+
+x = y || z  # this is the shorthand for above
+```
+
+```ruby
+unless x
+	x = y
+end
+
+x || = y    # this is the shorthand for above
+```
+
+
+### Control Structures: Loops
+- `break`: Terminate the whole loop.
+- `next`: Jump to the next loop.
+- `redo`: Redo this loop.
+- `retry`: Start the whole loop over.
+
+```ruby
+loop do
+	...
+end
+```
+
+```ruby
+x = 0
+loop do
+	x += 2
+	break if x >= 20
+	next if x == 6
+	puts x
+end 
+```
+
+```ruby
+while boolean  # has implied conditional
+	...
+end
+```
+
+```ruby
+until boolean  # while something is not true
+	...
+end
+```
+
+```ruby
+x = 0
+while x < 20
+	x += 2
+	puts x
+end
+```
+
+```ruby
+x = 0
+puts x += 2 while x < 100
+
+y = 3246
+puts y /= 2 until y <= 1
+```
+
+
+### Control Structures: Iterators
+- Similar to loops.
+- Once for each item in a set of data.
+- The curly braces `{...}` are shorthand for `do` and `end`.
+- Control statements `break`, `next`, `redo` and `retry` work in iterators.
+- Integers / floats iterate with: `times`, `upto`, `downto`, `step`
+- Range iterate with: `each`, `step`
+- String iterate with: `each`, `each_line`, `each_byte`
+- Array iterate with: `each`, `each_index`, `each_with_index`
+- Hash iterate with: `each`, `each_key`, `each_value`, `each_pair`
+
+```ruby
+5.times do
+	puts "hello"
+end
+```
+
+```ruby
+1.upto(5) {puts "hello"}
+5.downto(1) {puts "hello"}
+(1..5).each {puts "hello"}
+```
+
+```ruby
+1.upto(5) do |i|   # i is the number of each iterator
+	puts "Hello " + i.to_s
+end
+```
+
+```ruby
+fruits = ['banana', 'apple', 'pear']
+
+fruits.each do |fruit|
+	puts fruit.capitalize
+end
+
+# same as above
+for fruit in fruits
+	puts fruit.capitalize
+end
+```
+
