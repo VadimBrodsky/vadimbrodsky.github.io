@@ -440,6 +440,9 @@ end
 1.upto(5) do |i|   # i is the number of each iterator
 	puts "Hello " + i.to_s
 end
+
+# same as above
+1.upto(5) {|i| puts "Hello " + i.to_s}
 ```
 
 ```ruby
@@ -455,3 +458,36 @@ for fruit in fruits
 end
 ```
 
+
+### Control Structures: Code Blocks
+- Block of code that executes multiple times.
+- Usually between `do` and `end` or with the short form `{...}`
+- Can use the value of the iteration with the `|i|` notation.
+- Don't have access to block variables in the local scope.
+- Do have access to local variable in the block scope.
+
+#### Code Block Methods: Find
+- `find` / `detect`: find the first match, return => Object or nil
+- `find_all` / `select`: finds all matches, return => Array
+- `any?`: find is any of the items match, return => Boolean
+- `all?`: find if all of the items match, return => Boolean
+- `delete_if`: delete the item in an array if, returns => Array
+
+```ruby
+(1..10).find {|i| i % 3 == 0}  #=> 3 // only the first match returns
+(1..10).detect {|i| (1..10).include? (i * 3)}   #=> 1
+```
+
+```ruby
+(1..10).find_all {|i| i % 3 == 0} #=> [3, 6, 9]
+(1..10).select {|i| (1..10).include? (i * 3)}   #=> [1, 2, 3]
+```
+
+```ruby
+(1..10).any? {|i| i % 3 == 0}     #=> true
+(1..10).all? {|i| i % 3 == 0}     #=> false
+```
+
+```ruby
+[*1..10].delete_if {|i| i % 3 == 0}   #=> [1, 2, 4, 5, 7, 8, 10]
+```
