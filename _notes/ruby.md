@@ -3,6 +3,14 @@ layout: default
 title: Ruby
 ---
 
+## IRB
+- Interactive Ruby Shell
+
+```bash
+irb --simple-prompt
+```
+
+
 ## Object Types in Ruby
 - Ruby is an object-oriented programming language.
 - An object is the fundamental building block in Ruby.
@@ -98,7 +106,7 @@ puts "1 + 1 = #{1 + 1}"
 ```
 
 
-### Object Types: Strings
+### Object Types: Arrays
 - Array: an ordered, integer-indexed collection of objects.
 - Any king of objects can go in an array (strings, numbers, other arrays, mixed types etc.)
 
@@ -214,7 +222,7 @@ hash[:first_name]
 | Not                        | `!`     |
 | Not Equal                  | `!=`    |
 | And                        | `&&`    |
-| Or                         | `||`    |
+| Or                         | <code>&#124;&#124;</code>  |
 
 ```ruby
 true.class              #=> TrueClass
@@ -229,7 +237,7 @@ hash.has_value?('zz')   #=> false
 ```
 
 
-### Object Types: Booleans
+### Object Types: Ranges
 - Ranges: range on numbers, like an array of all the numbers 1..10
 - Inclusive range `1..10` == `1,2,3,4,5,6,7,8,9,10`
 - Exclusive range `1...10` == `1,2,3,4,5,6,7,8,9`
@@ -469,7 +477,7 @@ end
 #### Code Block Methods: Find
 - `find` / `detect`: find the first match, return => Object or nil
 - `find_all` / `select`: finds all matches, return => Array
-- `any?`: find is any of the items match, return => Boolean
+- `any?`: find if any of the items match, return => Boolean
 - `all?`: find if all of the items match, return => Boolean
 - `delete_if`: delete the item in an array if, returns => Array
 
