@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Ruby Notes
+title: Ruby
 ---
 
 ## Object Types in Ruby
