@@ -843,4 +843,156 @@ array[2] = 'x' 		# array.[]=(2,'x')
 
 ## Classes
 - Classes define what an object is and what an object can do.
-- 
+- Class names start with a capital letter and use camel case.
+- Group code into discreet, well-categorized areas.
+- Objects carry around their class's code.
+- Allows for complex behaviors using simple statements.
+- Correspond to read-world objects.
+
+
+### Classes: Defining and Using Classes
+```ruby
+class NameOfClass
+	...
+end
+```
+
+```ruby
+class Animal
+	def make_noise
+		"Moo!"
+	end
+end
+
+animal = Animal.new 	#=> #<Animal:0x007f9e7d1a9dc0>
+animal.make_noise 		#=> "Moo!"
+```
+
+
+### Classes: Instances
+- An object created from a class.
+- The instance is created and returned with the `new` method.
+- Evey time an object is crated it is a different object.
+- Like a "While You Were Out" pad.
+
+```ruby
+animal1 = Animal.new
+animal2 = Animal.new
+```
+
+
+### Classes: Attributes
+- Values that persists inside of an instance. 
+- A special kind of variable - `@variable`.
+- Never has access to instance variables outside of the instance.
+- Only the methods of the class have access to instance variables.
+
+```ruby
+class Animal
+	def set_noise(noise)
+		@noise = noise 
+	end
+
+	def make_noise
+		@noise
+	end
+end
+
+animal1 = Animal.new
+animal1.set_noise("Moo!")
+puts animal1.make_noise 	#=> "Moo!"
+
+animal2 = Animal.new
+animal.set_noise("Whoof!")
+puts animal2.make_noise 	#=> "Whoof!"
+```
+
+
+### Classes: Reader / Writer Methods
+- Same as getters / setters in other languages.
+- Give access control over the instance variables.
+- Ruby has syntactic sugar to make the reader and writer method more concise.
+
+```ruby
+class Animal
+	def noise=(noise) 		# same as above but shorter
+		@noise = noise
+	end
+
+	def noise 				# same as above but shorter
+		@noise
+	end
+end
+
+animal = Animal.new 		
+animal.noise = "Moo!" 		# like assigning a variable
+puts animal.noise
+```
+
+
+### Classes: Attribute Methods
+- For classes that have many attributes Ruby provides a shortcut.
+- Using the attribute `attr_*` methods.
+- `attr_reader`: creates a reader method.
+- `attr_writer`: creates a writer method.
+- `attr_accessor`: creates both a reader and a writer method.
+
+```ruby
+attr_reader :name
+
+#same as
+def name
+	@name
+end
+```
+
+```ruby
+atte_writer :name
+
+#same as
+def name=(value)
+	@name = value
+end
+```
+
+```ruby
+attr_accessor :name
+
+#same as both
+def name
+	@name
+end
+
+def name=(value)
+	@name = value
+end
+```
+
+```ruby
+#can create multiple instance variables and methods at once
+attr_accessor :name
+attr_writer :color
+attr_reader :legs, :arms
+```
+
+
+### Classes: Initialize Method
+- Methods that run when the object is being initialized.
+- Use the `initialize` class method.
+- Can pass arguments to the `initialize` method, the `new` method uses them.
+
+```ruby
+class Animal
+	def initialize(noise, legs, arms)
+		@noise = noise
+		@legs = legs
+		@arms = arms
+		puts "A new animal has been instantiated."
+	end
+end
+
+animal = Animal.new("Moo", 4, 0)
+```
+
+
+### Classes: Class Methods
