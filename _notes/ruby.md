@@ -222,18 +222,20 @@ hash[:first_name]
 ### Object Types: Booleans
 - Boolean: True / False for comparisons.
 
-| Operator                        | Syntax  |
-| --------------------------------| ------- |
-| Equal                           | `==`    |
-| Less than                       | `<`     |
-| Greater than                    | `>`     |
-| Less than or equal to           | `<=`    |
-| Greater than or equal to        | `>=`    |
-| Not                             | `!`     |
-| Not Equal                       | `!=`    |
-| And                             | `&&`    |
-| Or                              | <code>&#124;&#124;</code>  |
-| Comparison (spaceship operator) | `<=>`   |
+| Operator                         | Syntax  |
+| -------------------------------- |:-------:|
+| Equal                            | `==`    |
+| Less than                        | `<`     |
+| Greater than                     | `>`     |
+| Less than or equal to            | `<=`    |
+| Greater than or equal to         | `>=`    |
+| Not                              | `!`     |
+| Not Equal                        | `!=`    |
+| And                              | `&&`    |
+| Or                               | <code>&#124;&#124;</code>  |
+| Comparison* (spaceship operator) | `<=>`   |
+
+*Comparison is not a boolean operator.
 
 ```ruby
 true.class              #=> TrueClass
