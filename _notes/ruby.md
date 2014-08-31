@@ -837,7 +837,10 @@ array[2] = 'x' 		# array.[]=(2,'x')
 5 * "hello" 		# 5.*("hello")
 ```
 
+
 ---
 
 
 ## Classes
+- Classes define what an object is and what an object can do.
+- 
