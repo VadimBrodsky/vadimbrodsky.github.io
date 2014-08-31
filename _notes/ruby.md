@@ -7,8 +7,16 @@ title: Ruby
 - Interactive Ruby Shell
 
 ```bash
+irb
 irb --simple-prompt
 ```
+
+```ruby
+# to import a file to IRB, in the same folder
+require "filename.rb"
+```
+
+---
 
 
 ## Object Types in Ruby
@@ -109,13 +117,14 @@ puts "1 + 1 = #{1 + 1}"
 ### Object Types: Arrays
 - Array: an ordered, integer-indexed collection of objects.
 - Any king of objects can go in an array (strings, numbers, other arrays, mixed types etc.)
+- The square brackets for the array are optional.
 
 ```ruby
 data_set = []
 data_set = ["a", "b", "c"]
 data_set[1] # => "b"
 data_set[0] # => "a"
-data_set[3] # => nill
+data_set[3] # => nil
 data_set[0] = d
 data_set  # => ["d", "b", "c"]
 ```
@@ -168,6 +177,7 @@ array - [2]           # Removes only one item same as delete
 - Indexed by a a key, not by a specific order.
 - Called a dictionary in other languages.
 
+
 #### Arrays VS Hashes
 - Use arrays when the order is important.
 - Use hashes whent the label is important.
@@ -212,28 +222,48 @@ hash[:first_name]
 ### Object Types: Booleans
 - Boolean: True / False for comparisons.
 
-| Operator                   | Syntax  |
-| ---------------------------| ------- |
-| Equal                      | `==`    |
-| Less than                  | `<`     |
-| Greater than               | `>`     |
-| Less than or equal to      | `<=`    |
-| Greater than or equal to   | `>=`    |
-| Not                        | `!`     |
-| Not Equal                  | `!=`    |
-| And                        | `&&`    |
-| Or                         | <code>&#124;&#124;</code>  |
+| Operator                        | Syntax  |
+| --------------------------------| ------- |
+| Equal                           | `==`    |
+| Less than                       | `<`     |
+| Greater than                    | `>`     |
+| Less than or equal to           | `<=`    |
+| Greater than or equal to        | `>=`    |
+| Not                             | `!`     |
+| Not Equal                       | `!=`    |
+| And                             | `&&`    |
+| Or                              | <code>&#124;&#124;</code>  |
+| Comparison (spaceship operator) | `<=>`   |
 
 ```ruby
 true.class              #=> TrueClass
 false.class             #=> FalseClass
 1 > 2                   #=> false
-x.nill?                 #=> false
+x.nil?                  #=> false
 2.between?(1,3)         #=> true
 [1,3,4].empty?          #=> false
 [1,2,3].include?(3)     #=> true
 hash.has_key?('a')      #=> false
 hash.has_value?('zz')   #=> false
+```
+
+#### Comparison Operator
+- Compares two values.
+
+```ruby
+value1 <=> value2
+```
+
+| Return Value | Meaning    |
+| ------------ | ---------- |
+|  -1          | Less than  |
+|   0          | Equal      |
+|   1          | More than  |
+
+```ruby
+1 <=> 2		#=> -1
+2 <=> 1		#=> 1
+2 <=> 2		#=> 0
 ```
 
 
@@ -265,6 +295,21 @@ CONST = "This is a constant"
 CONST = "Changed"   #=> warning: already initialized constant CONST
 CONST               #=> "Changed"
 ```
+
+
+### Object Types: Nil
+- An empty object.
+
+```ruby
+nil.nil?		#=> true
+value.nil?		#=> false
+"".nil?			#=> false
+nil.to_i 		#=> 0
+```
+
+
+
+---
 
 
 ## Control Structures
@@ -466,6 +511,8 @@ for fruit in fruits
 end
 ```
 
+---
+
 
 ### Control Structures: Code Blocks
 - Block of code that executes multiple times.
@@ -473,6 +520,7 @@ end
 - Can use the value of the iteration with the `|i|` notation.
 - Don't have access to block variables in the local scope.
 - Do have access to local variable in the block scope.
+
 
 #### Code Block Methods: Find
 - `find` / `detect`: find the first match, return => Object or nil
@@ -499,3 +547,295 @@ end
 ```ruby
 [*1..10].delete_if {|i| i % 3 == 0}   #=> [1, 2, 4, 5, 7, 8, 10]
 ```
+
+
+#### Code Block Methods: Merge
+- Used to merge Hashes together.
+- The values passed to the function take precedence over the  calling hash.
+- The code block can be supplied optionally, only called in case of a merge conflict.
+- The block is used for conflict resolution.
+- Use the `merge!` to save the changes of the operation.
+
+```ruby
+h1 = { "a" => 111, "b" => 222 }
+h2 = { "b" => 333, "c" => 444 }
+h1.merge(h2) 				#=> {"a"=>111, "b"=>333, "c"=>444}
+h2.merge(h1) 				#=> {"b"=>222, "c"=>444, "a"=>111}
+```
+
+```ruby
+h1.merge(h2) {|key, old, new| old * 2}  
+#=> {"a"=>111, "b"=>444, "c"=>444}
+```
+
+```ruby
+h1.merge(h2) do |key, old, new|
+	if old < new
+		old
+	else
+		new
+	end
+end
+#=> {"a"=>111, "b"=>222, "c"=>444}
+
+# Or using the shorthand
+h1.merge(h2) {|k,o,n| o < n ? o : n}
+#=> {"a"=>111, "b"=>222, "c"=>444}
+```
+
+```ruby
+h1.merge!(h2)
+h1
+#=> {"a"=>111, "b"=>333, "c"=>444}
+```
+
+
+#### Code Block Methods: Collect
+- Use either `collect` or `map`.
+- Works best with Arrays, Hashes and Ranges.
+- Applies the instructions of the code block to each value in the array.
+- Need to be explicit on the returns, otherwise it will return `nil`.
+- Number of items in == number of items out.
+- Always returns an Array.
+- Use `collect!` to save the effect on the original object.
+
+```ruby
+array = [1, 2, 3, 4, 5]
+array.collect {|i| i + 1} 	#=> [2, 3, 4, 5, 6]
+
+["apple", "banana", "orange"].map {|fruit| fruit.capitalize}
+#=> ["Apple", "Banana", "Orange"]
+```
+
+```ruby
+["apple", "banana", "orange"].map {|fruit| fruit.capitalize if fruit == 'banana'}
+#=> [nil, "Banana", nil]
+# Only returns the matched conditions.
+```
+
+```ruby
+["apple", "banana", "orange"].map do |fruit|
+	if fruit == 'banana'
+		fruit.capitalize
+	else
+		fruit
+	end
+end
+#=> ["apple", "Banana", "orange"]
+```
+
+```ruby
+hash = { "a" => 111, "b" => 222, "c" => 333 }
+hash.map {|k,v| k.capitalize} 	#=> ["A", "B", "C"]
+```
+
+
+#### Code Block Methods: Sort
+- Sort does a comparison using the `<=>` operator.
+- The comparison operator decides which direction the value goes.
+- If the operation is on a single property use `sort_by`.
+- To save the result use `sort!`.
+- Can sort Hashes as well as Arrays, but Ruby converts it to an Array.
+
+```value1 <=> value2```
+
+| Comparison Result | Meaning   | Action      |
+|:-----------------:|:---------:|:-----------:|
+|        -1         | Less than | Moves left  |
+|         0         | Equal     | Stays       |
+|         1         | More than | Moves right |
+
+```ruby
+array = [3 ,1, 5, 2, 4]
+array.sort { |v1,v2| v1 <=> v2 } 	# default sorting
+array.sort 							# same as above but shorter
+#=> [1, 2, 3, 4, 5]
+```
+
+```ruby
+array.sort { |v1,v2| v2 <=> v1 }
+array.sort.reverse
+#=> [5, 4, 3, 2, 1]
+```
+
+```ruby
+fruits = ["banana", "apple", "orange", "pear"]
+fruits.sort 	# alphabetical sort
+#=> ["apple", "banana", "orange", "pear"]
+
+fruits.sort {|fruit1,fruit2| fruit1.length <=> fruit2.length}
+#=> ["pear", "apple", "orange", "banana"]
+
+fruits.sort_by{|fruit| fruit.length} 	#shorthand version
+#=> ["pear", "apple", "orange", "banana"]
+```
+
+```ruby
+hash = { "a" => 555, "b" => 333, "c" => 222, "d" => 111 }
+hash.sort {|item1, item2| item1[1] <=> item2[1] }
+# sort by values of the hash
+#=> [["d", 111], ["c", 222], ["b", 333], ["a", 555]]
+```
+
+
+#### Code Block Methods: Inject
+- Inject is an accumulator - store the value for the next round.
+- Use the `memo` variable to store the result between the iterations.
+- Inject can receive a starting number as a parameter.
+- If no starting number is declared the first iteration will be used as a starter.
+- Careful about conditionals that can sore `nil` in `memo`.
+
+```ruby
+# Sum of all the numbers
+(1..10).inject {|memo, n| memo + n} 		#=> 55
+```
+
+```ruby
+array = [*1..10]
+sum = array.inject(100) {|memo, n| memo + n} 	#=> 155
+product = array.inject {|memo, n| memo * n} 	#=> 3628800
+```
+
+```ruby
+fruits = ["banana", "apple", "orange", "pear"]
+longest_word = fruits.inject do |memo, fruit|
+	if memo.length > fruit.length
+		memo
+	else
+		fruit
+	end
+end
+# gets the longest word
+#=> "orange"
+```
+
+---
+
+## Methods
+
+### Methods: Calling Methods
+- Object method that are applied to an object use the `.` notation.
+- Object methods can be chained.
+- To call a stand-alone method just call it's name, like a variable.
+- Methods have to be defined before they are called.
+
+```ruby
+"hello".reverse.capitalize
+method_name
+```
+
+
+### Methods: Defining Methods
+- Method names can have question marks `?` - convention for tests and booleans.
+
+```ruby
+def method_name
+	...
+end
+
+def add
+	puts 1 + 1
+end
+
+def over_five?
+	value = 3
+	puts value > 5 ? 'over 5' : 'not over 5'
+end
+```
+
+
+### Methods: Variable Scope
+- Local method variables have the scope local to the method only.
+- Method names and variable names can look the same, be careful.
+- Global `$variable`, class `@@variable` and instance `@variable` can span the scope of the method.
+
+
+### Methods: Arguments
+- Comma separated list if values that are passed into the methods.
+- Values are passed into the method when it is called.
+- When multiple arguments are defined, their order is important.
+- The parentheses for the arguments are optional.
+- Methods with arguments typically use parentheses.
+- Methods without arguments typically do not use parentheses.
+
+```ruby
+def welcome(name)
+	puts "Hello #{name}"
+end
+
+welcome("Vadim")
+#=> Hello Vadim
+
+welcome "Vadim" 	# without parentheses
+#=> Hello Vadim
+```
+
+```ruby
+def add(n1, n2)
+	puts n1 + n2
+end
+
+add(5, 2)
+#=> 7
+```
+
+#### Methods: Argument Default Values
+- Default behavior for the method, so it will not break if the argument is missing when the method is called.
+- Make the required arguments first in the argument list.
+
+```ruby
+def welcome(name="Friend")
+	puts "Hello #{name}"
+end
+```
+
+### Methods: Return Values
+- All methods have a return value.
+- Implicit return - the return value for the method is the last operation of the method.
+- Explicit return - exits the method and reruns the value using the `return` keyword.
+- Returns can work with `if` statements -- `return if x`.
+- Can only return 1 object from a method.
+
+```ruby
+def welcome(name="Friend")
+	return "Hello #{name}!"
+end
+```
+
+```ruby
+def add_and_subtract(n1=0, n2=0)
+	add = n1 + n2
+	sub = n1 - n2
+	return add, sub 	#=> This is an array, the brackets are optional
+end
+
+add, sub = add_and_subtract(8, 3)	#=> Double assignment to an array
+```
+
+### Methods: Operators are Methods
+- Common operators in the Ruby language are methods.
+- Ruby uses syntactic sugar to make the common operators appears like operators.
+- Common variables can be used as methods with any custom class.
+
+```ruby
+8 + 2 == 8.+(2)
+8 * 2 == 8.*(2)
+8 / 2 == 8./(2)
+8 ** 2 == 8.**(2)
+```
+
+```ruby
+array << 4			# array.<<(4)
+array[2] 			# array.[](2)
+array[2] = 'x' 		# array.[]=(2,'x')
+```
+
+```ruby
+"hello" * 5 		# "hello".*(5)
+5 * "hello" 		# 5.*("hello")
+```
+
+---
+
+
+## Classes
