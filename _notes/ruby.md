@@ -996,3 +996,129 @@ animal = Animal.new("Moo", 4, 0)
 
 
 ### Classes: Class Methods
+- A method that can be called on a class, even without an instance of the class.
+- Example: `Animal.new`.
+- Using the `self` keyword, that applies to the object that we are currently in.
+
+```ruby
+def self.method_name
+	...
+end
+```
+
+```ruby
+class Animal
+	...
+	def self.all_species
+		['cat', 'cow', 'dog', 'duck', 'horse', 'pig']
+	end
+
+	def self.create_with_attributes(noise, color)
+		animal = self.new(noise)
+		animal.color = color
+		return animal
+	end
+	...
+end
+
+puts Animal.all_species
+animal2 = Animal.create_with_attributes('black', 'quack')
+```
+
+
+### Classes: Class Attributes
+- Store values that apply to the class generally.
+- Using the class variable `@@variable`.
+- Persists any time we have the class, even without the variables.
+- Information that is general for the whole class.
+- Keep track of all of the objects with `@@total`.
+- Keep track of all the instances with an array of class attributes.
+- Cannot access the class attributes outside of the class, only with class methods.
+
+```ruby
+class Animal
+	...
+	@@species = ['cat', 'cow', 'dog', 'duck', 'horse', 'pig']
+	@@curent_animals = []
+
+	def self.all_species
+		@@species
+	end
+
+	def initialize
+		@@current_animals << self
+	end
+	...
+end
+
+puts Animal.all_species
+puts Animal.current_animals.inspect 	# would not work, need class method
+```
+
+
+### Classes: Class Reader / Writer Method
+- Same as with instance variables, class variables (attributes) need setter and getter methods.
+
+```ruby
+def self.animals 				# reader
+	@@animals
+end
+
+def self.animals=(array=[]) 	# writer
+	@@animals = array
+end
+```
+
+
+### Classes: Inheritance
+- Bestowal of methods and attributes of another class.
+- Superclass / parent => subclass / children.
+- In Ruby we can inherit from only 1 superclass at a time, there are no multiple inheritances.
+
+```ruby
+class Cow < Animal
+end
+
+betsy = Cow.new("Moo!")
+betst.class 		# Cow
+```
+
+
+### Classes: Subclass Overriding
+- To overwrite the parent class methods or attributes.
+- Methods can be overwritten by using the same method name in the definition of a new method.
+- The last definition always wins.
+
+```ruby
+class Cow < Animal
+	def color
+		"The cow's color is #{@color}."	
+	end	
+end
+```
+
+```ruby
+class Array 		# overriding Ruby's built in-class
+	def to_s
+		self.join(', ')
+	end
+end
+```
+
+
+### Classes: Accessing the Superclass
+- To change the behavior of a superclass' method without completely overriding it.
+- The keyword `super` is used for that.
+- It returns the result of the original method to where `super` is called.
+
+```ruby
+class Pig < Animal
+	def noise
+		parent_noise = super
+		return "Hello and also #{parent_noise}"
+	end
+end
+
+wilbur = Pig.new
+wilbur.make_noise
+```
