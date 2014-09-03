@@ -1122,3 +1122,98 @@ end
 wilbur = Pig.new
 wilbur.make_noise
 ```
+
+---
+
+## Modules
+- Are wrappers around Ruby code.
+- Modules can't be instantiated.
+- Modules are used in conjunction with classes.
+
+
+### Modules: Namespaces
+- Namespacing allows for class names that don't conflict.
+- Use a namespace wrapper and double colons `ModuleName::ClassName`.
+- Keep class name distinct from standard Ruby classes.
+- Disambiguating your own class definitions.
+- Ensure classes used in open source code won't conflict.
+
+```ruby
+module Romantic 		# Module wrapper
+	class Date
+		...
+	end
+end
+
+dinner = Romantic::Date.new 	# Module date
+dinner.date = Date.new 			# Ruby date
+```
+
+
+### Modules: Mix-Ins
+- Ruby only allows to inherit from one superclass.
+- If additional functionality is needed, it can be placed into a module and mixed in.
+- Reuse the same code in multiple places, using the `include` statement.
+- Make sure the module definition comes before the class that it's being used in.
+- Can use Ruby's built-in modules like `enumerable`.
+
+```ruby
+module ContactInfo
+	attr_accessor :first_name, :last_name, :city, :state, :zip_code
+
+	def full_name
+		return @first_name + " " @last_name
+	end
+end
+
+class Person
+	include ContactInfo  		# load the ContactInfo module
+end
+
+class Teacher
+	include ContactInfo
+	attr_accessor :lesson_plans
+end
+
+class Student < Person 			# inherits the module behavior from Person
+	attr_accessor :books, :grades
+end
+```
+
+```ruby
+class ToDoList
+
+	include Enumerable 			# load Ruby's Enumerable mixin
+
+	attr_accessor :items
+
+	def initialize
+		@items = []
+	end
+
+	def each
+		@items.each {|item| yield item} 	# use the each functionality
+	end
+end
+
+list = ToDoList.new
+list.select {|i| i.length > 6} 		# use the select method directly on the object
+```
+
+
+### Modules: Load, Require, Include
+- Modules are usually kept in separate files.
+- Modules can be serves as code libraries.
+- Need to have a way to load modules and files into other Ruby files.
+- `load`: loads a source file every time it is called, returns `true` if the file loaded successfully.
+- `require`: loads a source file only once, keeps track of the file and will not load it again.
+- `include`: uses exclusively for including module mixins, nothing to do with files.
+
+```ruby
+load 'contact_info.rb' 		# loading a dependency
+```
+
+
+----
+
+
