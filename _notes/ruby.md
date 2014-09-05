@@ -1247,7 +1247,63 @@ puts input 			#=> "Hello\n"
 
 ```ruby
 File.join('path', 'to', 'folder', 'file.rb')
+
+# Starting with a blank '' will create a path
+File.join('', 'Users', 'vadim', 'Desktop', 'rube_files')
 ```
 
 
+### Working With Files: File Paths
+- Absolute path: `/path/to/file`
+- Relative path: `./../../path/to/file`
+- Ruby Special variable `__FILE__`: the name of the file that we are in right now.
+- To get the absolute path use `File.expand_path()`.
 
+```ruby
+File.expand_path(__FILE__) 		# Absolute file path
+File.dirname(__FILE__) 			# File directory
+```
+
+```ruby
+# go up one directory with relative paths
+puts File.join(File.dirname(__FILE__), '..', "Folder\ With\ Spaces")
+```
+
+
+### Working With Files: Accessing Files
+- Two ways of opening a file.
+- `File.new`: 
+	- Creates a new instance of the `File` object, the file exists while the object exists.
+	- Accepts the file name and the writing mode.
+- `File.open`
+	- Uses a block to perform actions.
+	- At the end it closes the file automatically.
+	- Accepts the file name and the writing mode.
+
+```ruby
+file = File.new('file_name.rb', 'w')
+file.close
+```
+
+```ruby
+File.open('file1.txt', 'r') do |file|
+	# read the data from the file
+end
+```
+
+
+### Working With Files: File Modes
+- Most useful are `r` to read, `w` to start new file, `r+` to read and write, `a` to add something at the end.
+
+| Access Mode | Description                  | Read & Write |
+|:-----------:|:-----------------------------|:------------:|
+|     `r`     | Read from start (must exist) |     `r+`     |
+|     `w`     | Truncate / Write from start  |     `w+`     |
+|     `a`     | Append / Write from end      |     `a+`     |
+
+- `r`: reads from the start, the file must exist. 
+- `w`: writes from the start, will create the file if it doesn't exist. If the file exists it will overwrite it.
+- `a`: append to the end of a file
+- `r+`: read and write from the file without erasing everything, starting at the beginning of the file.
+- `w+`: read and write from the file but will truncate everything first.
+- `a+`: read and write from the file without truncating, starting at the end of the file.
