@@ -1307,3 +1307,32 @@ end
 - `r+`: read and write from the file without erasing everything, starting at the beginning of the file.
 - `w+`: read and write from the file but will truncate everything first.
 - `a+`: read and write from the file without truncating, starting at the end of the file.
+
+
+### Working With Files: Writing
+- Before writing the data to the file, Ruby waits for the file to be closed first.
+- Write to the hard drive only once in batch.
+
+```ruby
+file = File.new('test_file.txt', 'w')
+file.puts "abcd"
+file.close
+```
+
+```ruby
+file.puts "abcd" 		# puts string with line break
+file.print "abcd" 		# puts string whiteout line break
+file.write "abcd" 		# like print but returns the number of characters
+file << "abcd" 			# like print but returns the object
+```
+
+
+### Working With Files: Reading
+- Cannot use `chomp` automatically with `gets`, if it's the end of the file there is nothing to get -- `chomp` will cause an error.
+
+```ruby
+file = File.new('test_file.txt', 'r')
+file.gets 				#=> "abcd\n"
+file.gets.chomp 		#=> "abcdabcdabcd"
+file.gets 				#=> nil
+```
