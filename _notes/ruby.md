@@ -1336,3 +1336,137 @@ file.gets 				#=> "abcd\n"
 file.gets.chomp 		#=> "abcdabcdabcd"
 file.gets 				#=> nil
 ```
+
+```ruby
+file.gets 			# reads from the pointer position to end of line
+file.read(4) 		# read 4 characters
+```
+
+```ruby
+File.open('file1.txt', 'r') do |file|
+	while line = file.gets
+		puts "** " + line.chomp.reverse + " **"
+	end
+end
+```
+
+```ruby
+File.open('file1.txt', 'r') do |file|
+	file.each_line { |line| puts line.upcase }
+end
+```
+
+
+### Working With Files: File Pointer
+- Similar to a file pointer in a text editor.
+- Overwrites text at a position.
+- Use it for both writing and reading.
+- The pointer position: `file.pos` start with `0`.
+
+```ruby
+file.pos 			# current position of the pointer
+file.read(3)
+file.pos 			#=> 3
+file.pos = 13 		# move pointer to position 13
+file.eof? 			# Boolean enf of file check
+file.rewind 		# Go back to start, sams as assigning 0
+file.pos += 6 		# Go forward 6
+file.pos += 100 	# set the pointer beyond the end of the file
+```
+
+```ruby
+file.lineno 		# how many times gets was called
+```
+
+
+### Working With Files: Renaming and Deleting
+- Need read and write to the file, as well as write permissions for the directory.
+
+#### File Class:
+- Standard file class.
+- `rename`
+- 'delete', `unlink`
+
+#### FileUtils Class:
+- Ruby Standard library: `require fileutils`
+- `cp`, `copy`
+- `mv`, `move`
+- `rm`, `remove`
+- `cd`, `chmod`, `chown`, `pwd`, `ln`, `touch`, `mkdir`, `rmdir`
+
+
+```ruby
+File.rename('file_to_rename.txt', 'new_file_name.txt')
+File.delete('new_file_name.txt')
+```
+
+```ruby
+require fileutils 		# Ruby built-in library
+FileUtils.copy('file_to_copy.txt', 'copied.txt')
+```
+
+
+### Working With Files: Examining File Details
+- Class methods on the `File` class.
+- File instance use the `stat` object to access information.
+
+```ruby
+file = 'testfile.txt'
+File.exist?(file) 		# does it exist
+File.file?(file) 		# is it a file
+File.directory?(file) 	# is it a directory
+File.readable?(file) 	# readable permission
+File.writable?(file) 	# writable permission
+File.executable?(file) 	# executable permission
+File.size(file) 		# in bytes, corresponds to string length
+File.dirname(file) 		# folder name
+File.expand_path(file) 	# full path
+File.basename(file) 	# reverse of expand, file name
+File.extname(file) 		# extension of the file
+File.atime(file) 		# last accessed time - read or write
+File.mtime(file) 		# last modified time - write
+File.ctime(file) 		# last status change time, NOT created time
+```
+
+```ruby
+myfile.stat 			# returns a file stat object
+myfile.stat.size
+myfile.stat.readable?
+```
+
+
+### Working With Files: Directories
+- Ruby has a direcotry class: `Dir`.
+- `Dir.pwd`: print working directory.
+- `Dir.chdir`: change directory, like `cd` in bash.
+- `Dir.entries(folder name)`: array of the files in a folder.
+
+```ruby
+File.dirname(__FILE__)
+Dir.pwd
+Dir.chdir('..')
+Dir.chdir('', 'Users', "Desktop")
+Dir.entries('.')
+```
+
+```ruby
+Dir.entries('.').each do |entry|
+	print entry + ': '
+	if File.file?(entry) && File.readable?(entry)
+		File.open(entry, 'r') do |file|
+			puts file.gets
+		end
+	else
+		puts
+	end
+end
+```
+
+```ruby
+Dir.foreach('.') {|entry| puts entry}
+```
+
+```ruby
+Dir.mkdir('temp_direcotry')
+Dir.delete('temp_direcotry') 	# need permissions and has to be empty
+```
