@@ -1470,3 +1470,14 @@ Dir.foreach('.') {|entry| puts entry}
 Dir.mkdir('temp_direcotry')
 Dir.delete('temp_direcotry') 	# need permissions and has to be empty
 ```
+
+
+---
+
+
+## Ruby Methods
+
+### exit!
+- Will stop the script and exit to the command line.
+- Stops right away.
+- `exit!`
