@@ -74,3 +74,11 @@ alias ll="ls -lahG"
 ```
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 ```
+
+# Setting Up Sublime Text 
+- To call Sublime Text from the command line.
+- Create a symlink.
+
+```bash
+ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+```
