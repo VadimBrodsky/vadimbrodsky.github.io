@@ -30,6 +30,7 @@ gem install mysql2
 - Can specify the database requirements with the `-d` flag.
 
 ```bash
+rails new hello_app
 rails new simple_cms -d mysql
 ```
 
@@ -51,32 +52,39 @@ rails generate controller demo index
 
 
 ## Rails File Structure
-- `app` directory: most of the app code lives here
-  - `assets`: processed by the Rails asset pipeline
-     - `images`
-     - `javascripts`
-     - `stylesheets`
-  - `contollers`: app controllers
-     - `concerns`: common code that shared between controllers
-  - `helpers`: code that helps with views
-  - `mailers`: sending emails
-  - `models`: app models
-     - `concerns`: common code that shared between models
-  - `views`: app views
-- `bin`: stores the Rails commands.
-- `config`: configuration files for the application
-  - `environments`: settings for different environments
-  - `initializers`: differing this that launch when app launches
-  - `locals`: translation and internationalization
-- `db`: code related to managing the database and migrations
-- `lib`: storing libraries of code
-  - `assets`: different assets from libraries
-  - `tasks`: rake tasks
-- `log`: log files
-- `public`: html files and other public files
-- `test`: test code for the application
-- `tmp`: Rails stores temporary files
-- `vendor`: third party code that is not in gems
+- `app/` Most of the app code lives here
+- `app/assets` application assets, processed by the Rails asset pipeline
+- `app/assets/images`
+- `app/assets/javascripts`
+- `app/assets/stylesheets`
+- `app/controllers` the controllers
+- `app/controllers/concerns` common code that shared between controllers
+- `app/helpers` code that helps with views
+- `app/mailers` sending emails
+- `app/models` the models
+- `app/models/concerns` common code that shared between models
+- `app/views` the views
+- `bin/` stores the Rails commands and other binary executables
+- `config/` Configuration files for the application
+- `config/environments` settings for different environments
+- `config/initializers` differing this that launch when app launches
+- `config/locales` translation and internationalization
+- `db/` code related to managing the database and db migrations
+- `doc/` documentation for the app
+- `lib/` storing libraries of code
+- `lib/assets` different assets from library modules
+- `lib/tasks`  rake tasks for the library modules
+- `log/` application log files
+- `public/` data accessible to the public, such as html error pages
+- `test/` application tests
+- `tmp/` temporary files that Rails generates
+- `vendor/` third party plugin code that is not in gems
+- `README.rdoc` A brief description of the application
+- `Rakefile` Utility tasks available via the `rake` command
+- `Gemfile` Gem requirements for the app
+- `Gemfile.lock` A list of gems and their dependencies
+- `config.ru` A configuration file for Rack Middleware
+- `.gitignore` Patterns for files that should be ignored by Git.
 
 
 ## Rails Server Request Handling

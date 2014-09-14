@@ -5,6 +5,22 @@ title: Bash
 
 # Bash Commands
 
+## Basic Unix Commands
+
+| Description                | Command                |
+|:---------------------------|:-----------------------|
+| List contents              | `ls`                   |
+| Make directory             | `mkdir <dirname>`      |
+| Change directory           | `cd <dirname>`         |
+| Up one directory           | `cd ..`                |
+| To home directory          | `cd ~` or `cd`         |
+| Move file (rename)         | `mv <source> <target>` |
+| Copy file                  | `cp <source> <target>` |
+| Remove file                | `rm <file>`            |
+| Remove empty directory     | `rmdir <directory>`    |
+| Remove non empty directory | `rm -rf <directory>`   |
+
+
 ## Which
 - To find where a program is located.
 
@@ -29,7 +45,7 @@ echo $PATH
 
 
 ## Cat
-- Outputs the contents of a file.
+- Concatenates and displays the file contents.
 
 ```bash
 cat ~/.bash_profile
