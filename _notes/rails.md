@@ -176,12 +176,14 @@ bundle exec rake db:migrate
 # Request Spec
 - Integration tests (request spec) are done with Rspec in Rails.
 - Rails creates these tests in the `spec/requests/` folder.
-- RSpec uses the general malleability of Ruby to define a domain-specific language (DSL) built just for testing.
-- To get the test to run need to add the Capybara DSL to the RSpec helper file.
 
 ```bash
 rails generate integration_test static_pages
 ```
+
+## Writing the Test
+- RSpec uses the general malleability of Ruby to define a domain-specific language (DSL) built just for testing.
+- The `describe` lines are for human readers only.
 
 ```ruby
  # spec/requests/static_pages_spec.rb
@@ -197,6 +199,9 @@ describe "Static pages" do
 end
 ```
 
+## Running the Test
+- To get the test to run need to add the Capybara DSL to the RSpec helper file.
+
 ```ruby
  # spec/spec_helper.rb
  RSpec.configure do |config|
@@ -205,6 +210,10 @@ end
    .
    config.include Capybara::DSL
  end
+```
+
+```bash
+bundle exec rspec spec/requests/static_pages_spec.rb
 ```
 
 
