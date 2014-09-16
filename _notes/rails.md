@@ -160,6 +160,54 @@ bundle exec rake db:migrate
 - `PATCH` and `DELETE`, are designed for updating and destroying things on the remote server. These requests are less common than `GET` and `POST` since browsers are incapable of sending them natively.
 
 
+## Test Driven Development
+- Behavior-driven development (BDD) is a variant of test-driven development (TDD) that emphasizes the behavior of the application rather than its precise implementation.
+- Integration tests: known as request specs in the context of RSpec, allow us to simulate the actions of a user interacting with our application using a web browser.
+- The defining quality of TDD is writing tests first, before the application code.
+- By writing a failing test first and then implementing the application code to get it to pass, we increase our confidence that the test is actually covering the functionality we think.
+- When you aren’t at all sure how to solve a given programming problem, it’s often useful to skip the tests and write only application code, just to get a sense of what the solution will look like.
+- Once you see the general shape of the solution, you can then use TDD to implement a more polished version.
+
+### Red, Green, Refactor
+- First write a failing test, represented in many testing tools by the color red.
+- Implement code to get the test to pass, represented by the color green.
+- Refactor the code, changing its form without changing its function.
+
+# Request Spec
+- Integration tests (request spec) are done with Rspec in Rails.
+- Rails creates these tests in the `spec/requests/` folder.
+- RSpec uses the general malleability of Ruby to define a domain-specific language (DSL) built just for testing.
+- To get the test to run need to add the Capybara DSL to the RSpec helper file.
+
+```bash
+rails generate integration_test static_pages
+```
+
+```ruby
+ # spec/requests/static_pages_spec.rb
+require 'spec_helper'
+
+describe "Static pages" do
+  describe "Home Page" do
+	it "should have the content 'Sample App'" do
+	  visit '/static_pages/home'
+	  expect(page).to have_content('Sample App')
+	end
+  end
+end
+```
+
+```ruby
+ # spec/spec_helper.rb
+ RSpec.configure do |config|
+   .
+   .
+   .
+   config.include Capybara::DSL
+ end
+```
+
+
 ## Rails Server Request Handling
 - Browser => Web Server => Public => Rails Framework
 - If the request is satisfied by the public static file the Rails framework would not be accessed.
