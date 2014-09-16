@@ -15,6 +15,14 @@ gem -v
 which gem
 ```
 
+## Install a Gem
+- To install a specific version pass the `-v <version>` flag.
+
+```bash
+gem install rails
+gem install rails -v 4.0.8
+```
+
 
 ## Installed Gems
 - To find out which gems are installed.

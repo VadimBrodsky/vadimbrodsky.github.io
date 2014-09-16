@@ -35,9 +35,30 @@ rails new simple_cms -d mysql
 ```
 
 
+## Bundler
+- Used to maintain project dependencies.
+- Can install with `--without production` to not install any  production gems in the development environment.
+- If the version of the Rails Gem was updated need to update with Bundler.
+
+```bash
+bundle install
+bundle install --without production
+bundle update rails
+```
+
+
 ## Accessing a Project
 - Start the web server: `rails server` or `rails s`.
 - Visit the `localhost:3000` site in the browser.
+
+
+## Rails Console
+- Rails comes with a modified version of IRB.
+- It has access to all of Rails methods and the app database.
+
+```bash
+rails console
+```
 
 
 ## Generate
@@ -48,6 +69,44 @@ rails new simple_cms -d mysql
 ```bash
 rails generate
 rails generate controller demo index
+rails generate controller StaticPages home help
+```
+
+
+## Undoing Rails Generated Code
+
+```bash
+rails generate controller FooBarz baz qux
+rails destroy controller Foobarz
+```
+
+```bash
+rails generate model Foo bar:string baz:integer
+rails destroy model Foo
+```
+
+```bash
+rake db:migrate
+rake db:rollback
+rake db:migrate VERSION=0
+```
+
+
+## Scaffolding
+- Rails has a scaffolding script that generates code for data models.
+
+```bash
+rails generate scaffold User name:string email:string
+```
+
+
+## Database Migration
+- To update the database based on changes in the code run a migration.
+- To make sure that the right version of Rake runs use the `bundle exec` addition.
+- To see all available rake tasks run `bundle exec rake -T`.
+
+```bash
+bundle exec rake db:migrate
 ```
 
 
@@ -85,6 +144,20 @@ rails generate controller demo index
 - `Gemfile.lock` A list of gems and their dependencies
 - `config.ru` A configuration file for Rack Middleware
 - `.gitignore` Patterns for files that should be ignored by Git.
+
+
+## REST Architecture
+- Representational State Transfer.
+- REST is an architectural style for developing distributed, networked systems and software applications.
+- In the context of Rails applications REST means that most application components are modeled as resources that can be:
+	- Created, read, updated, and deleted—operations that correspond both to the CRUD operations of relational databases
+	- Four fundamental HTTP request methods: `POST`, `GET`, `PATCH`, and `DELETE`.
+
+
+## HTTP Operations
+- `GET` is the most common HTTP operation, used for reading data on the web; it just means “get a page”,
+- `POST` is the next most common operation; it is the request sent by your browser when you submit a form. In Rails applications, `POST` requests are typically used for creating things.
+- `PATCH` and `DELETE`, are designed for updating and destroying things on the remote server. These requests are less common than `GET` and `POST` since browsers are incapable of sending them natively.
 
 
 ## Rails Server Request Handling
