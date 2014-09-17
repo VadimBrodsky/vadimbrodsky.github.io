@@ -25,7 +25,7 @@ eval "$(rbenv init -)"
 - Usually installs Ruby versions to: `~/.rbenv/versions/2.1.2`
 
 ```bash
-rbenv insall 2.1.2
+rbenv install 2.1.2
 ```
 
 

@@ -55,9 +55,11 @@ bundle update rails
 ## Rails Console
 - Rails comes with a modified version of IRB.
 - It has access to all of Rails methods and the app database.
+- By default it start in the development environment.
 
 ```bash
 rails console
+rails c
 ```
 
 
@@ -214,6 +216,18 @@ end
 
 ```bash
 bundle exec rspec spec/requests/static_pages_spec.rb
+```
+
+
+## Embedded Ruby - ERb
+- ERb is the primary template system in Rails.
+- The `<% ... %>` tag executes the code inside.
+- The `<%= ... %>` tag executes and inserts the result into the template.
+
+```erb
+<body>
+<%= yield %>
+</body>
 ```
 
 

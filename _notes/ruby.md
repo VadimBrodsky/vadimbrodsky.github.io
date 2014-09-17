@@ -18,6 +18,16 @@ require "filename.rb"
 
 ---
 
+## Comments
+- Ruby comments start with the pound sign `#` (also called the “hash mark” or “octothorpe”).
+- Comments extend to the end of the line.
+
+
+## Printing
+- To print a string, the most commonly used Ruby function is `puts`.
+- The puts method operates as a side-effect: the expression `puts "foo"` prints the string to the screen and then returns `nil` is a special Ruby value for “nothing at all”.
+- Using puts automatically appends a newline character `\n` to the output.
+- The related `print` method does not append a newline character.
 
 ## Object Types in Ruby
 - Ruby is an object-oriented programming language.
@@ -88,7 +98,7 @@ x += 2
 ### Object Types: Strings
 - Sequence of characters.
 - Characters that are strung together to create words of sentences.
-- Double quoted strings do additional evaluation.
+- Double quoted strings do additional evaluation via interpolation using the special syntax `#{}`.
 
 ```ruby
 greeting = "Hello"
