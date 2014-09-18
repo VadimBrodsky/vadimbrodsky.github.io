@@ -218,6 +218,8 @@ end
 bundle exec rspec spec/requests/static_pages_spec.rb
 ```
 
+----
+
 
 ## Embedded Ruby - ERb
 - ERb is the primary template system in Rails.
@@ -229,6 +231,41 @@ bundle exec rspec spec/requests/static_pages_spec.rb
 <%= yield %>
 </body>
 ```
+
+
+## ERb Helper: Yield
+- The `yield` method inserts the contents of each page into the site layout.
+
+```erb
+<div class="container">
+	<%= yield %>
+</div>
+```
+
+
+## ERb Helper: Link_To
+- Rails helper `link_to` creates links as anchor tags.
+- `<%= link_to "link text", 'url', {options: "hash"} %>`
+
+```erb
+<%= link_to "sample app", '#', id: "logo" %>
+```
+
+
+## ERb Helper: Image_Tag
+- Rails helper `image_tag` creates an `img` tag.
+- Rails will always include an `alt` attribute even if one wasn't given, using the filename.
+- Rails knows to look for images in the `/app/assets/images/` folder.
+- `<%= image_tag("file_name.jpg", options: "hash") %>`
+
+```erb
+<%= image_tag("rails.png", alt: "Rails") %>
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+```
+
+
+----
+
 
 
 ## Rails Server Request Handling
