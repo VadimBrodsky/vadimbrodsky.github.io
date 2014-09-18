@@ -28,6 +28,19 @@ require "filename.rb"
 - The puts method operates as a side-effect: the expression `puts "foo"` prints the string to the screen and then returns `nil` is a special Ruby value for “nothing at all”.
 - Using puts automatically appends a newline character `\n` to the output.
 - The related `print` method does not append a newline character.
+- The `inspect` method can be used to return a string literal representation of the object it's called on.
+- There is a shorthand for `puts object.inspect` by using `p object`.
+
+
+```ruby
+puts "hello"
+print "hello"
+```
+
+```ruby
+puts :name.inspect		# puts a literal object
+p :name					# shorthand
+```
 
 ## Object Types in Ruby
 - Ruby is an object-oriented programming language.
@@ -152,9 +165,14 @@ array = [1,2,3,4,5]
 array.inspect          #=> "[1, 2, 3, 4, 5]"
 array.length           #=> 5
 array.to_s             #=> "[1, 2, 3, 4, 5]"
+%w[foo bar baz]        #=> ["foo", "bar", "baz"]
 array.join             #=> "12345"
 array.join(", ")       #=> "1, 2, 3, 4, 5"
 "1,2,3,4".split(',')   #=> ["1", "2", "3", "4"]
+array.first            #=> 1
+array.last             #=> 5
+array.second           #=> 2  # only rails
+array[2..-1]           #=> 3 to last
 ```
 
 ```ruby
@@ -164,10 +182,12 @@ array.reverse          #=> [5, 4, 3, 2, 1]
 [3,3,2,1].uniq         #=> [3, 2, 1]
 array.delete_at(2)     #=> 2  // "[1, 2, 4, 5]"
 array.delete(4)        #=> 4  // "[1, 2, 3, 5]"
+array.shuffle          #=> [5, 2, 1, 4, 3] 
 ```
 
 ```ruby
 array << 3             # Append at the end
+array << 2 << 5        # Append 2 values at the end
 array.push(4)          # Same as append
 array.pop              # Remove the last item
 array.shift            # Remove the first item
@@ -226,6 +246,13 @@ person = {}             #=> {} // same as clear
 ```ruby
 hash = {:first_name => 'John', :last_name => 'Smith'}
 hash[:first_name]
+```
+
+```ruby
+ # As of Ruby 1.9 this is equivalent to the previous example
+hash = {first_name: 'John', last_name: 'Smith'}
+
+{ :name => "John" } == { name: "John" }
 ```
 
 
@@ -311,12 +338,15 @@ CONST               #=> "Changed"
 
 ### Object Types: Nil
 - An empty object.
+- Nil the only Ruby object that is `false` in a boolean context, apart from `false` itself.
 
 ```ruby
-nil.nil?		#=> true
-value.nil?		#=> false
-"".nil?			#=> false
-nil.to_i 		#=> 0
+nil.nil?				#=> true
+value.nil?			#=> false
+"".nil?				#=> false
+nil.to_i 			#=> 0
+nil.to_s				#=> ""
+nil.to_s.empty?		#=> true
 ```
 
 
@@ -730,6 +760,8 @@ end
 - Object methods can be chained.
 - To call a stand-alone method just call it's name, like a variable.
 - Methods have to be defined before they are called.
+- Parentheses for method parameters are optional.
+- When hashes are the last argument in a function call, the curly braces are optional.
 
 ```ruby
 "hello".reverse.capitalize
