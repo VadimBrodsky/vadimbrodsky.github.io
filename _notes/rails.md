@@ -233,7 +233,7 @@ bundle exec rspec spec/requests/static_pages_spec.rb
 ```
 
 
-## ERb Helper: Yield
+### ERb Helper: Yield
 - The `yield` method inserts the contents of each page into the site layout.
 
 ```erb
@@ -243,7 +243,7 @@ bundle exec rspec spec/requests/static_pages_spec.rb
 ```
 
 
-## ERb Helper: Link_To
+### ERb Helper: Link_To
 - Rails helper `link_to` creates links as anchor tags.
 - `<%= link_to "link text", 'url', {options: "hash"} %>`
 
@@ -252,7 +252,7 @@ bundle exec rspec spec/requests/static_pages_spec.rb
 ```
 
 
-## ERb Helper: Image_Tag
+### ERb Helper: Image_Tag
 - Rails helper `image_tag` creates an `img` tag.
 - Rails will always include an `alt` attribute even if one wasn't given, using the filename.
 - Rails knows to look for images in the `/app/assets/images/` folder.
@@ -264,9 +264,58 @@ bundle exec rspec spec/requests/static_pages_spec.rb
 ```
 
 
-----
+### ERb Helper: Render
+- Used to render partials in ERb files.
+- Partials are usually named with a leading `_`.
+- Examples: `/app/views/layouts/_shim.html.erb`.
+
+```erb
+<%= render 'layouts/shim' %>
+```
 
 
+---
+
+
+## Asset Pipeline
+- Improves production and management of static assets such as CSS, JavaScript and Images.
+- Primary 3 features: asset directories, manifest files, and pre-processor engines.
+- With the asset pipeline, in production all the application stylesheets get rolled into `application.css`, all the application JavaScript code gets rolled into `javascripts.js`, and all such files (including those in lib/assets and vendor/assets) are minified.
+
+
+### Asset Pipeline: Asset Directories
+- `app/assets`: assets specific to the current application.
+- `lib/assets`: assets for libraries written by your dev team.
+- `vendor/assets`: assets from third-party vendors.
+
+
+### Asset Pipeline: Manifest Files
+- Once the assets are in their logical locations, you can use manifest files to tell Rails (via the Sprockets gem) how to combine them to form single files. 
+- This applies to CSS and JavaScript but not to images.
+- `/app/assets/stylesheets/application.css`
+	- `*= require_tree .`: ensures that all CSS files in the current directory (including the tree subdirectories) are included into the application CSS.
+	- `*= require_self`: specifies where in the loading sequence the CSS in `application.css` itself gets included.
+
+```css
+/*
+ *= require_self
+ *= require_tree .
+ */
+```
+
+
+### Asset Pipeline: Preprocessor Engines
+- We tell Rails which processor to use using filename extensions.
+- The preprocessor engines can be chained, with the code running from right to left.
+- This is achieved with the correct file extensions.
+
+```
+foobar.js.coffee -- run through CoffeeScript processor
+foobar.js.erb.coffee -- run through CoffeeScript and ERb
+```
+
+
+---
 
 ## Rails Server Request Handling
 - Browser => Web Server => Public => Rails Framework
