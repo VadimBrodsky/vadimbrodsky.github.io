@@ -216,6 +216,8 @@ end
 
 ```bash
 bundle exec rspec spec/requests/static_pages_spec.rb
+bundle exec rspec spec
+bundle exec rake spec
 ```
 
 ----
@@ -334,15 +336,17 @@ foobar.js.erb.coffee -- run through CoffeeScript and ERb
 ### Simple, Match Route
 - Matching the string and sends it to the controller and action via get.
 - Not very flexible.
+- This also creates a named routes for use in controllers and views: `about_path` and `about_url`.
+	- For most app link use `path`.
+	- For redirects use `url`.
 
 ```ruby
 get "demo/index"
 ```
 
 ```ruby
-match "demo/index",
-	:to => "demo#index",
-	:via => :get
+match "demo/index", :to => "demo#index", :via => :get
+match '/about', to: 'static_pages#about', via : 'get'
 ```
 
 
@@ -364,8 +368,10 @@ match ':controller(/:action(/:id(.:format)))', ;via => :get
 ### Root Route
 - When you go to the root of the application and have nothing to match.
 - Homepage of the application.
+- Use the `root` method.
 
 ```ruby
 root :to => "demo#index"
 root "demo#index"
+root 'static_pages#home'
 ```
