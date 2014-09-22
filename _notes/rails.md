@@ -56,10 +56,15 @@ bundle update rails
 - Rails comes with a modified version of IRB.
 - It has access to all of Rails methods and the app database.
 - By default it start in the development environment.
+- To start the console in a sandbox use the `--sandbox` flag, all changes will be rolled back on exit.
 
 ```bash
 rails console
 rails c
+```
+
+```bash
+rails console --sandbox
 ```
 
 
@@ -374,4 +379,90 @@ match ':controller(/:action(/:id(.:format)))', ;via => :get
 root :to => "demo#index"
 root "demo#index"
 root 'static_pages#home'
+```
+
+
+---
+
+
+## Models
+- Communicates and abstracts the database.
+- Solves the persistence problem.
+
+```bash
+rails generate controller Users new
+rails generate controller Users new --no-test-framework
+rails generate model User name:string email:string
+```
+
+
+## Migrate File
+- Migrations provide a way to alter the structure of the database incrementally, so that our data model can adapt to changing requirements.
+- Migration file is prefixed by a timestamp based on when the migration was generated.
+- `/db/migrate/[timestamp]_create_users.rb`
+- The migration consists of a `change` method that determines the change to be made to the database.
+- `t.timestamps`: is a special command that creates two columns called `created_at` and `updated_at`, which are timestamps that automatically record when a given user is created and updated.
+- We can run the migration, known as “migrating up”, using the rake command.
+- Most migrations are reversible, which means we can “migrate down” and undo them with a single Rake task, called `db:rollback`.
+- `rake test:prepare`: ensures that the data model from the development database, `db/development.sqlite3, is reflected in the test database `db/test.sqlite3`, assuming that SQLite is used locally.
+
+
+```ruby
+class CreateUsers < ActiveRecord::Migration
+  def change
+	create_table :users do |t|
+	  t.string :name
+	  t.string :email
+
+	  t.timestamps
+	end
+  end
+end
+
+```
+
+```bash
+bundle exec rake db:migrate
+bundle exec rake db:rollback
+```
+
+```bash
+bundle exec rake test:prepare
+```
+
+
+## Model File
+- Model files are stores in `app/models/`.
+- `User.new`: creates a new user object.
+
+
+```ruby
+user1 = User.new(name: "John Doe", email: "jd@email.com")
+user1.save
+user1.name 			#=> "John Doe"
+user2 = User.create(name: "Jane Doe", email: "janed@mail.com")
+user1.destroy
+```
+
+```ruby
+User.find(1)
+User.find_by_email("jd@email.com")
+User.find_by(email: "jd@email.com")  # Rails 4.0 preferred method
+```
+
+```ruby
+User.first
+User.all
+```
+
+```ruby
+user1
+user1.email = "test@test.com"
+# user1.reload.email
+user1.save
+```
+
+```ruby
+user2.update_attributes(name: "Jenny Doe", email: "jend@mail.com")
+user2.update_attribute(:name, "Jane Doe")
 ```
