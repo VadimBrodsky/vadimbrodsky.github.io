@@ -466,3 +466,43 @@ user1.save
 user2.update_attributes(name: "Jenny Doe", email: "jend@mail.com")
 user2.update_attribute(:name, "Jane Doe")
 ```
+
+## Validations: Presence
+- Checks if the data entered is not blank.
+
+```ruby
+#/app/models/user.rb
+validates :name, presence: true
+```
+
+```ruby
+user.valid?
+user.errors.full_messages
+```
+
+## Validations: Length
+- Checks the length of the entered data.
+- Using the `:length` and the `:maximum` parameters.
+
+```ruby
+#/app/models/user.rb
+validates :name, length: { maximum: 50 }
+```
+
+## Validations: Pattern
+- Checks if the input matches a certain pattern.
+- Uses RegEx for pattern matching.
+
+```ruby
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+```
+
+## Validations: Uniqueness
+- Checks whether the input is already entered in the database.
+- Can pass an optional `case_sensitive` parameter.
+
+```ruby
+validates :email, presence: true, uniqueness: true
+validates :email, presence: true, uniqueness: { case_sensitive: false}
+```
