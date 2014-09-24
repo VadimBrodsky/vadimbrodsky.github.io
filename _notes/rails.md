@@ -281,6 +281,14 @@ bundle exec rake spec
 ```
 
 
+### ERb Debug Information
+- Add this to the view template to see debug info.
+
+```erb
+<%= debug(params) if Rails.env.development? %>
+```
+
+
 ---
 
 
@@ -505,4 +513,36 @@ validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
 ```ruby
 validates :email, presence: true, uniqueness: true
 validates :email, presence: true, uniqueness: { case_sensitive: false}
+```
+
+## Password
+- Use `bcrypt-ruby` gem for password hashing.
+- Add `password_digest` column to the table.
+- Use the `has_secure_password` function.
+
+```ruby
+#Gemfile
+gem 'bcrypt-ruby', '3.1.2'
+```
+
+```bash
+bundle install
+rails generate migration add_password_digest_to_users password_digest:string
+bundle exec rake db:migrate
+bundle exec rake test:prepare
+```
+
+```ruby
+#/app/models/user.rb
+has_secure_password
+```
+
+---
+
+## Controller
+
+```ruby
+def show
+	@user = User.find(params[:id])
+end
 ```

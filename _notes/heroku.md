@@ -71,3 +71,9 @@ heroku open
 ```bash
 heroku logs
 ```
+
+## Console
+
+```bash
+heroku run console
+```
