@@ -288,6 +288,28 @@ bundle exec rake spec
 <%= debug(params) if Rails.env.development? %>
 ```
 
+## ERb Forms
+- Rails has a built-in `form_for` function.
+
+```erb
+<%= form_for(@user) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+<% end %>
+```
+
 
 ---
 
@@ -461,6 +483,7 @@ User.find_by(email: "jd@email.com")  # Rails 4.0 preferred method
 ```ruby
 User.first
 User.all
+User.count
 ```
 
 ```ruby
