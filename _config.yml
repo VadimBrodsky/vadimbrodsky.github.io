@@ -42,3 +42,11 @@ version:          1.0.0
 collections:
   notes:
     output: true
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+# Exclusions
+exclude: ["bower_components"]
