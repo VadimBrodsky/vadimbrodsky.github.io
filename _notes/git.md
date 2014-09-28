@@ -34,6 +34,13 @@ git checkout origin/branch_name
 git checkout -b branch_name origin/branch_name
 ```
 
+### Track a remote branch with an Existing Branch
+
+```bash
+git branch -u remote/branch_name
+git branch -u remote/branch_name branch_name
+```
+
 
 ## Setting Github Repo
 
