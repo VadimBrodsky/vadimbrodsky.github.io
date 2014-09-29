@@ -3,8 +3,8 @@
   $.fn.toc = function(options) {
     var defaults = {
       noBackToTopLinks: false,
-      title: '<i>Jump to...</i>',
-      listType: 'ol', // values: [ol|ul]
+      title: '<h5>Table of Contents</h5>',
+      listType: 'ul', // values: [ol|ul]
       showEffect: 'show', // values: [show|slideDown|fadeIn|none]
       showSpeed: 'slow' // set to 0 to deactivate effect
     },
@@ -38,7 +38,7 @@
 
     var level = get_level(headers[0]),
       this_level,
-      html = settings.title + " <"+settings.listType+">";
+      html = settings.title + " <"+settings.listType+' class="side-nav">';
     headers.on('click', function() {
       if (!settings.noBackToTopLinks) {
         window.location.hash = this.id;
