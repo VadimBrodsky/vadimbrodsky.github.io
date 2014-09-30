@@ -3,9 +3,7 @@ layout: note
 title: Rails 4
 ---
 
-# Ruby on Rails
-
-## Installing Rails
+# Installing Rails
 1. Install Bundler gem first.
 2. Rehash the rbenv environment to load bundler.
 3. Install the Rails gem.
@@ -24,7 +22,7 @@ gem install mysql2
 ```
 
 
-## Creating Rails Project
+# Creating Rails Project
 - Navigate to the desired directory.
 - Run the `rails new project_name` command.
 - Can specify the database requirements with the `-d` flag.
@@ -35,7 +33,7 @@ rails new simple_cms -d mysql
 ```
 
 
-## Bundler
+# Bundler
 - Used to maintain project dependencies.
 - Can install with `--without production` to not install any  production gems in the development environment.
 - If the version of the Rails Gem was updated need to update with Bundler.
@@ -47,12 +45,12 @@ bundle update rails
 ```
 
 
-## Accessing a Project
+# Accessing a Project
 - Start the web server: `rails server` or `rails s`.
 - Visit the `localhost:3000` site in the browser.
 
 
-## Rails Console
+# Rails Console
 - Rails comes with a modified version of IRB.
 - It has access to all of Rails methods and the app database.
 - By default it start in the development environment.
@@ -68,7 +66,7 @@ rails console --sandbox
 ```
 
 
-## Generate
+# Generate
 - Rails `generate` command helps to create many things.
 - To list all of the thing that rails can generate, run `rails generate`
 - `rails generate GENERATOR [args] [options]`
@@ -80,7 +78,7 @@ rails generate controller StaticPages home help
 ```
 
 
-## Undoing Rails Generated Code
+# Undoing Rails Generated Code
 
 ```bash
 rails generate controller FooBarz baz qux
@@ -99,7 +97,7 @@ rake db:migrate VERSION=0
 ```
 
 
-## Scaffolding
+# Scaffolding
 - Rails has a scaffolding script that generates code for data models.
 
 ```bash
@@ -107,7 +105,7 @@ rails generate scaffold User name:string email:string
 ```
 
 
-## Database Migration
+# Database Migration
 - To update the database based on changes in the code run a migration.
 - To make sure that the right version of Rake runs use the `bundle exec` addition.
 - To see all available rake tasks run `bundle exec rake -T`.
@@ -117,7 +115,7 @@ bundle exec rake db:migrate
 ```
 
 
-## Rails File Structure
+# Rails File Structure
 - `app/` Most of the app code lives here
 - `app/assets` application assets, processed by the Rails asset pipeline
 - `app/assets/images`
@@ -153,7 +151,7 @@ bundle exec rake db:migrate
 - `.gitignore` Patterns for files that should be ignored by Git.
 
 
-## REST Architecture
+# REST Architecture
 - Representational State Transfer.
 - REST is an architectural style for developing distributed, networked systems and software applications.
 - In the context of Rails applications REST means that most application components are modeled as resources that can be:
@@ -161,13 +159,13 @@ bundle exec rake db:migrate
 	- Four fundamental HTTP request methods: `POST`, `GET`, `PATCH`, and `DELETE`.
 
 
-## HTTP Operations
+# HTTP Operations
 - `GET` is the most common HTTP operation, used for reading data on the web; it just means “get a page”,
 - `POST` is the next most common operation; it is the request sent by your browser when you submit a form. In Rails applications, `POST` requests are typically used for creating things.
 - `PATCH` and `DELETE`, are designed for updating and destroying things on the remote server. These requests are less common than `GET` and `POST` since browsers are incapable of sending them natively.
 
 
-## Test Driven Development
+# Test Driven Development
 - Behavior-driven development (BDD) is a variant of test-driven development (TDD) that emphasizes the behavior of the application rather than its precise implementation.
 - Integration tests: known as request specs in the context of RSpec, allow us to simulate the actions of a user interacting with our application using a web browser.
 - The defining quality of TDD is writing tests first, before the application code.
@@ -175,7 +173,7 @@ bundle exec rake db:migrate
 - When you aren’t at all sure how to solve a given programming problem, it’s often useful to skip the tests and write only application code, just to get a sense of what the solution will look like.
 - Once you see the general shape of the solution, you can then use TDD to implement a more polished version.
 
-### Red, Green, Refactor
+# Red, Green, Refactor
 - First write a failing test, represented in many testing tools by the color red.
 - Implement code to get the test to pass, represented by the color green.
 - Refactor the code, changing its form without changing its function.
@@ -225,10 +223,8 @@ bundle exec rspec spec
 bundle exec rake spec
 ```
 
-----
 
-
-## Embedded Ruby - ERb
+# Embedded Ruby - ERb
 - ERb is the primary template system in Rails.
 - The `<% ... %>` tag executes the code inside.
 - The `<%= ... %>` tag executes and inserts the result into the template.
@@ -240,7 +236,7 @@ bundle exec rake spec
 ```
 
 
-### ERb Helper: Yield
+## ERb Helper: Yield
 - The `yield` method inserts the contents of each page into the site layout.
 
 ```erb
@@ -250,7 +246,7 @@ bundle exec rake spec
 ```
 
 
-### ERb Helper: Link_To
+## ERb Helper: Link_To
 - Rails helper `link_to` creates links as anchor tags.
 - `<%= link_to "link text", 'url', {options: "hash"} %>`
 
@@ -259,7 +255,7 @@ bundle exec rake spec
 ```
 
 
-### ERb Helper: Image_Tag
+## ERb Helper: Image_Tag
 - Rails helper `image_tag` creates an `img` tag.
 - Rails will always include an `alt` attribute even if one wasn't given, using the filename.
 - Rails knows to look for images in the `/app/assets/images/` folder.
@@ -271,7 +267,7 @@ bundle exec rake spec
 ```
 
 
-### ERb Helper: Render
+## ERb Helper: Render
 - Used to render partials in ERb files.
 - Partials are usually named with a leading `_`.
 - Examples: `/app/views/layouts/_shim.html.erb`.
@@ -281,7 +277,7 @@ bundle exec rake spec
 ```
 
 
-### ERb Debug Information
+## ERb Debug Information
 - Add this to the view template to see debug info.
 
 ```erb
@@ -311,22 +307,19 @@ bundle exec rake spec
 ```
 
 
----
-
-
-## Asset Pipeline
+# Asset Pipeline
 - Improves production and management of static assets such as CSS, JavaScript and Images.
 - Primary 3 features: asset directories, manifest files, and pre-processor engines.
 - With the asset pipeline, in production all the application stylesheets get rolled into `application.css`, all the application JavaScript code gets rolled into `javascripts.js`, and all such files (including those in lib/assets and vendor/assets) are minified.
 
 
-### Asset Pipeline: Asset Directories
+## Asset Pipeline: Asset Directories
 - `app/assets`: assets specific to the current application.
 - `lib/assets`: assets for libraries written by your dev team.
 - `vendor/assets`: assets from third-party vendors.
 
 
-### Asset Pipeline: Manifest Files
+## Asset Pipeline: Manifest Files
 - Once the assets are in their logical locations, you can use manifest files to tell Rails (via the Sprockets gem) how to combine them to form single files. 
 - This applies to CSS and JavaScript but not to images.
 - `/app/assets/stylesheets/application.css`
@@ -341,7 +334,7 @@ bundle exec rake spec
 ```
 
 
-### Asset Pipeline: Preprocessor Engines
+## Asset Pipeline: Preprocessor Engines
 - We tell Rails which processor to use using filename extensions.
 - The preprocessor engines can be chained, with the code running from right to left.
 - This is achieved with the correct file extensions.
@@ -352,14 +345,12 @@ foobar.js.erb.coffee -- run through CoffeeScript and ERb
 ```
 
 
----
-
-## Rails Server Request Handling
+# Rails Server Request Handling
 - Browser => Web Server => Public => Rails Framework
 - If the request is satisfied by the public static file the Rails framework would not be accessed.
 
 
-## Rails Routes
+# Rails Routes
 - Rails Routing => Controller => Model => Database => Controller => View
 - Routes are processed top-top-bottom in the `routes.rb` file.
 - Basic route types:
@@ -368,7 +359,7 @@ foobar.js.erb.coffee -- run through CoffeeScript and ERb
   - Root route
 
 
-### Simple, Match Route
+## Simple, Match Route
 - Matching the string and sends it to the controller and action via get.
 - Not very flexible.
 - This also creates a named routes for use in controllers and views: `about_path` and `about_url`.
@@ -385,7 +376,7 @@ match '/about', to: 'static_pages#about', via : 'get'
 ```
 
 
-### Default Route
+## Default Route
 - More generic routing rule.
 - Uses a Regex match function.
 - Can also pass a format for file type (json, xml etc.)
@@ -400,7 +391,7 @@ match ':controller(/:action(/:id(.:format)))', ;via => :get
 ```
 
 
-### Root Route
+## Root Route
 - When you go to the root of the application and have nothing to match.
 - Homepage of the application.
 - Use the `root` method.
@@ -412,10 +403,8 @@ root 'static_pages#home'
 ```
 
 
----
 
-
-## Models
+# Models
 - Communicates and abstracts the database.
 - Solves the persistence problem.
 
@@ -560,9 +549,7 @@ bundle exec rake test:prepare
 has_secure_password
 ```
 
----
-
-## Controller
+# Controller
 
 ```ruby
 def show
