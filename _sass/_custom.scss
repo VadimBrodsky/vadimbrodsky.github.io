@@ -1,19 +1,52 @@
-.sidebar {
-	// overflow-y: scroll;
-	// height: 100%;
+.toc {
+	background-color: #fafafa;
+	padding-top: 20px;
+	position: fixed;
+	overflow-y: auto;
+	height: 100%;
+	left: 0;
 	
-	.toc {
-		background-color: #fafafa;
-		padding-top: 20px;
-		position: fixed;
-		overflow-y: auto;
-		height: 100%;
-		left: 0;
-		top: 0;
+	.side-nav {
+		padding-top: 0;
+	}
 
-		li {
-			list-style: none;
+	li {
+		list-style: none;
+		ul {
+			margin-left: 0;
+			padding-left: 2em;
+			li {
+				list-style: disc;
+				ul {
+					padding-left: 1em;
+				}
+				li {
+					list-style: circle;
+				}
+			}
+			a {
+				font-size: 0.9em; 
+				padding-left: 0 !important; 
+				padding-top:0.3em !important; 
+				padding-bottom:0.3em !important;
+			}
 		}
+	}
+	
+	h5 {
+		padding-left: 0.875rem;
+	}
+}
+
+.content {
+	h1,h2,h3,h4,h5,h6 {
+		margin-top: 0.5em;
+		border-top: 1px solid #DDD;
+		padding-top: 0.5em;
+	}
+	
+	table {
+		width: 100%;
 	}
 }
 
