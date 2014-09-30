@@ -9,46 +9,4 @@
 @import "settings";
 @import "bower_components/foundation/scss/foundation.scss";
 @import "syntax";
-
-.toc {
-	background-color: #fafafa;
-	padding-top: 20px;
-	li {
-		list-style: none;
-	}
-}
-
-pre {
-	margin-bottom: 1em;
-
-	code {
-		display: block;
-		padding: 1em;
-		background: #FAFAFA;
-		color: #333;	
-	}
-}
-
-.page-title {
-	margin-top: 20px;
-}
-
-.row {
-	max-width: 80rem;
-}
-
-.clickable-header {
-  cursor:pointer;
-  &:hover {
-	text-decoration:underline;	  
-  }
-}
-
-.top-level-header {
-  display:inline;
-}
-.back-to-top {
-  margin-left:5px;
-  cursor:pointer;
-  font-style: normal;
-}
+@import "custom";

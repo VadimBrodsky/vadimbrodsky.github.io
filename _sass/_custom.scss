@@ -1,0 +1,53 @@
+.sidebar {
+	// overflow-y: scroll;
+	// height: 100%;
+	
+	.toc {
+		background-color: #fafafa;
+		padding-top: 20px;
+		position: fixed;
+		overflow-y: auto;
+		height: 100%;
+		left: 0;
+		top: 0;
+
+		li {
+			list-style: none;
+		}
+	}
+}
+
+pre {
+	margin-bottom: 1em;
+
+	code {
+		display: block;
+		padding: 1em;
+		background: #FAFAFA;
+		color: #333;	
+	}
+}
+
+.page-title {
+	margin-top: 20px;
+}
+
+.row {
+	max-width: 80rem;
+}
+
+.clickable-header {
+  cursor:pointer;
+  &:hover {
+	text-decoration:underline;	  
+  }
+}
+
+.top-level-header {
+  display:inline;
+}
+.back-to-top {
+  margin-left:5px;
+  cursor:pointer;
+  font-style: normal;
+}
