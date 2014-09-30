@@ -16,7 +16,6 @@ irb --simple-prompt
 require "filename.rb"
 ```
 
----
 
 ## Comments
 - Ruby comments start with the pound sign `#` (also called the “hash mark” or “octothorpe”).
@@ -351,9 +350,6 @@ nil.to_s.empty?		#=> true
 
 
 
----
-
-
 ## Control Structures
 - Control structures provide the action in Ruby programming.
 - What happens in which circumstance.
@@ -402,7 +398,7 @@ puts "This is Vadim" if name == "Vadim"  # inline conditional
 ### Control Structures: Shorthand Conditionals
 - unless
 - case
-- tenary operator
+- ternary operator
 - or/or-equals
 
 ```ruby
@@ -553,7 +549,6 @@ for fruit in fruits
 end
 ```
 
----
 
 
 ### Control Structures: Code Blocks
@@ -751,7 +746,7 @@ end
 #=> "orange"
 ```
 
----
+
 
 ## Methods
 
@@ -880,7 +875,7 @@ array[2] = 'x' 		# array.[]=(2,'x')
 ```
 
 
----
+
 
 
 ## Classes
@@ -1165,7 +1160,7 @@ wilbur = Pig.new
 wilbur.make_noise
 ```
 
----
+
 
 ## Modules
 - Are wrappers around Ruby code.
@@ -1256,7 +1251,7 @@ load 'contact_info.rb' 		# loading a dependency
 ```
 
 
-----
+
 
 
 ## Working With Files
@@ -1514,7 +1509,7 @@ Dir.delete('temp_direcotry') 	# need permissions and has to be empty
 ```
 
 
----
+
 
 
 ## Ruby Methods

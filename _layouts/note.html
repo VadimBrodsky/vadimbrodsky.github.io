@@ -1,39 +1,103 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-  {% include head.html %}
+  <head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      {% if page.title %}
+        {{ page.title }} &middot; {{ site.title }}
+      {% else %}
+        {{ site.title }} &middot; {{ site.tagline }}
+      {% endif %}
+    </title>
+  
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="/public/css/poole.css"> -->
+    <!-- <link rel="stylesheet" href="/public/css/syntax.css"> -->
+    <!-- <link rel="stylesheet" href="/public/css/lanyon.css"> -->
+    <!-- <link rel="stylesheet" href="/public/css/custom.css"> -->
+    <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"> -->
+  
+    <link rel="stylesheet" href="/public/css/style.css">
+  
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+  </head>
 
-  <body class="theme-base-0d layout-reverse sidebar-overlay">
-
-    {% include sidebar.html %}
-
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-
-          <h3 class="masthead-title">
-            <a href="/" title="Home">{{ site.title }}</a>
-            <small>{{ site.tagline }}</small>
-          </h3>
+  <body class="page-note">
+        
+    <div class="fixed">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="#">Notes: {{ page.title }}</a></h1>
+          </li>
+          <li class="toggle-topbar menu-icon">
+            <a href="#"><span>Menu</span></a>
+          </li>
+        </ul>
+        
+        <section class="top-bar-section">          
+          <ul class="right">
+            <li><a href="/">Home</a></li>
+            <li class="divider"></li>
+            <li><a href="/notes">All Notes</a></li>
+            <li class="divider"></li>
+            <li class="has-dropdown">
+              <a href="#">Notes</a>
+              <ul class="dropdown">
+                {% for note in site.notes %}
+                  <li><a href="{{ note.url }}">{{ note.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+  
+    <div class="row">
+      <div class="sidebar hide-for-small medium-4 large-3 columns toc">
+        
+          Nothing to Show
+       
+      </div>
+      <div class="small-12 medium-8 medium-offset-4 large-9 large-offset-3 columns">
+        <div class="content">
+          {{ content }}
         </div>
       </div>
-
-      <div class="container content">
-        <div class="toc"></div>
-        {{ content }}
-      </div>
     </div>
+    
 
   </body>
   <script src="/public/js/jquery-2.1.1.min.js"></script>
+  <script src="/public/js/foundation.js"></script>
+  <script src="/public/js/foundation.topbar.js"></script>
   <script src="/public/js/toc.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-        $('.toc').toc({ showEffect: 'slideDown' });
+        $('.toc').toc({ listType: 'ul', noBackToTopLinks: true });
     });
+    $(document).foundation(
+      {
+        sticky_class : 'sticky',
+        is_hover: true,
+        mobile_show_parent_link: false, // will copy parent links into dropdowns for mobile navigation
+        scrolltop : true // jump to top when sticky nav menu toggle is clicked
+      }
+    );
   </script>
   
   {% include analytics.html %}
