@@ -34,6 +34,23 @@ git checkout origin/branch_name
 git checkout -b branch_name origin/branch_name
 ```
 
+## Cleaning Up
+
+### Remove Local Untracked files
+- Use the `git clean` [command](http://git-scm.com/docs/git-clean) to remove untracked files from the working tree.
+- `-d` to force the removal
+- `-d` to remove directories
+- `-X` to remove ignored files
+- `-x` to remove ignored and non-ignored files
+
+```bash
+git clean -f
+git clean -f -d
+git clean -f -X
+git clean -f -x
+```
+
+
 ### Track a remote branch with an Existing Branch
 
 ```bash
@@ -65,7 +82,7 @@ git mv README.rdoc README.md
 ```
 
 
-## Branch, Edit, Commit, Merge
+## Branches
 
 ### View All Branches
 
@@ -73,30 +90,11 @@ git mv README.rdoc README.md
 git branch
 ```
 
-
 ### Switch to a Branch
 
 ```bash
 git checkout branch-name
 ```
-
-
-### Create a Branch
-- To create a new branch use the `checkout` command.
-- Use the `-b` flag to switch to the new branch at creation.
-
-```bash
-git checkout -b branch-name
-```
-
-
-### Merge
-
-```bash
-git checkout master
-git merge branch-name
-```
-
 
 ### Abandon a Feature Branch
 
@@ -110,6 +108,25 @@ git branch -D bad-branch
 
 ```bash
 git branch -d branch-name
+```
+
+
+### Create a Branch
+- To create a new branch use the `checkout` command.
+- Use the `-b` flag to switch to the new branch at creation.
+
+```bash
+git checkout -b branch-name
+```
+
+
+## Merge
+
+### Merge
+
+```bash
+git checkout master
+git merge branch-name
 ```
 
 
