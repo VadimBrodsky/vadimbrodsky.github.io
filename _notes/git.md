@@ -38,10 +38,10 @@ git checkout -b branch_name origin/branch_name
 
 ### Remove Local Untracked files
 - Use the `git clean` [command](http://git-scm.com/docs/git-clean) to remove untracked files from the working tree.
-- `-d` to force the removal
-- `-d` to remove directories
-- `-X` to remove ignored files
-- `-x` to remove ignored and non-ignored files
+- `f` flag to force the removal
+- `d` flag to remove directories
+- `X` flag to remove ignored files
+- `x` flag to remove ignored and non-ignored files
 
 ```bash
 git clean -f
