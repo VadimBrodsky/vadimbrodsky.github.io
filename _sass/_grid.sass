@@ -1,0 +1,34 @@
+// Breakpoints
+
+.box
+  +span-columns(1)
+  +omega(12n)
+  height: 30px
+  background-color: red
+  margin-bottom: 10px
+
+  +media($mobile)
+    +span-columns(2)
+    +omega(2n)
+
+
+.last
+  +omega
+
+.wrap
+  +outer-container
+  // background-color: red
+
+  .masthead
+    +span-columns(10)
+    +shift(1)
+    +omega
+
+  .content
+    +span-columns(10)
+    +shift(1)
+
+    +media($mobile)
+      // +fill-parent
+      +span-columns(4)
+      +shift(0)

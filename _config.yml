@@ -2,7 +2,7 @@
 title: 'Vadim Brodsky'
 author:
   name: Vadim Brodsky
-  email: vadim.brodsky@gmail.com 
+  email: vadim.brodsky@gmail.com
 tagline: 'Designer, Developer, Thinker'
 description: "This a personal blog of Vadim Brodsky, disucssing design, development and all things remarkable."
 baseurl: ""
@@ -46,7 +46,7 @@ collections:
 # Sass
 sass:
   sass_dir: _sass
-  style: :compressed
+  style: :expanded
 
 # Exclusions
 exclude: ["bower_components"]
