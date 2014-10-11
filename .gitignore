@@ -63,3 +63,6 @@ app/_bower_components
 
 # Output folders
 _site
+
+config.codekit
+*.codekit
