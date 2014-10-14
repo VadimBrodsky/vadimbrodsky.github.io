@@ -357,10 +357,46 @@ has_one :profile, :order => 'created_at DESC'
 ```
 
 `:dependent`: Specified that the associated object should be removed when this object is.
+
 - If set to `:destroy` the association object is deleted using the destroy method.
 - If se to `:delete` the associated object is deleted without calling its destroy method.
-- If set to `:nullify` the associated object's foreigh key is set to `NULL`.
+- If set to `:nullify` the associated object's foreign key is set to `NULL`.
 
 ```ruby
-has_one :profile, :dependent => :desstroy
+has_one :profile, :dependent => :destroy
 ```
+
+
+#### One-to-Many Associations
+A row in one table is related to one or more rows in another table.
+
+For `has_one` and `has_many` associations, adding a `belongs_to` on the other side of the association is recommended.
+
+The `belongs_to` declaration always goes in the class with the foreign key.
+
+```ruby
+class Article < ActiveRecord::Base
+  belongs_to :user
+end
+```
+
+```ruby
+class User < ActiveRecod::Base
+  has_one  :profile
+  has_many :articles
+end
+```
+
+##### Methods added by the has_one associations
+
+- `user.articles`: returns an array of all the associated articles. An empty array is returned if no articles are found.
+- `user.articles=(articles)`: replaces the articles collection with the one supplied.
+- `user.articles << article`: adds one or more articles to the collection and saves their foreign keys.
+- `user.articles.delete(articles)`: removes one or more articles from the collection by setting their foreign keys to `NULL`.
+- `user.articles.empty?`: returns true if there is no associated artle objects for this user.
+- `user.articles.size`: returns the number of associated article objects for this user.
+- `user.article_ids`: returns an array of associated article ids.
+- `user.articles.clear`: clears all associated objects from the association by setting their foreign keys to `NULL`.
+- `user.articles.find`: performs a find that is automatically scoped off the association, it finds only within items that belong to user.
+- `user.articles.build(attributes={})`: returns a new article object that has been instantiated with attributres and linked to user though a foreign key but hasn't yet been saved.
+- `user.articles.create(attributes={})`: returns a new article object that has been instantiated with attributes and linked to user through a foreign key and has already been saved.
