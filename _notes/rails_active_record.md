@@ -320,7 +320,7 @@ This can be done in one step, using the `create_#{association_name}` method.
 user.create_profle :name => 'Jane Doe', :birthday => nil ...
 ```
 
-##### Methods added by the `has_one` associations:
+##### Methods added by the has_one associations
 
 - `user.profile`: Returns the associated (Profile) object, `nil` is returned if none is found.
 - `user.profile=(profile)`: Assigns the associated (profile) object, extracts the primary key, sets is as the foreign key.
@@ -329,7 +329,7 @@ user.create_profle :name => 'Jane Doe', :birthday => nil ...
 - `user.create_profile(attributes={})`: Returns a new profile object that has been instantiated with attributes and linked to user through a foreign key and that has been already saved.
 
 
-##### Options for the `has_one` declaration:
+##### Options for the has_one declaration:
 
 `:class_name`: Specified the class name of the association. Used when the class name can't be inferred from the association name.
 
