@@ -183,7 +183,7 @@ article.update_attributes(:title => "RailsConf2014", :published_at => 1.day.ago)
 ```
 
 
-## Delete
+### Delete
 There are two styles of row deletion: `destroy` and `delete`.  The `destroy` style works on the instance. The `delete` style operates on the class.
 
 Firstly you need to find the record to destroy it. After the `destroy` method the object is transitioning from being _hydrated_ (all attributes retained) to _frozen_ (can't modify attributes).
@@ -231,4 +231,136 @@ article.errors.messages(:title)
 
 ```ruby
 article.valid?
+```
+
+## Enhancing Your Models
+Model enhancement: endowing the models with attributes and capabilities that go beyond the `ActiveRecord::Base` subclass.
+
+Models relate to each other with _associations_.  Models also pertain requirements that tell the model what it should expect to be saved in the database.
+
+
+### Adding Methods
+The primary way to enhance models is to add methods, this is also called as adding _domain logic_.
+
+All of the logic for a particular table is contained in one place: the model. The model _encapsulates_ all of the domain logic.
+
+There is no difference between the methods that Active Record creates and the one you define.
+
+```ruby
+class Article < ActiveRecord::Base
+  def long_title
+    "#{title} - #{published_at}"
+  end
+end
+```
+
+Models that keep model related logic in the model are called _fat models_. Acting as intelligent objects giving information about itself.
+
+
+### Using Associations
+Defines the way models relate and interact with one another, by relating the different tables in the database. In a relational database the tables relate by using a foreign key reference in one table to the primary key of another table.
+
+Rails uses a convention of naming the foreign key column in singular lowercase name of the target class with `_id` appended.
+
+`Books` => `book` => `book_id`
+
+```ruby
+#{singular_name_of_parent_class}_id
+```
+
+The table that is doing the referencing is the one that needs to create the foreign-key column. The model that contains the "belongs-to" needs to have the foreign key column.
+
+#### Declaring Associations
+Model associations are creating using methods:
+
+- `has_one`
+- `has_many`
+- `belongs_to`
+- `has_and_belongs_to_many`
+
+```ruby
+class Message < ActiveRecord::Base
+  has_many :attachments
+end
+
+class Attachment < ActiveRecord::Base
+  belongs_to :message
+end
+```
+
+Active Record expects to find a table called attachments that has a field `message_id`. Associations work in both directions `Message.first.attachments` and `Attachment.first.message`.
+
+
+#### One-to-One Associations
+A row in one table is related to exactly one row in another table. This is achieved using the `has_one` and `belongs_to` methods.
+
+```ruby
+class User < ActiveRecord::Base
+  has_one :profile
+end
+```
+
+```ruby
+class Profile < ActiveRecord::Base
+  belongs_to :user
+end
+```
+
+Assignment can be used to create the associations between the objects.
+
+```ruby
+user = User.create(:email => 'user@example.com' ...)
+profile = Profile.create(:name => 'John Doe' ...)
+user.profile = profile
+```
+
+This can be done in one step, using the `create_#{association_name}` method.
+
+```ruby
+user.create_profle :name => 'Jane Doe', :birthday => nil ...
+```
+
+##### Methods added by the `has_one` associations:
+
+- `user.profile`: Returns the associated (Profile) object, `nil` is returned if none is found.
+- `user.profile=(profile)`: Assigns the associated (profile) object, extracts the primary key, sets is as the foreign key.
+- `user.profile.nil?`: Returns `true` if no associated Profile object.
+- `user.build_profile(attributes={})`: Returns a new profile object that has been instantiated with attributes and linked to user though a foreign key but hasn't yet been saved.
+- `user.create_profile(attributes={})`: Returns a new profile object that has been instantiated with attributes and linked to user through a foreign key and that has been already saved.
+
+
+##### Options for the `has_one` declaration:
+
+`:class_name`: Specified the class name of the association. Used when the class name can't be inferred from the association name.
+
+```ruby
+has_one :profile, :class_name => 'Account'
+```
+
+`:conditions`: Specified the conditions that the associated object must meet in order to be included as a `WHERE SQL` fragments.
+
+```ruby
+has_one :profile, :conditions => "active=1"
+```
+
+`:foreign_key`: Specified the foreign key used for the association in the event that i doesn't adhere to the convention of being the lowercase singular name of the target class with `_id` appended.
+
+```ruby
+has_one :profile, :foreign_key => 'account_id'
+```
+
+`:order`: Specified the order in which the associated object is picked as an `ORDER BY SQL` fragment.
+
+
+```ruby
+has_one :profile, :order => 'created_at DESC'
+```
+
+`:dependent`: Specified that the associated object should be removed when this object is.
+- If set to `:destroy` the association object is deleted using the destroy method.
+- If se to `:delete` the associated object is deleted without calling its destroy method.
+- If set to `:nullify` the associated object's foreigh key is set to `NULL`.
+
+```ruby
+has_one :profile, :dependent => :desstroy
 ```
