@@ -322,49 +322,28 @@ user.create_profle :name => 'Jane Doe', :birthday => nil ...
 
 ##### Methods added by the has_one associations
 
-- `user.profile`: Returns the associated (Profile) object, `nil` is returned if none is found.
-- `user.profile=(profile)`: Assigns the associated (profile) object, extracts the primary key, sets is as the foreign key.
-- `user.profile.nil?`: Returns `true` if no associated Profile object.
-- `user.build_profile(attributes={})`: Returns a new profile object that has been instantiated with attributes and linked to user though a foreign key but hasn't yet been saved.
-- `user.create_profile(attributes={})`: Returns a new profile object that has been instantiated with attributes and linked to user through a foreign key and that has been already saved.
+| Method                                | Description                        |
+|:--------------------------------------|:-----------------------------------|
+| `user.profile`                        | Returns the associated (Profile) object, `nil` is returned if none is found. |
+| `user.profile=(profile)`              | Assigns the associated (profile) object, extracts the primary key, sets is as the foreign key. |
+| `user.profile.nil?`                   | Returns `true` if no associated Profile object. |
+| `user.build_profile(attributes={})`   | Returns a new profile object that has been instantiated with attributes and linked to user though a foreign key but hasn't yet been saved. |
+| `user.create_profile(attributes={})`  | Returns a new profile object that has been instantiated with attributes and linked to user through a foreign key and that has been already saved. |
 
 
 ##### Options for the has_one declaration:
 
-`:class_name`: Specified the class name of the association. Used when the class name can't be inferred from the association name.
+| Option        | Description                   | Example          |
+|:--------------|:------------------------------|:-----------------|
+|`:class_name`  | Specified the class name of the association. Used when the class name can't be inferred from the association name. |`has_one :profile, :class_name => 'Account'`  |
+|`:conditions`  | Specified the conditions that the associated object must meet in order to be included as a `WHERE SQL` fragments.  |`has_one :profile, :conditions => "active=1"` |
+|`:foreign_key` | Specified the foreign key used for the association in the event that i doesn't adhere to the convention of being the lowercase singular name of the target class with `_id` appended. | `has_one :profile, :foreign_key => 'account_id'` |
+|`:order`       | Specified the order in which the associated object is picked as an `ORDER BY SQL` fragment. | `has_one :profile, :order => 'created_at DESC'` |
+|`:dependent`   | Specified that the associated object should be removed when this object is. | `has_one :profile, :dependent => :destroy` |
 
-```ruby
-has_one :profile, :class_name => 'Account'
-```
-
-`:conditions`: Specified the conditions that the associated object must meet in order to be included as a `WHERE SQL` fragments.
-
-```ruby
-has_one :profile, :conditions => "active=1"
-```
-
-`:foreign_key`: Specified the foreign key used for the association in the event that i doesn't adhere to the convention of being the lowercase singular name of the target class with `_id` appended.
-
-```ruby
-has_one :profile, :foreign_key => 'account_id'
-```
-
-`:order`: Specified the order in which the associated object is picked as an `ORDER BY SQL` fragment.
-
-
-```ruby
-has_one :profile, :order => 'created_at DESC'
-```
-
-`:dependent`: Specified that the associated object should be removed when this object is.
-
-- If set to `:destroy` the association object is deleted using the destroy method.
-- If se to `:delete` the associated object is deleted without calling its destroy method.
-- If set to `:nullify` the associated object's foreign key is set to `NULL`.
-
-```ruby
-has_one :profile, :dependent => :destroy
-```
+- If `:dependent` set to `:destroy` the association object is deleted using the destroy method.
+- If `:dependent`  set to `:delete` the associated object is deleted without calling its destroy method.
+- If `:dependent`  set to `:nullify` the associated object's foreign key is set to `NULL`.
 
 
 #### One-to-Many Associations
@@ -387,16 +366,70 @@ class User < ActiveRecod::Base
 end
 ```
 
-##### Methods added by the has_one associations
+##### Methods added by the has_many associations
 
-- `user.articles`: returns an array of all the associated articles. An empty array is returned if no articles are found.
-- `user.articles=(articles)`: replaces the articles collection with the one supplied.
-- `user.articles << article`: adds one or more articles to the collection and saves their foreign keys.
-- `user.articles.delete(articles)`: removes one or more articles from the collection by setting their foreign keys to `NULL`.
-- `user.articles.empty?`: returns true if there is no associated artle objects for this user.
-- `user.articles.size`: returns the number of associated article objects for this user.
-- `user.article_ids`: returns an array of associated article ids.
-- `user.articles.clear`: clears all associated objects from the association by setting their foreign keys to `NULL`.
-- `user.articles.find`: performs a find that is automatically scoped off the association, it finds only within items that belong to user.
-- `user.articles.build(attributes={})`: returns a new article object that has been instantiated with attributres and linked to user though a foreign key but hasn't yet been saved.
-- `user.articles.create(attributes={})`: returns a new article object that has been instantiated with attributes and linked to user through a foreign key and has already been saved.
+| Method                                | Description                        |
+|:--------------------------------------|:-----------------------------------|
+| `user.articles`                       | returns an array of all the associated articles. An empty array is returned if no articles are found. |
+| `user.articles=(articles)`            | replaces the articles collection with the one supplied. |
+| `user.articles << article`            | adds one or more articles to the collection and saves their foreign keys. |
+| `user.articles.delete(articles)`      | removes one or more articles from the collection by setting their foreign keys to `NULL`. |
+| `user.articles.empty?`                | returns true if there is no associated article objects for this user. |
+| `user.articles.size`                  | returns the number of associated article objects for this user. |
+| `user.article_ids`                    | returns an array of associated article ids. |
+| `user.articles.clear`                 | clears all associated objects from the association by setting their foreign keys to `NULL`. |
+| `user.articles.find`                  | performs a find that is automatically scoped off the association, it finds only within items that belong to user. |
+| `user.articles.build(attributes={})`  | returns a new article object that has been instantiated with attributres and linked to user though a foreign key but hasn't yet been saved. |
+| `user.articles.create(attributes={})` | returns a new article object that has been instantiated with attributes and linked to user through a foreign key and has already been saved. |
+
+
+##### Options for the has_many declaration:
+
+| Option        | Description                   | Example          |
+|:--------------|:------------------------------|:-----------------|
+| `:class_name` | specifies the class name of the association. Used when the class name can't be inferred from the association name. | `has_many :articles, :class_name => 'Post'` |
+| `:conditions` | specifies the conditions that the associated objects must meet in order to be included as a `WHERE SQL` fragment. | `has_namy :articles, :conditions => "active=1"` |
+| `:foreign_key`| specifies the foreign key used for the association if it doesn't adhere to convention of being a lowercase, singular name of the target class with `_id` appended. | `has_many :articles, :foreign_key => 'post_id'` |
+| `:order`      | specifies the order in which the associated objects are returned as an `ORDER BY` SQL fragment. | `has_many :articles, :order => "published_at DESC"` |
+| `:dependent`  | specifies that the associated objects should be removed when this object is. | `has_many :articles, :dependent => :destroy` |
+
+- If `:dependent` set to `:destroy` the association objects are deleted using the destroy method.
+- If `:dependent`  set to `:delete` the associated objects are deleted without calling its destroy method.
+- If `:dependent`  set to `:nullify` the associated objects' foreign key is set to `NULL`.
+
+
+#### Many-to-Many Associations
+Two tables are connected to multiple rows on both sides, categories and articles in a blog.
+
+The has_and_belongs_to_many (habtm) association works by relying on a join table that keeps a reference to the foreign keys involved in the relationship.
+
+The table name is formed from the names of each table in alphabetical order, separated by an underscore.
+
+
+#### Rich Many-to-Many Associations
+If when you are modelling a many-to-many association and need to put additional data on the join model. The `had_and_belongs_to_many` association falls short, because it uses a join table and does not have a model on which to operate.
+
+To achieve this a _rich_ many-to-many association using `has_many :through` can be created.
+
+
+### Seeding Data
+Rails creates a file `db/seeds.rb` that defines the data that is always needed in the database.
+
+Creates default user and categories:
+
+```ruby
+user = User.create :email => 'jane@example.com', :password => '1234'
+Category.create[{:name => 'Programming'}, {:name => 'Event'}, {:name => 'TV'}]
+```
+
+To load the seed data:
+
+```bash
+rake db:seed
+```
+
+If the seed file was modified and the seed data needs to be reloaded run the following. It will recreate the database and add the seed data.
+
+```bash
+rake db:setup
+```
