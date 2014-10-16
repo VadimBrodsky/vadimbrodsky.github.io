@@ -7,18 +7,7 @@
 
     <div class="wrap">
 
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
+      {% include navigation.html %}
 
       <div class="masthead">
           <h3 class="masthead-title">
@@ -27,7 +16,19 @@
           </h3>
       </div>
 
-      <!-- {% include navigation.html %} -->
+      <div class="hero">
+      	<div class="hero-inner">
+        <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png
+" alt="Logo Image"></a>
+    		<div class="hero-copy">
+    			<h1>Short description of Product</h1>
+    			<p>A few reasons why this product is worth using, who it's for and why they need it.</p>
+    		</div>
+          <button>Learn More</button>
+      	</div>
+      </div>
+
+
 
       <div class="content">
         {{ content }}
@@ -36,5 +37,22 @@
     </div>
 
   </body>
+  <script>
+    $(document).ready(function() {
+  var menu = $('.centered-navigation-menu');
+  var menuToggle = $('.centered-navigation-menu-button');
+  var signUp = $('.sign-up');
+
+  $(menuToggle).on('click', function(e) {
+    e.preventDefault();
+    menu.slideToggle(function(){
+      if(menu.is(':hidden')) {
+        menu.removeAttr('style');
+      }
+    });
+  });
+});
+
+  </script>
   {% include analytics.html %}
 </html>
