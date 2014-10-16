@@ -20,6 +20,11 @@
     "tests"
   ],
   "dependencies": {
-    "foundation": "~5.4.5"
+    "susy": "~2.1.3",
+    "bourbon": "~4.0.2",
+    "compass-breakpoint": "at-import/breakpoint#~2.5.0",
+    "typeplate-starter-kit": "~1.1.4",
+    "pygments-css": "richleland/pygments-css",
+    "normalize.css": "~3.0.2"
   }
 }
