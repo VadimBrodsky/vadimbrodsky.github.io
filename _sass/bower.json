@@ -25,6 +25,11 @@
     "compass-breakpoint": "at-import/breakpoint#~2.5.0",
     "typeplate-starter-kit": "~1.1.4",
     "pygments-css": "richleland/pygments-css",
-    "normalize.css": "~3.0.2"
+    "normalize.css": "~3.0.2",
+    "fira": "mozilla/Fira",
+    "league-gothic": "theleagueof/league-gothic",
+    "knewave": "theleagueof/knewave",
+    "junction": "theleagueof/junction",
+    "prociono": "theleagueof/prociono"
   }
 }

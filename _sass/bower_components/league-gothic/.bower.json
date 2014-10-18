@@ -1,0 +1,14 @@
+{
+  "name": "league-gothic",
+  "homepage": "https://github.com/theleagueof/league-gothic",
+  "_release": "e6dce21374",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e6dce2137410648b2229d5d4717de8c1cd5f9b97"
+  },
+  "_source": "git://github.com/theleagueof/league-gothic.git",
+  "_target": "*",
+  "_originalSource": "theleagueof/league-gothic",
+  "_direct": true
+}

@@ -1,0 +1,14 @@
+{
+  "name": "knewave",
+  "homepage": "https://github.com/theleagueof/knewave",
+  "_release": "f335d5ff1f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f335d5ff1f12e4acf97d4208e1c37b4d386e57fb"
+  },
+  "_source": "git://github.com/theleagueof/knewave.git",
+  "_target": "*",
+  "_originalSource": "theleagueof/knewave",
+  "_direct": true
+}

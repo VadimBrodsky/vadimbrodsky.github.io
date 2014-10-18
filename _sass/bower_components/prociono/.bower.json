@@ -1,0 +1,14 @@
+{
+  "name": "prociono",
+  "homepage": "https://github.com/theleagueof/prociono",
+  "_release": "f9d9680de6",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f9d9680de6d6f0c13939f23c9dd14cd7853cf844"
+  },
+  "_source": "git://github.com/theleagueof/prociono.git",
+  "_target": "*",
+  "_originalSource": "theleagueof/prociono",
+  "_direct": true
+}
