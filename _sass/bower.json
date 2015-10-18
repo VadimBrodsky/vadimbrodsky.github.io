@@ -20,5 +20,9 @@
     "tests"
   ],
   "dependencies": {
+    "bourbon": "~4.2.6",
+    "neat": "~1.7.2",
+    "sass-mq": "~3.2.4",
+    "normalize-css": "normalize.css#~3.0.3"
   }
 }
