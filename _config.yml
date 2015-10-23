@@ -32,7 +32,7 @@ paginate_path: 'page:num'
 markdown: redcarpet
 # Markdown library options
 redcarpet:
-  extensions: ['fenced_code_blocks', 'smart', 'tables', 'autolink', 'with_toc_data']
+  extensions: ['fenced_code_blocks', 'smart', 'tables', 'autolink', 'with_toc_data', 'strikethrough']
 
 github:
   repo:           https://github.com/VadimBrodsky/vadimbrodsky.github.io
