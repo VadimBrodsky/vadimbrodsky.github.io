@@ -2,11 +2,15 @@
 layout: default
 ---
 
-<div class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
+<article class="article__blog">
+  <p class="type">Article Type</p>
+  <h1>{{ page.title }}</h1>
+  <h2>Subhead!</h2>
+  <p class="date">{{ page.date | date_to_string }}</p>
   {{ content }}
-</div>
+  <hr>
+  <p class="author">{{ site.author.name }}</p>
+</article>
 
 <div class="related">
   <h2>Related Posts</h2>
