@@ -62,5 +62,5 @@ test/
 _sass/bower_components
 
 # Output folders
-_site
-build
+_site/
+build/

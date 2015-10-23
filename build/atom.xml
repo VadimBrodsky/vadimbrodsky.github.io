@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>Vadim Brodsky</title>
+ <title>VB</title>
  <link href="http://vadimbrodsky.github.io/atom.xml" rel="self"/>
  <link href="http://vadimbrodsky.github.io/"/>
- <updated>2015-10-23T18:21:54-04:00</updated>
+ <updated>2015-10-23T18:30:40-04:00</updated>
  <id>http://vadimbrodsky.github.io</id>
  <author>
    <name>Vadim Brodsky</name>
