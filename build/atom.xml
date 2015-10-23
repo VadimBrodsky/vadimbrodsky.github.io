@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Vadim Brodsky</title>
+ <link href="http://vadimbrodsky.github.io/atom.xml" rel="self"/>
+ <link href="http://vadimbrodsky.github.io/"/>
+ <updated>2015-10-23T18:21:54-04:00</updated>
+ <id>http://vadimbrodsky.github.io</id>
+ <author>
+   <name>Vadim Brodsky</name>
+   <email>vadim.brodsky@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>RegexOne &ndash; Learn Regular Expressions</title>
+   <link href="http://vadimbrodsky.github.io/2015/09/regexone"/>
+   <updated>2015-09-22T16:29:17-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/09/regexone</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://regexone.com/&quot;&gt;RegexOne.com&lt;/a&gt; &amp;ndash; Learn Regular Expressions with simple, interactive exercises.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Functional Programming &ndash; The New Frontier?</title>
+   <link href="http://vadimbrodsky.github.io/2015/09/functional-programming-the-new-frontier"/>
+   <updated>2015-09-04T23:42:51-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/09/functional-programming-the-new-frontier</id>
+   <content type="html">&lt;p&gt;Functional programming languages seem to gain resurgence in popularity recently, languages like &lt;a href=&quot;http://elixir-lang.org/&quot;&gt;Elixir&lt;/a&gt;, &lt;a href=&quot;http://elm-lang.org/&quot;&gt;Elm&lt;/a&gt;, &lt;a href=&quot;http://clojure.org/&quot;&gt;Clojure&lt;/a&gt;, &lt;a href=&quot;http://www.scala-lang.org/&quot;&gt;Scala&lt;/a&gt; and &lt;a href=&quot;https://www.haskell.org/&quot;&gt;Haskell&lt;/a&gt; are gaining mind share in web development.&lt;/p&gt;
+
+&lt;p&gt;Is it another programming fad that will come and go? Maybe, but some very wise people are talking about Functional languages and they raise good points.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Moore&amp;rsquo;s Law is &lt;del&gt;stagnating&lt;/del&gt; failing&lt;/li&gt;
+&lt;li&gt;Multi-core architectures are promoted over CPU clock speed&lt;/li&gt;
+&lt;li&gt;Concurrency is hard on OOP languages&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/unclebobmartin&quot;&gt;Robert C. Martin (Uncle Bob)&lt;/a&gt; has a great presentation on the subject, see below. &lt;a href=&quot;https://twitter.com/pragdave&quot;&gt;Dave Thomas&lt;/a&gt; strongly advised learning Functional Programming on the &lt;a href=&quot;http://www.codenewbie.org/podcast/the-pragmatic-programmer-part-ii&quot;&gt;Code Newbie Podcast&lt;/a&gt; (@ 1h 13 minutes).&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/7Zlp9rKHGD4&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;I have been curious about Function Programming for a while now, and it sounds like now is a good time to approach the subject.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Update Ruby Version Definitions in Rbenv</title>
+   <link href="http://vadimbrodsky.github.io/2015/09/update-ruby-version-definitions-in-rbenv"/>
+   <updated>2015-09-04T11:02:04-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/09/update-ruby-version-definitions-in-rbenv</id>
+   <content type="html">&lt;p&gt;I was starting a new project and was looking to update my Ruby version to latest version that is supported on &lt;a href=&quot;https://devcenter.heroku.com/articles/ruby-support#ruby-versions&quot;&gt;Heroku&lt;/a&gt;, but alas the most recent version of Ruby in my &lt;code&gt;rbenv&lt;/code&gt; was:&lt;/p&gt;
+
+&lt;p&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;rbenv install --list&lt;br /&gt;
+=&amp;gt; 2.2.0-dev&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;To update the Ruby version definitions:&lt;/h2&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;brew upgrade&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;brew upgrade ruby-build&lt;/code&gt;&lt;/li&gt;&lt;br /&gt;
+&lt;/ol&gt;&lt;/p&gt;
+&lt;h2&gt;Installing Ruby 2.2.2&lt;/h2&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;rbenv install 2.2.2&lt;br /&gt;
+rbenv global 2.2.2  # or rbenv local 2.2.2&lt;br /&gt;
+rbenv rehash&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;All done!&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>React.js Conf 2015 Keynote 2 - A Deep Dive into React Native</title>
+   <link href="http://vadimbrodsky.github.io/2015/09/react-js-conf-2015-keynote-2-a-deep-dive-into-react-native"/>
+   <updated>2015-09-03T18:37:37-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/09/react-js-conf-2015-keynote-2-a-deep-dive-into-react-native</id>
+   <content type="html">&lt;p&gt;[embed]https://www.youtube.com/watch?v=7rDsRXj9-cU[/embed]&lt;/p&gt;
+
+&lt;p&gt;This looks like it&amp;rsquo;s more powerful than PhoneGap / Cordova.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&#39;https://www.youtube.com/watch?v=7rDsRXj9-cU&#39;&gt;React.js Conf 2015 Keynote 2 - A Deep Dive into React Native - YouTube&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Installing the Scheme Language Compiler on OSX</title>
+   <link href="http://vadimbrodsky.github.io/2015/09/installing-the-scheme-language-compiler-for-osx"/>
+   <updated>2015-09-03T10:54:48-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/09/installing-the-scheme-language-compiler-for-osx</id>
+   <content type="html">&lt;p&gt;When you go looking for a Scheme compiler / interpreter it&amp;rsquo;s easy to get overwhelmed, there are over &lt;a href=&quot;http://community.schemewiki.org/?scheme-faq-standards#implementations&quot;&gt;70 Scheme implementations on the Scheme Wiki&lt;/a&gt;. Which one do you pick?&lt;/p&gt;
+
+&lt;p&gt;The answer is &lt;a href=&quot;http://www.call-cc.org/&quot;&gt;Chicken Scheme&lt;/a&gt;, as &lt;a href=&quot;http://giantrobots.fm/100&quot;&gt;passionately endorsed&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/tenderlove&quot;&gt;Aaron Patterson&lt;/a&gt; is a practical and portable scheme system that is actively maintained and compiles down to C.&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;The simplest way to install a Scheme compiler / interpreter on a Mac OSX&lt;/h2&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install &lt;a href=&quot;http://brew.sh/&quot;&gt;Homebrew&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Type in the Terminal: &lt;code&gt;brew install chicken&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Profit!&lt;/li&gt;&lt;br /&gt;
+&lt;/ol&gt;&lt;/p&gt;
+&lt;h2&gt;Hello World Example&lt;/h2&gt;&lt;/p&gt;
+&lt;p&gt;Type in the hello world program:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;;;; hello-world.scm&lt;br /&gt;
+(print &amp;quot;Hello World, From Scheme&amp;quot;)&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;Run it using the Scheme interpreter&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;csi -s hello-world.scm&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;Compile it to an executable binary&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;csc hello-world.scm&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;Running the executable binary&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;./hello-world&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;Bonus&lt;/h2&gt;&lt;/p&gt;
+&lt;p&gt;There is a nice &lt;a href=&quot;https://atom.io/packages/language-scheme&quot;&gt;Scheme language package&lt;/a&gt; for the Atom Editor.&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Colors - A nicer color palette for the web.</title>
+   <link href="http://vadimbrodsky.github.io/2015/07/colors-a-nicer-color-palette-for-the-web"/>
+   <updated>2015-07-20T11:27:17-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/07/colors-a-nicer-color-palette-for-the-web</id>
+   <content type="html">&lt;p&gt;&lt;blockquote&gt;COLORS A nicer color palette for the web.&lt;/blockquote&gt;&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The New Defaults&lt;br /&gt;
+Skinning your prototypes just got easier - colors.css is a collection of skin classes to use while prototyping in the browser.&lt;/blockquote&gt;&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;647 Bytes minified and gzipped.&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;I wish these were the default in all browsers.&lt;/p&gt;
+&lt;p&gt;Source: &lt;em&gt;&lt;a href=&quot;http://clrs.cc/&quot;&gt;Colors - A nicer color palette for the web.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>iconate.js</title>
+   <link href="http://vadimbrodsky.github.io/2015/06/iconate-js"/>
+   <updated>2015-06-21T11:26:13-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/06/iconate-js</id>
+   <content type="html">&lt;p&gt;&lt;blockquote&gt;Transform your icons with trendy animations&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;I like these small animation libraries for the specific task at hand.&lt;/p&gt;
+&lt;p&gt;Source: &lt;em&gt;&lt;a href=&quot;http://bitshadow.github.io/iconate/?utm_source=MergeLinks+Weekly+Newsletter&amp;amp;utm_campaign=25ca14aa62-Weekly_14&amp;amp;utm_medium=email&amp;amp;utm_term=0_89e4785ce1-25ca14aa62-280482425&quot;&gt;iconate.js&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>CSS Guidelines</title>
+   <link href="http://vadimbrodsky.github.io/2015/05/css-guidelines"/>
+   <updated>2015-05-22T13:22:20-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/05/css-guidelines</id>
+   <content type="html">&lt;p&gt;&lt;blockquote&gt;High-level advice and guidelines for writing sane, manageable, scalable CSS&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;Excellent collection of best practices and advice from &lt;a href=&quot;http://csswizardry.com/about/&quot;&gt;Harry Roberts&lt;/a&gt; of &lt;a href=&quot;http://csswizardry.com/about/&quot;&gt;CSS Wizardry&lt;/a&gt;. Every front-end developer should read it at least a couple times.&lt;/p&gt;
+&lt;p&gt;Source: &lt;em&gt;&lt;a href=&quot;http://cssguidelin.es/&quot;&gt;CSS Guidelines&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Clippy &mdash; CSS clip-path maker</title>
+   <link href="http://vadimbrodsky.github.io/2015/05/clippy-css-clip-path-maker"/>
+   <updated>2015-05-20T11:21:27-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/05/clippy-css-clip-path-maker</id>
+   <content type="html">&lt;p&gt;&lt;blockquote&gt;The clip-path property allows you to make complex shapes in CSS by clipping an element to a basic shape (circle, ellipse, polygon, or inset), or to an SVG source.CSS Animations and transitions are possible with two or more clip-path shapes with the same number of points.&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;em&gt;&lt;a href=&quot;http://bennettfeely.com/clippy/&quot;&gt;Clippy &amp;mdash; CSS clip-path maker&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Extending Sass Without Creating A Mess</title>
+   <link href="http://vadimbrodsky.github.io/2015/05/extending-sass-without-creating-a-mess"/>
+   <updated>2015-05-08T09:28:40-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/05/extending-sass-without-creating-a-mess</id>
+   <content type="html">&lt;p&gt;&lt;blockquote&gt;The @extend directive in Sass is a powerful directive that facilitates the sharing of rules and relationships between selectors. However, it can produce undesirable side effects if it is not carefully implemented. Thankfully, there are many strategies for using @extend effectively that can prevent these side effects and produce clean, organized CSS.&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;Good read.&lt;/p&gt;
+&lt;p&gt;Source: &lt;em&gt;&lt;a href=&quot;http://www.smashingmagazine.com/2015/05/04/extending-in-sass-without-mess/&quot;&gt;Extending Sass Without Creating A Mess&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Smashing Magazine&rsquo;s Videos on Vimeo</title>
+   <link href="http://vadimbrodsky.github.io/2015/05/smashing-magazines-videos-on-vimeo"/>
+   <updated>2015-05-08T09:27:04-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/05/smashing-magazines-videos-on-vimeo</id>
+   <content type="html">&lt;p&gt;Collection of video from the Smashing Magazine and SmashingConf.&lt;/p&gt;
+
+&lt;p&gt;&amp;#42;grabs popcorn&amp;#42;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote&gt;&lt;p&gt;Smashing Magazine&amp;rsquo;s Videos&lt;/blockquote&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>jarednova/timber &middot; GitHub</title>
+   <link href="http://vadimbrodsky.github.io/2015/05/jarednovatimber-%25c2%25b7-github"/>
+   <updated>2015-05-07T15:21:58-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/05/jarednovatimber-%c2%b7-github</id>
+   <content type="html">&lt;blockquote&gt;timber - Plugin to write WordPress themes w Object-Oriented Code and the Twig Template Engine&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;Ever wished for WordPress to use a tempting language instead of raw PHP, it&#39;s possible with the Timber plugin.&lt;/p&gt;
+&lt;p&gt;Source: &lt;em&gt;&lt;a href=&quot;https://github.com/jarednova/timber/&quot;&gt;jarednova/timber &amp;middot; GitHub&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Responsive Email Patterns</title>
+   <link href="http://vadimbrodsky.github.io/2015/05/responsive-email-patterns"/>
+   <updated>2015-05-07T10:01:05-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/05/responsive-email-patterns</id>
+   <content type="html">&lt;p&gt;&lt;blockquote&gt;Responsive Email PatternsA collection of patterns &amp;amp; modules for responsive emails&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;em&gt;&lt;a href=&quot;http://responsiveemailpatterns.com/&quot;&gt;Responsive Email Patterns&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Responsive Email Resources</title>
+   <link href="http://vadimbrodsky.github.io/2015/05/responsive-email-resources"/>
+   <updated>2015-05-07T10:00:44-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/05/responsive-email-resources</id>
+   <content type="html">&lt;p&gt;&lt;blockquote&gt;Responsive Email ResourcesA collection of tools &amp;amp; resources for responsive email design&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;em&gt;&lt;a href=&quot;http://responsiveemailresources.com/&quot;&gt;Responsive Email Resources&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Building an Ember.js Application - YouTube</title>
+   <link href="http://vadimbrodsky.github.io/2015/02/building-an-ember-js-application-youtube"/>
+   <updated>2015-02-20T14:20:03-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/02/building-an-ember-js-application-youtube</id>
+   <content type="html">&lt;p&gt;[embed]https://www.youtube.com/watch?v=1QHrlFlaXdI[/embed]&lt;/p&gt;
+
+&lt;p&gt;This looks really slick, it&amp;rsquo;s amazing how much can be achieved when embracing convention over configuration. Looking to dive deeper into &lt;a href=&quot;http://emberjs.com/&quot;&gt;Ember.js&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#39;https://www.youtube.com/watch?v=1QHrlFlaXdI&#39;&gt;Building an Ember.js Application - YouTube&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>The Lord of the Rings</title>
+   <link href="http://vadimbrodsky.github.io/2015/02/the-lord-of-the-rings"/>
+   <updated>2015-02-11T22:41:27-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/02/the-lord-of-the-rings</id>
+   <content type="html">&lt;p&gt;I have read the &lt;a href=&quot;http://en.wikipedia.org/wiki/The_Silmarillion&quot;&gt;Silmarillion&lt;/a&gt; and the &lt;a href=&quot;http://en.wikipedia.org/wiki/The_Lord_of_the_Rings&quot;&gt;LOTR Trilogy&lt;/a&gt; long time ago, and my plan for 2015 is to reread these books again. Thanks to the great work of &lt;a href=&quot;https://www.youtube.com/user/CGPGrey/&quot;&gt;C.G.P Grey&lt;/a&gt; explaining complex things, I am inspired to to start this soon*.&lt;/p&gt;
+
+&lt;p&gt;In the meanwhile here are two videos to get the lore knowledge up to speed.&lt;/p&gt;
+
+&lt;p&gt;[embed]https://www.youtube.com/watch?v=YxgsxaFWWHQ[/embed]&lt;/p&gt;
+
+&lt;p&gt;[embed]https://www.youtube.com/watch?v=WKU0qDpu3AM[/embed]&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>The DOM is Too Slow - Achieving 60fps on the mobile web</title>
+   <link href="http://vadimbrodsky.github.io/2015/02/the-dom-is-too-slow-achieving-60fps-on-the-mobile-web"/>
+   <updated>2015-02-11T09:26:51-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/02/the-dom-is-too-slow-achieving-60fps-on-the-mobile-web</id>
+   <content type="html">&lt;p&gt;&lt;blockquote&gt;
+  The DOM is too slow.&lt;br /&gt;
+&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;via &amp;ndash; &lt;a href=&#39;http://engineering.flipboard.com/2015/02/mobile-web/#PracticalApplications&#39;&gt;60fps on the mobile web &amp;mdash; Flipboard Engineering&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;An interesting take by the Flipboard team on bringing mobile web rendering performance to native application level. While the technical achievement of the &lt;a href=&quot;https://github.com/Flipboard/react-canvas&quot;&gt;react-canvas&lt;/a&gt; is impressive it does come with many caveats especially in accessibility and SEO in mind.&lt;/p&gt;
+&lt;p&gt;This reminds me of the tradeoffs of using Flash based websites back in the day, improving interactivity and design but hurting accessibility of basic features such as copying text or using screen readers. But I can see great potential of using something like &lt;a href=&quot;https://github.com/Flipboard/react-canvas&quot;&gt;react-canvas&lt;/a&gt; with &lt;a href=&quot;http://cordova.apache.org/&quot;&gt;Cordova&lt;/a&gt; or &lt;a href=&quot;http://phonegap.com/&quot;&gt;PhoneGap&lt;/a&gt; to create mobile apps using web technologies.&lt;/p&gt;
+&lt;p&gt;I hope that this will steer the Mobile Browser makers to implement hardware accelerated DOM rendering on mobile.&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Grunticon</title>
+   <link href="http://vadimbrodsky.github.io/2015/02/grunticon"/>
+   <updated>2015-02-09T17:01:13-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/02/grunticon</id>
+   <content type="html">&lt;p&gt;&lt;blockquote&gt;
+  Grunticon is a Grunt.js task that makes it easy to use SVGs (Scalable Vector Graphics) for crisp, resolution independent icons, logos, illustrations and background images. SVGs aren&amp;rsquo;t supported everywhere so Grunticon auto-generates bitmap (PNG) fallback images and loads the right format for compatibility with pretty much any browser.&lt;br /&gt;
+&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;Looks like two colour icons will soon be a thing of the past on the web. Vector graphics is defiantly the best way to create assets for Retina screens.&lt;/p&gt;
+&lt;p&gt;via &amp;ndash; &lt;a href=&#39;http://www.grunticon.com/&#39;&gt;Grunticon&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>phanan/htaccess &middot; GitHub</title>
+   <link href="http://vadimbrodsky.github.io/2015/02/phananhtaccess-%25c2%25b7-github"/>
+   <updated>2015-02-09T13:51:49-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/02/phananhtaccess-%c2%b7-github</id>
+   <content type="html">&lt;blockquote&gt;
+  A collection of useful .htaccess snippets, all in one place. I decided to create this repo after getting so tired (and bored) with Googling everytime there&#39;s a need of forcing www for my new website.&lt;br /&gt;
+&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;Useful for many many things.&lt;/p&gt;
+&lt;p&gt;via -- &lt;a href=&#39;https://github.com/phanan/htaccess&#39;&gt;phanan/htaccess &amp;middot; GitHub&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>StackEdit</title>
+   <link href="http://vadimbrodsky.github.io/2015/02/stackedit"/>
+   <updated>2015-02-07T09:00:33-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/02/stackedit</id>
+   <content type="html">&lt;p&gt;&lt;blockquote&gt;
+  &lt;a href=&quot;https://stackedit.io/&quot;&gt;StackEdit&lt;/a&gt; is a full-featured, open-source Markdown editor based on PageDown&lt;br /&gt;
+&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;In the age of the niche &lt;a href=&quot;https://itunes.apple.com/us/app/ia-writer-pro/id775737590?mt=12&amp;amp;ign-mpt=uo%3D4&quot;&gt;market&lt;/a&gt; of distraction free MarkDown editors StackEdit is surprisingly full featured and pleasant to use.&lt;/p&gt;
+&lt;p&gt;You can event deploy it to &lt;a href=&quot;https://github.com/benweet/stackedit/blob/master/doc/developer-guide.md#deploy&quot;&gt;your own Heroku instance&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;https://github.com/benweet/stackedit/&quot;&gt;SlackEdit by Benoit Schweblin&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Goya</title>
+   <link href="http://vadimbrodsky.github.io/2015/02/goya"/>
+   <updated>2015-02-06T19:54:08-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/02/goya</id>
+   <content type="html">&lt;p&gt;This is an impressive example of a complex client-side web app &amp;ndash; Goya, a Pixel Art editor built with ClojureScript and complied to JavaScript.&lt;/p&gt;
+
+&lt;p&gt;This trend of transpiling different languages to JavaScript proves the point that JavaScript is the Bytecode of the web. Allowing to use server languages on the client while JavaScript goes to the server. Oh the irony!&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote&gt;&lt;p&gt;
+  A pixel-art editor built on ClojureScript and Om.&lt;br /&gt;
+&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;https://github.com/jackschaedler/goya&quot;&gt;Goya - Jack Schaedler Github&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>The Birth & Death of JavaScript</title>
+   <link href="http://vadimbrodsky.github.io/2015/02/the-birth-death-of-javascript"/>
+   <updated>2015-02-05T14:34:46-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2015/02/the-birth-death-of-javascript</id>
+   <content type="html">&lt;p&gt;A highly entertaining talk by Gary Bernhardt from PyCon 2014 discussion the past and the potential future of JavaScript as the bytecode of the web.&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote&gt;&lt;p&gt;
+  This science fiction / comedy / absurdist / completely serious talk traces the history of JavaScript, and programming in general, from 1995 until 2035. It&amp;rsquo;s not pro- or anti-JavaScript; the language&amp;rsquo;s flaws are discussed frankly, but its ultimate impact on the industry is tremendously positive.&lt;br /&gt;
+&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript&quot;&gt;Destroy All Software&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Learn Ruby the Interactive Way</title>
+   <link href="http://vadimbrodsky.github.io/2014/08/learn-ruby-interactive"/>
+   <updated>2014-08-11T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/08/learn-ruby-interactive</id>
+   <content type="html">&lt;p&gt;Recently I got interested in Ruby and I have started playing with the language. I was delighted to find out the wealth of inteactive online tutorials for coding, here is a list of the best ones:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://tryruby.org/&quot;&gt;Try Ruby&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.codecademy.com/tracks/ruby&quot;&gt;Codecademy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.codeschool.com/paths/ruby&quot;&gt;Code School&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://teamtreehouse.com/tracks/rails-development&quot;&gt;Treehouse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://rubymonk.com/&quot;&gt;RubyMonk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.codewars.com/&quot;&gt;Codewars&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://koans.heroku.com/en&quot;&gt;Ruby Koans&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.codelearn.org/&quot;&gt;Codelearn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackety.com/&quot;&gt;Hackety Hack&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Education as an interactive process really makes sense.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>tracking.js</title>
+   <link href="http://vadimbrodsky.github.io/2014/07/tracking-js"/>
+   <updated>2014-07-29T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/07/tracking-js</id>
+   <content type="html">&lt;p&gt;This is a very impressive example of how much front-end web technologies eveolved in the last few years. Performing computer vision, colour detection and face recognion in JavaScript.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The tracking.js library brings different computer vision algorithms and techniques into the browser environment. By using modern HTML5 specifications, we enable you to do real-time color tracking, face detection and much more — all that with a lightweight core (~7 KB) and intuitive interface.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://trackingjs.com/&quot;&gt;trackingjs.com&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Rename File Extension of All Files in a Folder</title>
+   <link href="http://vadimbrodsky.github.io/2014/07/rename-files"/>
+   <updated>2014-07-26T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/07/rename-files</id>
+   <content type="html">&lt;p&gt;This was very useful when I needed to rename the file extension of over 150 files.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; i in *.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    mv &lt;span class=&quot;s2&quot;&gt;&amp;quot;$i&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${i%.*}.xml&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://superuser.com/a/409812&quot;&gt;Superuser&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Simple Regular Expression for HTML Tags</title>
+   <link href="http://vadimbrodsky.github.io/2014/07/html-regex"/>
+   <updated>2014-07-26T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/07/html-regex</id>
+   <content type="html">&lt;p&gt;A simple regular expression that find HTML tags.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;[^&amp;gt;]*&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://stackoverflow.com/a/11229866&quot;&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>WP Test – The Best Tests For WordPress</title>
+   <link href="http://vadimbrodsky.github.io/2014/06/wp-test"/>
+   <updated>2014-06-04T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/06/wp-test</id>
+   <content type="html">&lt;p&gt;A fantastically exhaustive set of test data to measure the integrity of your plugins and themes.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://wptest.io&quot;&gt;wptest.io&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Open Source SEO Tool</title>
+   <link href="http://vadimbrodsky.github.io/2014/05/open-seo"/>
+   <updated>2014-05-30T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/05/open-seo</id>
+   <content type="html">&lt;p&gt;OpenSEO – a very useful and open source tool for basic SEO information.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://openseo.apphb.com&quot;&gt;openseo.apphb.com&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>User On Boarding Teardowns</title>
+   <link href="http://vadimbrodsky.github.io/2014/05/user-on-boarding"/>
+   <updated>2014-05-15T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/05/user-on-boarding</id>
+   <content type="html">&lt;p&gt;Ever wondered what goes into designing an effective registration or login page. This website features a very interesting collection of case studies.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Want to see how popular web apps handle their signup experiences? Here’s every one I’ve ever reviewed, in one handy list.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://www.useronboard.com/onboarding-teardowns/&quot;&gt;useronboard.com&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Moment.js</title>
+   <link href="http://vadimbrodsky.github.io/2014/04/moment-js"/>
+   <updated>2014-04-30T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/04/moment-js</id>
+   <content type="html">&lt;p&gt;This could be useful when dealing with dates.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Parse, validate, manipulate, and display dates in javascript.&lt;/p&gt;
+
+&lt;p&gt;A javascript date library for parsing, validating, manipulating, and formatting dates.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://momentjs.com&quot;&gt;momentjs.com&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Mobile Safari Does Not Render Large Images</title>
+   <link href="http://vadimbrodsky.github.io/2014/04/safari-large-images"/>
+   <updated>2014-04-17T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/04/safari-large-images</id>
+   <content type="html">&lt;p&gt;Came across this issue today – really large images would not render in Mobile Safari on iPhone or iPad. If the image is too big iOS ignores the asset.&lt;/p&gt;
+
+&lt;p&gt;The problem is due to the &lt;a href=&quot;https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariWebContent/CreatingContentforSafarioniPhone/CreatingContentforSafarioniPhone.html&quot;&gt;iOS Resource Limits&lt;/a&gt;, which states:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The maximum size for decoded GIF, PNG, and TIFF images is 3 megapixels for devices with less than 256 MB RAM and 5 megapixels for devices with greater or equal than 256 MB RAM.
+That is, ensure that &lt;code&gt;width * height ≤ 3 * 1024 * 1024&lt;/code&gt; for devices with less than 256 MB RAM. Note that the decoded size is far larger than the encoded size of an image.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The solution is to resize your image dimensions to fit into the sizes that Apple Mobile Safari can decode.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash;  &lt;a href=&quot;https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariWebContent/CreatingContentforSafarioniPhone/CreatingContentforSafarioniPhone.html&quot;&gt;Safari Web Content Guide&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Game Mechanic Explorer</title>
+   <link href="http://vadimbrodsky.github.io/2014/04/game-mechanic-explorer"/>
+   <updated>2014-04-17T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/04/game-mechanic-explorer</id>
+   <content type="html">&lt;p&gt;Cool collection of game mechanics, algorithms and effects by John Watson. All written in JavaScript and playable in the browser.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A collection of concrete examples for various game mechanics, algorithms, and effects.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://gamemechanicexplorer.com&quot;&gt;gamemechanicexplorer.com&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Pesticide - Faster CSS layout debugging</title>
+   <link href="http://vadimbrodsky.github.io/2014/04/pesticide-css-debugging"/>
+   <updated>2014-04-15T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/04/pesticide-css-debugging</id>
+   <content type="html">&lt;p&gt;A useful tool to debug CSS layouts.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Cascading Style Sheets can be tricky. Placing an outline on every element can help you figure out what the fuck is going on. This little css module does exactly just that.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://pesticide.io&quot;&gt;pesticide.io&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>.gitignore.io</title>
+   <link href="http://vadimbrodsky.github.io/2014/04/git-ignore-io"/>
+   <updated>2014-04-10T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/04/git-ignore-io</id>
+   <content type="html">&lt;p&gt;Found this very useful today – the simplest way to create a .gitignore file for your project&amp;rsquo;s git repo.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Create useful .gitignore files for your project&lt;/p&gt;
+
+&lt;p&gt;Hosting 179 Operating System, IDE, and Programming Language .gitignore templates&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://www.gitignore.io&quot;&gt;gitignore.io&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Excellence</title>
+   <link href="http://vadimbrodsky.github.io/2014/01/excellence"/>
+   <updated>2014-01-02T00:00:00-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2014/01/excellence</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;We are what we repeatedly do. Excellence then, is not an act, but a habit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;ndash; Aristotle&lt;/p&gt;
+
+&lt;p&gt;In context to new beginnings and new resolutions for 2014. Happy New beginnings in 2014.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Life Imitates Art</title>
+   <link href="http://vadimbrodsky.github.io/2013/12/life-imitates-art"/>
+   <updated>2013-12-24T00:00:00-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2013/12/life-imitates-art</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Life imitates Art far more than Art imitates Life&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;ndash; Oscar Wilde&lt;/p&gt;
+
+&lt;p&gt;I have recently watched an excellent art documentary — &lt;em&gt;Exit Through the Gift Shop&lt;/em&gt;. It really provokes thought in me on the definition of art and culture today.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>The ABC of Architects</title>
+   <link href="http://vadimbrodsky.github.io/2013/12/the-abc-of-architects"/>
+   <updated>2013-12-09T00:00:00-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2013/12/the-abc-of-architects</id>
+   <content type="html">&lt;iframe src=&quot;//player.vimeo.com/video/56974716&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Architecture always had a soft place in my heart. This is a remarkable video showcasing the ABC of modern architecture.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://vimeo.com/56974716&quot;&gt;vimeo.com&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Outsmarting</title>
+   <link href="http://vadimbrodsky.github.io/2013/11/outsmarting"/>
+   <updated>2013-11-27T00:00:00-05:00</updated>
+   <id>http://vadimbrodsky.github.io/2013/11/outsmarting</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Allon was looking at the dominant paradigm on the web — by this point social, rather than search — and taking a highly technical approach to solving big pain points in that industry.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;All it takes is outsmarting the big guys.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://www.theverge.com/2012/11/27/3692738/ori-allon-urban-compass-twitter-google-goldman-sachs&quot;&gt;After cashing out to Google and Twitter, Ori Allon is going all in with Urban Compass - The Verge&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Responsive design quirk in IE10</title>
+   <link href="http://vadimbrodsky.github.io/2012/10/responsive-design-quirk"/>
+   <updated>2012-10-24T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2012/10/responsive-design-quirk</id>
+   <content type="html">&lt;p&gt;When a website is snapped in the metro interface on Windows 8, IE10 ignores the meta viewport tag for any viewport smaller than 400 pixels in width. That means that your responsive layouts for smaller screens won’t trigger in snapped mode and your site will be scaled instead.&lt;/p&gt;
+
+&lt;p&gt;Tim Kadlec has proposed a &lt;a href=&quot;http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/&quot;&gt;solution&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://www.webmonkey.com/2012/10/ie-10-is-coming/&quot;&gt;webmonkey.com&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Design is a Process</title>
+   <link href="http://vadimbrodsky.github.io/2012/10/design-is-a-process"/>
+   <updated>2012-10-24T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2012/10/design-is-a-process</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;You cannot hold a design in your hand. It is not a thing. It is a process. A system. A way of thinking.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;ndash; Bob Gill, Graphic Design as a Second Language&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>A Decade Old Pricing Strategy</title>
+   <link href="http://vadimbrodsky.github.io/2012/10/A-decade-old-pricng-strategy"/>
+   <updated>2012-10-24T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2012/10/A-decade-old-pricng-strategy</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;A decade-old pricing strategy&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Apple is playing the strategy that they are best at, being the premium player in a market.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://www.theverge.com/2012/10/23/3544788/apple-ipad-mini-pricing-lower-cost-tablet&quot;&gt;The iPad mini’s price is high, low, and everything in between - The Verge&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Focus on focus</title>
+   <link href="http://vadimbrodsky.github.io/2012/10/focus-on-focus"/>
+   <updated>2012-10-23T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2012/10/focus-on-focus</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Our ability to resist an impulse determines our success in learning a new behavior or changing an old habit. It’s probably the single most important skill for our growth and development.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The ability to focus is essential, especially in the high frequency information bombardment we have today. This is a great article that motivated me to try to start meditating.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://blogs.hbr.org/2012/10/if-youre-too-busy-to-meditate/&quot;&gt;If You’re Too Busy to Meditate, Read This - Harvard Business Review&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Redesigning with Sass</title>
+   <link href="http://vadimbrodsky.github.io/2012/10/redesigning-with-sass"/>
+   <updated>2012-10-22T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2012/10/redesigning-with-sass</id>
+   <content type="html">&lt;p&gt;Good advice from David Walsh on Sass. I like his useful snippets and mistakes sections.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://css-tricks.com/redesigning-with-sass/&quot;&gt;css-tricks.com&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Git is cheap!</title>
+   <link href="http://vadimbrodsky.github.io/2012/10/git-is-cheap"/>
+   <updated>2012-10-21T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2012/10/git-is-cheap</id>
+   <content type="html">&lt;p&gt;Git is awesome, it allows greater level of experimentation and faster development. Which reminds me that I need to learn some of the deeper features of Git, beyond simple committing and resetting.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;https://coderwall.com/p/wxowig&quot;&gt;coderwall.com&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Frustrating Motivations</title>
+   <link href="http://vadimbrodsky.github.io/2012/10/frustrating-motivations"/>
+   <updated>2012-10-21T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2012/10/frustrating-motivations</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Frustration motivates you in the same way that scratching an itch does: your interest only lasts long enough to build something that’s “good enough”. After that, it’s solved. Why spend more time on it?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Motivation for creation comes from lazyness, frustration or inspiration.&lt;/p&gt;
+
+&lt;p&gt;via &amp;ndash; &lt;a href=&quot;http://builtfromsource.com/blog/2012/10/13/dont-just-scratch-an-itch/&quot;&gt;Don’t just scratch an itch – Whistling in the Dark&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Acqui-hire economics</title>
+   <link href="http://vadimbrodsky.github.io/2012/10/acqui-hire-economics"/>
+   <updated>2012-10-21T00:00:00-04:00</updated>
+   <id>http://vadimbrodsky.github.io/2012/10/acqui-hire-economics</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;The rule of thumb is that only one or two out of every ten startups will succeed as a business. Only one out of a hundred will be a real home run. With the rest, the ideas like Color that seem great on paper but fail to catch on in the real world, an acqui-hire is often the best solution for all parties.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It seems weird compared to any other industry, but good engineers are a commodity in silicone valley, it’s kind of a win win.&lt;/p&gt;
+
+&lt;p&gt;via &lt;a href=&quot;http://www.theverge.com/2012/10/18/3522456/why-apple-acquiring-color-makes-sense-in-silicon-valley-the-strange&quot;&gt;Why Apple acquiring Color makes sense in Silicon Valley: the strange logic of the acqui-hire - The Verge&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>

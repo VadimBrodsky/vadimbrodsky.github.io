@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Ruby &middot; Vadim Brodsky
+      
+    </title>
+  
+    <link rel="stylesheet" href="/public/css/style.css">
+    <!-- <link  href='http://rstacruz.github.io/flatdoc/v/0.8.6/theme-white/style.css' rel='stylesheet'> -->
+  
+  </head>
+
+  <body class="page-note">
+        
+    <div class='header'>
+          <div class='left'>
+            <h1>Notes: Ruby</h1>
+            <ul>
+              <li><a href='/'>Home</a></li>
+              <li><a href='/notes'>Notes</a></li>
+            </ul>
+          </div>
+          <div class='right'></div>
+        </div>
+        
+        <div class='content-root'>
+          <div class='menubar'>
+            <div class='menu section' role='flatdoc-menu'></div>
+          </div>
+          <div role='flatdoc-content' class='content'><h2 id="irb">IRB</h2>
+
+<ul>
+<li>Interactive Ruby Shell</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">irb
+irb --simple-prompt
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># to import a file to IRB, in the same folder</span>
+<span class="nb">require</span> <span class="s2">&quot;filename.rb&quot;</span>
+</code></pre></div>
+<h2 id="comments">Comments</h2>
+
+<ul>
+<li>Ruby comments start with the pound sign <code>#</code> (also called the “hash mark” or “octothorpe”).</li>
+<li>Comments extend to the end of the line.</li>
+</ul>
+
+<h2 id="printing">Printing</h2>
+
+<ul>
+<li>To print a string, the most commonly used Ruby function is <code>puts</code>.</li>
+<li>The puts method operates as a side-effect: the expression <code>puts &quot;foo&quot;</code> prints the string to the screen and then returns <code>nil</code> is a special Ruby value for “nothing at all”.</li>
+<li>Using puts automatically appends a newline character <code>\n</code> to the output.</li>
+<li>The related <code>print</code> method does not append a newline character.</li>
+<li>The <code>inspect</code> method can be used to return a string literal representation of the object it&rsquo;s called on.</li>
+<li>There is a shorthand for <code>puts object.inspect</code> by using <code>p object</code>.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">&quot;hello&quot;</span>
+<span class="nb">print</span> <span class="s2">&quot;hello&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="ss">:name</span><span class="o">.</span><span class="n">inspect</span>      <span class="c1"># puts a literal object</span>
+<span class="nb">p</span> <span class="ss">:name</span>                 <span class="c1"># shorthand</span>
+</code></pre></div>
+<h2 id="object-types-in-ruby">Object Types in Ruby</h2>
+
+<ul>
+<li>Ruby is an object-oriented programming language.</li>
+<li>An object is the fundamental building block in Ruby.</li>
+<li>Objects are instances of a class.</li>
+</ul>
+
+<h3 id="object-types-variables">Object Types: Variables</h3>
+
+<ul>
+<li>Variables are not objects - part of the Ruby language.</li>
+<li>Variables allow us to easily reference objects in Ruby.</li>
+<li>Variables point to objects.</li>
+<li>Variables will be undefined or act like an object.</li>
+<li>Variable in Ruby are all lowercase, underscore names.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">awesome_variable</span> <span class="o">=</span> <span class="mi">3</span>
+</code></pre></div>
+<h3 id="variables-scope-indicators">Variables: Scope Indicators</h3>
+
+<table><thead>
+<tr>
+<th>Scope</th>
+<th>Syntax</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Global</td>
+<td><code>$variable</code></td>
+</tr>
+<tr>
+<td>Class</td>
+<td><code>@@variable</code></td>
+</tr>
+<tr>
+<td>Instance</td>
+<td><code>@variable</code></td>
+</tr>
+<tr>
+<td>Local</td>
+<td><code>variable</code></td>
+</tr>
+<tr>
+<td>Block</td>
+<td><code>variable</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="object-types-integers">Object Types: Integers</h3>
+
+<ul>
+<li>Integers - Fixnum and Bignum.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="mi">4</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="mi">4</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># exponent</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="mi">2</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">1234</span><span class="o">.</span><span class="n">class</span> <span class="c1"># what class is the integer =&gt; Fixnum</span>
+<span class="mi">12345678901234567890</span><span class="o">.</span><span class="n">class</span> <span class="c1"># =&gt; Bignum</span>
+<span class="o">-</span><span class="mi">200</span><span class="o">.</span><span class="n">abs</span> <span class="c1"># =&gt; 200</span>
+<span class="mi">200</span><span class="o">.</span><span class="n">next</span> <span class="c1"># =&gt; 201</span>
+</code></pre></div>
+<h3 id="object-types-floats">Object Types: Floats</h3>
+
+<ul>
+<li>Floating-point numbers (floats).</li>
+<li>Decimal numbers.</li>
+<li>Numbers with precision.</li>
+<li>Specify the decimal point to create a floating point number.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">1234</span><span class="o">.</span><span class="mi">1234</span><span class="o">.</span><span class="n">class</span> <span class="c1"># =&gt; Float</span>
+<span class="mi">1234</span><span class="o">.</span><span class="mi">5678</span><span class="o">.</span><span class="n">round</span> <span class="c1"># =&gt; 1235</span>
+<span class="mi">1234</span><span class="o">.</span><span class="mi">5678</span><span class="o">.</span><span class="n">to_i</span>  <span class="c1"># =&gt; 1234</span>
+<span class="mi">1234</span><span class="o">.</span><span class="mi">5678</span><span class="o">.</span><span class="n">floor</span> <span class="c1"># =&gt; 1234</span>
+<span class="mi">1234</span><span class="o">.</span><span class="mi">5678</span><span class="o">.</span><span class="n">ceil</span>  <span class="c1"># =&gt; 1235</span>
+</code></pre></div>
+<h3 id="object-types-strings">Object Types: Strings</h3>
+
+<ul>
+<li>Sequence of characters.</li>
+<li>Characters that are strung together to create words of sentences.</li>
+<li>Double quoted strings do additional evaluation via interpolation using the special syntax <code>#{}</code>.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;world&#39;</span>
+<span class="n">greeting</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">target</span> <span class="c1"># =&gt; Hello world</span>
+<span class="s2">&quot;Yo &quot;</span> <span class="o">*</span> <span class="mi">3</span> <span class="c1"># =&gt; Yo Yo Yo</span>
+<span class="s1">&#39;I\&#39;m escaped.&#39;</span>
+<span class="nb">puts</span> <span class="s2">&quot;I want to say </span><span class="si">#{</span><span class="n">greeting</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">target</span><span class="si">}</span><span class="s2">.&quot;</span>
+<span class="nb">puts</span> <span class="s2">&quot;1 + 1 = </span><span class="si">#{</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">&quot;Hello&quot;</span><span class="o">.</span><span class="n">reverse</span>
+<span class="s2">&quot;Hello&quot;</span><span class="o">.</span><span class="n">capitalize</span>
+<span class="s2">&quot;Hello&quot;</span><span class="o">.</span><span class="n">downcase</span>
+<span class="s2">&quot;Hello&quot;</span><span class="o">.</span><span class="n">upcase</span>
+<span class="s2">&quot;Hello&quot;</span><span class="o">.</span><span class="n">length</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Daisy chaining methods on an object:</span>
+<span class="s2">&quot;Hello&quot;</span><span class="o">.</span><span class="n">reverse</span><span class="o">.</span><span class="n">upcase</span> <span class="c1"># =&gt; &quot;OLLEH&quot;</span>
+</code></pre></div>
+<h3 id="object-types-arrays">Object Types: Arrays</h3>
+
+<ul>
+<li>Array: an ordered, integer-indexed collection of objects.</li>
+<li>Any king of objects can go in an array (strings, numbers, other arrays, mixed types etc.)</li>
+<li>The square brackets for the array are optional.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">data_set</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">data_set</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="o">]</span>
+<span class="n">data_set</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="c1"># =&gt; &quot;b&quot;</span>
+<span class="n">data_set</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="c1"># =&gt; &quot;a&quot;</span>
+<span class="n">data_set</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="c1"># =&gt; nil</span>
+<span class="n">data_set</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">d</span>
+<span class="n">data_set</span>  <span class="c1"># =&gt; [&quot;d&quot;, &quot;b&quot;, &quot;c&quot;]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">data_set</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;e&quot;</span> <span class="c1"># appends an item to the end of the array</span>
+<span class="n">data_set</span><span class="o">.</span><span class="n">clear</span> <span class="c1"># clears out the array, same as data_set = []</span>
+</code></pre></div>
+<h4 id="array-methods">Array Methods</h4>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span>
+<span class="n">array</span><span class="o">.</span><span class="n">inspect</span>          <span class="c1">#=&gt; &quot;[1, 2, 3, 4, 5]&quot;</span>
+<span class="n">array</span><span class="o">.</span><span class="n">length</span>           <span class="c1">#=&gt; 5</span>
+<span class="n">array</span><span class="o">.</span><span class="n">to_s</span>             <span class="c1">#=&gt; &quot;[1, 2, 3, 4, 5]&quot;</span>
+<span class="sx">%w[foo bar baz]</span>        <span class="c1">#=&gt; [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]</span>
+<span class="n">array</span><span class="o">.</span><span class="n">join</span>             <span class="c1">#=&gt; &quot;12345&quot;</span>
+<span class="n">array</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>       <span class="c1">#=&gt; &quot;1, 2, 3, 4, 5&quot;</span>
+<span class="s2">&quot;1,2,3,4&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>   <span class="c1">#=&gt; [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;]</span>
+<span class="n">array</span><span class="o">.</span><span class="n">first</span>            <span class="c1">#=&gt; 1</span>
+<span class="n">array</span><span class="o">.</span><span class="n">last</span>             <span class="c1">#=&gt; 5</span>
+<span class="n">array</span><span class="o">.</span><span class="n">second</span>           <span class="c1">#=&gt; 2  # only rails</span>
+<span class="n">array</span><span class="o">[</span><span class="mi">2</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>           <span class="c1">#=&gt; 3 to last</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span><span class="o">.</span><span class="n">reverse</span>          <span class="c1">#=&gt; [5, 4, 3, 2, 1]</span>
+<span class="o">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="o">].</span><span class="n">sort</span>         <span class="c1">#=&gt; [1, 3, 4, 7] // for simple arrays</span>
+<span class="o">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="o">].</span><span class="n">sort!</span>        <span class="c1">#=&gt; [1, 3, 4, 7] // will save the changes</span>
+<span class="o">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="o">].</span><span class="n">uniq</span>         <span class="c1">#=&gt; [3, 2, 1]</span>
+<span class="n">array</span><span class="o">.</span><span class="n">delete_at</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>     <span class="c1">#=&gt; 2  // &quot;[1, 2, 4, 5]&quot;</span>
+<span class="n">array</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>        <span class="c1">#=&gt; 4  // &quot;[1, 2, 3, 5]&quot;</span>
+<span class="n">array</span><span class="o">.</span><span class="n">shuffle</span>          <span class="c1">#=&gt; [5, 2, 1, 4, 3] </span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span>             <span class="c1"># Append at the end</span>
+<span class="n">array</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span>        <span class="c1"># Append 2 values at the end</span>
+<span class="n">array</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>          <span class="c1"># Same as append</span>
+<span class="n">array</span><span class="o">.</span><span class="n">pop</span>              <span class="c1"># Remove the last item</span>
+<span class="n">array</span><span class="o">.</span><span class="n">shift</span>            <span class="c1"># Remove the first item</span>
+<span class="n">array</span><span class="o">.</span><span class="n">unsift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>        <span class="c1"># Add to the beginning</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">+</span> <span class="o">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="o">]</span>   <span class="c1"># Add the two arrays</span>
+<span class="n">array</span> <span class="o">-</span> <span class="o">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="o">]</span>       <span class="c1"># Removes the items</span>
+<span class="n">array</span> <span class="o">-</span> <span class="o">[</span><span class="mi">2</span><span class="o">]</span>           <span class="c1"># Removes only one item same as delete</span>
+</code></pre></div>
+<h3 id="object-types-hashes">Object Types: Hashes</h3>
+
+<ul>
+<li>Hash: unordered, object-indexed collection of objects.</li>
+<li>Stored as a key-value pair, unordered collection.</li>
+<li>Indexed by a a key, not by a specific order.</li>
+<li>Called a dictionary in other languages.</li>
+</ul>
+
+<h4 id="arrays-vs-hashes">Arrays VS Hashes</h4>
+
+<ul>
+<li>Use arrays when the order is important.</li>
+<li>Use hashes whent the label is important.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">person</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;first_name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Vadim&quot;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Brodsky&quot;</span><span class="p">}</span>
+<span class="n">person</span><span class="o">[</span><span class="s1">&#39;first_name&#39;</span><span class="o">]</span>    <span class="c1">#=&gt; &quot;Vadim&quot;</span>
+<span class="n">person</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="s1">&#39;Vadim&#39;</span><span class="p">)</span>     <span class="c1">#=&gt; &quot;first_name&quot;</span>
+<span class="n">person</span><span class="o">[</span><span class="s1">&#39;gender&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>  <span class="c1">#=&gt; &quot;m&quot; // will add the new key value pair</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">person</span><span class="o">.</span><span class="n">keys</span>             <span class="c1">#=&gt; [&quot;first_name&quot;, &quot;last_name&quot;]</span>
+<span class="n">person</span><span class="o">.</span><span class="n">values</span>           <span class="c1">#=&gt; [&quot;Vadim&quot;, &quot;Brodsky&quot;]  // returns the values as an array</span>
+<span class="n">person</span><span class="o">.</span><span class="n">length</span>           <span class="c1">#=&gt; 2</span>
+<span class="n">person</span><span class="o">.</span><span class="n">size</span>             <span class="c1">#=&gt; 2 // same as length</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">person</span><span class="o">.</span><span class="n">to_a</span>             <span class="c1">#=&gt; [[&quot;first_name&quot;, &quot;Vadim&quot;], [&quot;last_name&quot;, &quot;Brodsky&quot;]]</span>
+<span class="n">person</span><span class="o">.</span><span class="n">clear</span>            <span class="c1">#=&gt; {}</span>
+<span class="n">person</span> <span class="o">=</span> <span class="p">{}</span>             <span class="c1">#=&gt; {} // same as clear</span>
+</code></pre></div>
+<h3 id="object-types-symbols">Object Types: Symbols</h3>
+
+<ul>
+<li>Symbol: a label that is used to identify a piece of data.</li>
+<li>Stored in memory one time.</li>
+<li>Good for keys in hashes.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">:test</span>
+<span class="ss">:test</span><span class="o">.</span><span class="n">object_id</span>        <span class="c1">#=&gt; 197608</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:first_name</span> <span class="o">=&gt;</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="ss">:last_name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Smith&#39;</span><span class="p">}</span>
+<span class="nb">hash</span><span class="o">[</span><span class="ss">:first_name</span><span class="o">]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"> <span class="c1"># As of Ruby 1.9 this is equivalent to the previous example</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="ss">first_name</span><span class="p">:</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="ss">last_name</span><span class="p">:</span> <span class="s1">&#39;Smith&#39;</span><span class="p">}</span>
+
+<span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;John&quot;</span> <span class="p">}</span> <span class="o">==</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span> <span class="p">}</span>
+</code></pre></div>
+<h3 id="object-types-booleans">Object Types: Booleans</h3>
+
+<ul>
+<li>Boolean: True / False for comparisons.</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Operator</th>
+<th style="text-align: center">Syntax</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Equal</td>
+<td style="text-align: center"><code>==</code></td>
+</tr>
+<tr>
+<td>Less than</td>
+<td style="text-align: center"><code>&lt;</code></td>
+</tr>
+<tr>
+<td>Greater than</td>
+<td style="text-align: center"><code>&gt;</code></td>
+</tr>
+<tr>
+<td>Less than or equal to</td>
+<td style="text-align: center"><code>&lt;=</code></td>
+</tr>
+<tr>
+<td>Greater than or equal to</td>
+<td style="text-align: center"><code>&gt;=</code></td>
+</tr>
+<tr>
+<td>Not</td>
+<td style="text-align: center"><code>!</code></td>
+</tr>
+<tr>
+<td>Not Equal</td>
+<td style="text-align: center"><code>!=</code></td>
+</tr>
+<tr>
+<td>And</td>
+<td style="text-align: center"><code>&amp;&amp;</code></td>
+</tr>
+<tr>
+<td>Or</td>
+<td style="text-align: center"><code>&#124;&#124;</code></td>
+</tr>
+<tr>
+<td>Comparison* (spaceship operator)</td>
+<td style="text-align: center"><code>&lt;=&gt;</code></td>
+</tr>
+</tbody></table>
+
+<p>*Comparison is not a boolean operator.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="kp">true</span><span class="o">.</span><span class="n">class</span>              <span class="c1">#=&gt; TrueClass</span>
+<span class="kp">false</span><span class="o">.</span><span class="n">class</span>             <span class="c1">#=&gt; FalseClass</span>
+<span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">2</span>                   <span class="c1">#=&gt; false</span>
+<span class="n">x</span><span class="o">.</span><span class="n">nil?</span>                  <span class="c1">#=&gt; false</span>
+<span class="mi">2</span><span class="o">.</span><span class="n">between?</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>         <span class="c1">#=&gt; true</span>
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="o">].</span><span class="n">empty?</span>          <span class="c1">#=&gt; false</span>
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">].</span><span class="n">include?</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>     <span class="c1">#=&gt; true</span>
+<span class="nb">hash</span><span class="o">.</span><span class="n">has_key?</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>      <span class="c1">#=&gt; false</span>
+<span class="nb">hash</span><span class="o">.</span><span class="n">has_value?</span><span class="p">(</span><span class="s1">&#39;zz&#39;</span><span class="p">)</span>   <span class="c1">#=&gt; false</span>
+</code></pre></div>
+<h4 id="comparison-operator">Comparison Operator</h4>
+
+<ul>
+<li>Compares two values.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">value1</span> <span class="o">&lt;=&gt;</span> <span class="n">value2</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Return Value</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-1</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Equal</td>
+</tr>
+<tr>
+<td>1</td>
+<td>More than</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">1</span> <span class="o">&lt;=&gt;</span> <span class="mi">2</span>     <span class="c1">#=&gt; -1</span>
+<span class="mi">2</span> <span class="o">&lt;=&gt;</span> <span class="mi">1</span>     <span class="c1">#=&gt; 1</span>
+<span class="mi">2</span> <span class="o">&lt;=&gt;</span> <span class="mi">2</span>     <span class="c1">#=&gt; 0</span>
+</code></pre></div>
+<h3 id="object-types-ranges">Object Types: Ranges</h3>
+
+<ul>
+<li>Ranges: range on numbers, like an array of all the numbers 1..10</li>
+<li>Inclusive range <code>1..10</code> == <code>1,2,3,4,5,6,7,8,9,10</code></li>
+<li>Exclusive range <code>1...10</code> == <code>1,2,3,4,5,6,7,8,9</code></li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span><span class="o">.</span><span class="n">.</span><span class="s1">&#39;m&#39;</span>
+<span class="n">x</span><span class="o">.</span><span class="n">class</span>                <span class="c1">#=&gt; Range</span>
+<span class="n">x</span><span class="o">.</span><span class="n">begin</span>                <span class="c1">#=&gt; 1   // same as x.first</span>
+<span class="n">x</span><span class="o">.</span><span class="n">end</span>                  <span class="c1">#=&gt; 10  // same as x.last</span>
+<span class="n">x</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>          <span class="c1">#=&gt; true</span>
+<span class="o">[*</span><span class="n">x</span><span class="o">]</span>                   <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+</code></pre></div>
+<h3 id="object-types-constants">Object Types: Constants</h3>
+
+<ul>
+<li>Constants are similar to variables.</li>
+<li>Not true objects, point to objects.</li>
+<li>Constants are different than variables, a constant is <em>constant</em>.</li>
+<li>Any variable that starts with a capital letter is a constant in Ruby.</li>
+<li>Changing constants will present a warning, but will work.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">CONST</span> <span class="o">=</span> <span class="s2">&quot;This is a constant&quot;</span>
+<span class="no">CONST</span> <span class="o">=</span> <span class="s2">&quot;Changed&quot;</span>   <span class="c1">#=&gt; warning: already initialized constant CONST</span>
+<span class="no">CONST</span>               <span class="c1">#=&gt; &quot;Changed&quot;</span>
+</code></pre></div>
+<h3 id="object-types-nil">Object Types: Nil</h3>
+
+<ul>
+<li>An empty object.</li>
+<li>Nil the only Ruby object that is <code>false</code> in a boolean context, apart from <code>false</code> itself.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="kp">nil</span><span class="o">.</span><span class="n">nil?</span>                <span class="c1">#=&gt; true</span>
+<span class="n">value</span><span class="o">.</span><span class="n">nil?</span>          <span class="c1">#=&gt; false</span>
+<span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">nil?</span>             <span class="c1">#=&gt; false</span>
+<span class="kp">nil</span><span class="o">.</span><span class="n">to_i</span>            <span class="c1">#=&gt; 0</span>
+<span class="kp">nil</span><span class="o">.</span><span class="n">to_s</span>                <span class="c1">#=&gt; &quot;&quot;</span>
+<span class="kp">nil</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">empty?</span>     <span class="c1">#=&gt; true</span>
+</code></pre></div>
+<h2 id="control-structures">Control Structures</h2>
+
+<ul>
+<li>Control structures provide the action in Ruby programming.</li>
+<li>What happens in which circumstance.</li>
+</ul>
+
+<h3 id="control-structures-conditionals">Control Structures: Conditionals</h3>
+
+<ul>
+<li>If something true, do this.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">boolean</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">boolean</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">else</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">boolean</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">elsif</span> <span class="n">boolean</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">else</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span>
+    <span class="nb">puts</span> <span class="s2">&quot;Below 10&quot;</span>
+<span class="k">elsif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">20</span>
+    <span class="nb">puts</span> <span class="s2">&quot;Over 20&quot;</span>
+<span class="k">else</span>
+    <span class="nb">puts</span> <span class="s2">&quot;10-20&quot;</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">&quot;This is Vadim&quot;</span> <span class="k">if</span> <span class="nb">name</span> <span class="o">==</span> <span class="s2">&quot;Vadim&quot;</span>  <span class="c1"># inline conditional</span>
+</code></pre></div>
+<h3 id="control-structures-shorthand-conditionals">Control Structures: Shorthand Conditionals</h3>
+
+<ul>
+<li>unless</li>
+<li>case</li>
+<li>ternary operator</li>
+<li>or/or-equals</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">unless</span> <span class="n">boolean</span>  <span class="c1"># same as: if !boolean</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">case</span>
+<span class="k">when</span> <span class="n">boolean</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">when</span> <span class="n">boolean</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">else</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">case</span> <span class="n">test_value</span>
+<span class="k">when</span> <span class="n">value</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">when</span> <span class="n">value</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">else</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">boolean</span> <span class="p">?</span> <span class="n">code1</span> <span class="p">:</span> <span class="n">code2</span>
+<span class="nb">puts</span> <span class="n">x</span><span class="o">==</span><span class="mi">1</span> <span class="o">?</span> <span class="s2">&quot;one&quot;</span> <span class="p">:</span> <span class="s2">&quot;not one&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">y</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="k">else</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">z</span>
+<span class="k">end</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">||</span> <span class="n">z</span>  <span class="c1"># this is the shorthand for above</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">unless</span> <span class="n">x</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="k">end</span>
+
+<span class="n">x</span> <span class="o">||</span> <span class="o">=</span> <span class="n">y</span>    <span class="c1"># this is the shorthand for above</span>
+</code></pre></div>
+<h3 id="control-structures-loops">Control Structures: Loops</h3>
+
+<ul>
+<li><code>break</code>: Terminate the whole loop.</li>
+<li><code>next</code>: Jump to the next loop.</li>
+<li><code>redo</code>: Redo this loop.</li>
+<li><code>retry</code>: Start the whole loop over.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="kp">loop</span> <span class="k">do</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="kp">loop</span> <span class="k">do</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="k">break</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">20</span>
+    <span class="k">next</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">6</span>
+    <span class="nb">puts</span> <span class="n">x</span>
+<span class="k">end</span> 
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">while</span> <span class="n">boolean</span>  <span class="c1"># has implied conditional</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">until</span> <span class="n">boolean</span>  <span class="c1"># while something is not true</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">20</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="nb">puts</span> <span class="n">x</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">puts</span> <span class="n">x</span> <span class="o">+=</span> <span class="mi">2</span> <span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">100</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3246</span>
+<span class="nb">puts</span> <span class="n">y</span> <span class="o">/=</span> <span class="mi">2</span> <span class="k">until</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</code></pre></div>
+<h3 id="control-structures-iterators">Control Structures: Iterators</h3>
+
+<ul>
+<li>Similar to loops.</li>
+<li>Once for each item in a set of data.</li>
+<li>The curly braces <code>{...}</code> are shorthand for <code>do</code> and <code>end</code>.</li>
+<li>Control statements <code>break</code>, <code>next</code>, <code>redo</code> and <code>retry</code> work in iterators.</li>
+<li>Integers / floats iterate with: <code>times</code>, <code>upto</code>, <code>downto</code>, <code>step</code></li>
+<li>Range iterate with: <code>each</code>, <code>step</code></li>
+<li>String iterate with: <code>each</code>, <code>each_line</code>, <code>each_byte</code></li>
+<li>Array iterate with: <code>each</code>, <code>each_index</code>, <code>each_with_index</code></li>
+<li>Hash iterate with: <code>each</code>, <code>each_key</code>, <code>each_value</code>, <code>each_pair</code></li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">5</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
+    <span class="nb">puts</span> <span class="s2">&quot;hello&quot;</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">1</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">{</span><span class="nb">puts</span> <span class="s2">&quot;hello&quot;</span><span class="p">}</span>
+<span class="mi">5</span><span class="o">.</span><span class="n">downto</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="nb">puts</span> <span class="s2">&quot;hello&quot;</span><span class="p">}</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="nb">puts</span> <span class="s2">&quot;hello&quot;</span><span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">1</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>   <span class="c1"># i is the number of each iterator</span>
+    <span class="nb">puts</span> <span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">i</span><span class="o">.</span><span class="n">to_s</span>
+<span class="k">end</span>
+
+<span class="c1"># same as above</span>
+<span class="mi">1</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">i</span><span class="o">.</span><span class="n">to_s</span><span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">fruits</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="o">]</span>
+
+<span class="n">fruits</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">fruit</span><span class="o">|</span>
+    <span class="nb">puts</span> <span class="n">fruit</span><span class="o">.</span><span class="n">capitalize</span>
+<span class="k">end</span>
+
+<span class="c1"># same as above</span>
+<span class="k">for</span> <span class="n">fruit</span> <span class="k">in</span> <span class="n">fruits</span>
+    <span class="nb">puts</span> <span class="n">fruit</span><span class="o">.</span><span class="n">capitalize</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="control-structures-code-blocks">Control Structures: Code Blocks</h3>
+
+<ul>
+<li>Block of code that executes multiple times.</li>
+<li>Usually between <code>do</code> and <code>end</code> or with the short form <code>{...}</code></li>
+<li>Can use the value of the iteration with the <code>|i|</code> notation.</li>
+<li>Don&rsquo;t have access to block variables in the local scope.</li>
+<li>Do have access to local variable in the block scope.</li>
+</ul>
+
+<h4 id="code-block-methods-find">Code Block Methods: Find</h4>
+
+<ul>
+<li><code>find</code> / <code>detect</code>: find the first match, return =&gt; Object or nil</li>
+<li><code>find_all</code> / <code>select</code>: finds all matches, return =&gt; Array</li>
+<li><code>any?</code>: find if any of the items match, return =&gt; Boolean</li>
+<li><code>all?</code>: find if all of the items match, return =&gt; Boolean</li>
+<li><code>delete_if</code>: delete the item in an array if, returns =&gt; Array</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">find</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">}</span>  <span class="c1">#=&gt; 3 // only the first match returns</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)}</span>   <span class="c1">#=&gt; 1</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">}</span> <span class="c1">#=&gt; [3, 6, 9]</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)}</span>   <span class="c1">#=&gt; [1, 2, 3]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">any?</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">}</span>     <span class="c1">#=&gt; true</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">all?</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">}</span>     <span class="c1">#=&gt; false</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">[*</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="o">].</span><span class="n">delete_if</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">}</span>   <span class="c1">#=&gt; [1, 2, 4, 5, 7, 8, 10]</span>
+</code></pre></div>
+<h4 id="code-block-methods-merge">Code Block Methods: Merge</h4>
+
+<ul>
+<li>Used to merge Hashes together.</li>
+<li>The values passed to the function take precedence over the  calling hash.</li>
+<li>The code block can be supplied optionally, only called in case of a merge conflict.</li>
+<li>The block is used for conflict resolution.</li>
+<li>Use the <code>merge!</code> to save the changes of the operation.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">h1</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="mi">111</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span> <span class="o">=&gt;</span> <span class="mi">222</span> <span class="p">}</span>
+<span class="n">h2</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;b&quot;</span> <span class="o">=&gt;</span> <span class="mi">333</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span> <span class="o">=&gt;</span> <span class="mi">444</span> <span class="p">}</span>
+<span class="n">h1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">h2</span><span class="p">)</span>                <span class="c1">#=&gt; {&quot;a&quot;=&gt;111, &quot;b&quot;=&gt;333, &quot;c&quot;=&gt;444}</span>
+<span class="n">h2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">h1</span><span class="p">)</span>                <span class="c1">#=&gt; {&quot;b&quot;=&gt;222, &quot;c&quot;=&gt;444, &quot;a&quot;=&gt;111}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">h1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">h2</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="kp">new</span><span class="o">|</span> <span class="n">old</span> <span class="o">*</span> <span class="mi">2</span><span class="p">}</span>  
+<span class="c1">#=&gt; {&quot;a&quot;=&gt;111, &quot;b&quot;=&gt;444, &quot;c&quot;=&gt;444}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">h1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">h2</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="kp">new</span><span class="o">|</span>
+    <span class="k">if</span> <span class="n">old</span> <span class="o">&lt;</span> <span class="kp">new</span>
+        <span class="n">old</span>
+    <span class="k">else</span>
+        <span class="kp">new</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+<span class="c1">#=&gt; {&quot;a&quot;=&gt;111, &quot;b&quot;=&gt;222, &quot;c&quot;=&gt;444}</span>
+
+<span class="c1"># Or using the shorthand</span>
+<span class="n">h1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">h2</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">o</span><span class="p">,</span><span class="n">n</span><span class="o">|</span> <span class="n">o</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="p">?</span> <span class="n">o</span> <span class="p">:</span> <span class="n">n</span><span class="p">}</span>
+<span class="c1">#=&gt; {&quot;a&quot;=&gt;111, &quot;b&quot;=&gt;222, &quot;c&quot;=&gt;444}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">h1</span><span class="o">.</span><span class="n">merge!</span><span class="p">(</span><span class="n">h2</span><span class="p">)</span>
+<span class="n">h1</span>
+<span class="c1">#=&gt; {&quot;a&quot;=&gt;111, &quot;b&quot;=&gt;333, &quot;c&quot;=&gt;444}</span>
+</code></pre></div>
+<h4 id="code-block-methods-collect">Code Block Methods: Collect</h4>
+
+<ul>
+<li>Use either <code>collect</code> or <code>map</code>.</li>
+<li>Works best with Arrays, Hashes and Ranges.</li>
+<li>Applies the instructions of the code block to each value in the array.</li>
+<li>Need to be explicit on the returns, otherwise it will return <code>nil</code>.</li>
+<li>Number of items in == number of items out.</li>
+<li>Always returns an Array.</li>
+<li>Use <code>collect!</code> to save the effect on the original object.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="o">]</span>
+<span class="n">array</span><span class="o">.</span><span class="n">collect</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span>   <span class="c1">#=&gt; [2, 3, 4, 5, 6]</span>
+
+<span class="o">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="o">].</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">fruit</span><span class="o">|</span> <span class="n">fruit</span><span class="o">.</span><span class="n">capitalize</span><span class="p">}</span>
+<span class="c1">#=&gt; [&quot;Apple&quot;, &quot;Banana&quot;, &quot;Orange&quot;]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="o">].</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">fruit</span><span class="o">|</span> <span class="n">fruit</span><span class="o">.</span><span class="n">capitalize</span> <span class="k">if</span> <span class="n">fruit</span> <span class="o">==</span> <span class="s1">&#39;banana&#39;</span><span class="p">}</span>
+<span class="c1">#=&gt; [nil, &quot;Banana&quot;, nil]</span>
+<span class="c1"># Only returns the matched conditions.</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="o">].</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">fruit</span><span class="o">|</span>
+    <span class="k">if</span> <span class="n">fruit</span> <span class="o">==</span> <span class="s1">&#39;banana&#39;</span>
+        <span class="n">fruit</span><span class="o">.</span><span class="n">capitalize</span>
+    <span class="k">else</span>
+        <span class="n">fruit</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+<span class="c1">#=&gt; [&quot;apple&quot;, &quot;Banana&quot;, &quot;orange&quot;]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="mi">111</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span> <span class="o">=&gt;</span> <span class="mi">222</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span> <span class="o">=&gt;</span> <span class="mi">333</span> <span class="p">}</span>
+<span class="nb">hash</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="n">k</span><span class="o">.</span><span class="n">capitalize</span><span class="p">}</span>   <span class="c1">#=&gt; [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]</span>
+</code></pre></div>
+<h4 id="code-block-methods-sort">Code Block Methods: Sort</h4>
+
+<ul>
+<li>Sort does a comparison using the <code>&lt;=&gt;</code> operator.</li>
+<li>The comparison operator decides which direction the value goes.</li>
+<li>If the operation is on a single property use <code>sort_by</code>.</li>
+<li>To save the result use <code>sort!</code>.</li>
+<li>Can sort Hashes as well as Arrays, but Ruby converts it to an Array.</li>
+</ul>
+
+<p><code>value1 &lt;=&gt; value2</code></p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Comparison Result</th>
+<th style="text-align: center">Meaning</th>
+<th style="text-align: center">Action</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">-1</td>
+<td style="text-align: center">Less than</td>
+<td style="text-align: center">Moves left</td>
+</tr>
+<tr>
+<td style="text-align: center">0</td>
+<td style="text-align: center">Equal</td>
+<td style="text-align: center">Stays</td>
+</tr>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: center">More than</td>
+<td style="text-align: center">Moves right</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="o">[</span><span class="mi">3</span> <span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="o">]</span>
+<span class="n">array</span><span class="o">.</span><span class="n">sort</span> <span class="p">{</span> <span class="o">|</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="o">|</span> <span class="n">v1</span> <span class="o">&lt;=&gt;</span> <span class="n">v2</span> <span class="p">}</span>    <span class="c1"># default sorting</span>
+<span class="n">array</span><span class="o">.</span><span class="n">sort</span>                          <span class="c1"># same as above but shorter</span>
+<span class="c1">#=&gt; [1, 2, 3, 4, 5]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span><span class="o">.</span><span class="n">sort</span> <span class="p">{</span> <span class="o">|</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="o">|</span> <span class="n">v2</span> <span class="o">&lt;=&gt;</span> <span class="n">v1</span> <span class="p">}</span>
+<span class="n">array</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">reverse</span>
+<span class="c1">#=&gt; [5, 4, 3, 2, 1]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">fruits</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;pear&quot;</span><span class="o">]</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">sort</span>     <span class="c1"># alphabetical sort</span>
+<span class="c1">#=&gt; [&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;, &quot;pear&quot;]</span>
+
+<span class="n">fruits</span><span class="o">.</span><span class="n">sort</span> <span class="p">{</span><span class="o">|</span><span class="n">fruit1</span><span class="p">,</span><span class="n">fruit2</span><span class="o">|</span> <span class="n">fruit1</span><span class="o">.</span><span class="n">length</span> <span class="o">&lt;=&gt;</span> <span class="n">fruit2</span><span class="o">.</span><span class="n">length</span><span class="p">}</span>
+<span class="c1">#=&gt; [&quot;pear&quot;, &quot;apple&quot;, &quot;orange&quot;, &quot;banana&quot;]</span>
+
+<span class="n">fruits</span><span class="o">.</span><span class="n">sort_by</span><span class="p">{</span><span class="o">|</span><span class="n">fruit</span><span class="o">|</span> <span class="n">fruit</span><span class="o">.</span><span class="n">length</span><span class="p">}</span>    <span class="c1">#shorthand version</span>
+<span class="c1">#=&gt; [&quot;pear&quot;, &quot;apple&quot;, &quot;orange&quot;, &quot;banana&quot;]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="mi">555</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span> <span class="o">=&gt;</span> <span class="mi">333</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span> <span class="o">=&gt;</span> <span class="mi">222</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span> <span class="o">=&gt;</span> <span class="mi">111</span> <span class="p">}</span>
+<span class="nb">hash</span><span class="o">.</span><span class="n">sort</span> <span class="p">{</span><span class="o">|</span><span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="o">|</span> <span class="n">item1</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">&lt;=&gt;</span> <span class="n">item2</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="p">}</span>
+<span class="c1"># sort by values of the hash</span>
+<span class="c1">#=&gt; [[&quot;d&quot;, 111], [&quot;c&quot;, 222], [&quot;b&quot;, 333], [&quot;a&quot;, 555]]</span>
+</code></pre></div>
+<h4 id="code-block-methods-inject">Code Block Methods: Inject</h4>
+
+<ul>
+<li>Inject is an accumulator - store the value for the next round.</li>
+<li>Use the <code>memo</code> variable to store the result between the iterations.</li>
+<li>Inject can receive a starting number as a parameter.</li>
+<li>If no starting number is declared the first iteration will be used as a starter.</li>
+<li>Careful about conditionals that can sore <code>nil</code> in <code>memo</code>.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Sum of all the numbers</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">inject</span> <span class="p">{</span><span class="o">|</span><span class="n">memo</span><span class="p">,</span> <span class="n">n</span><span class="o">|</span> <span class="n">memo</span> <span class="o">+</span> <span class="n">n</span><span class="p">}</span>         <span class="c1">#=&gt; 55</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="o">[*</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="o">]</span>
+<span class="n">sum</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">memo</span><span class="p">,</span> <span class="n">n</span><span class="o">|</span> <span class="n">memo</span> <span class="o">+</span> <span class="n">n</span><span class="p">}</span>    <span class="c1">#=&gt; 155</span>
+<span class="n">product</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">inject</span> <span class="p">{</span><span class="o">|</span><span class="n">memo</span><span class="p">,</span> <span class="n">n</span><span class="o">|</span> <span class="n">memo</span> <span class="o">*</span> <span class="n">n</span><span class="p">}</span>     <span class="c1">#=&gt; 3628800</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">fruits</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;pear&quot;</span><span class="o">]</span>
+<span class="n">longest_word</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">inject</span> <span class="k">do</span> <span class="o">|</span><span class="n">memo</span><span class="p">,</span> <span class="n">fruit</span><span class="o">|</span>
+    <span class="k">if</span> <span class="n">memo</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="n">fruit</span><span class="o">.</span><span class="n">length</span>
+        <span class="n">memo</span>
+    <span class="k">else</span>
+        <span class="n">fruit</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+<span class="c1"># gets the longest word</span>
+<span class="c1">#=&gt; &quot;orange&quot;</span>
+</code></pre></div>
+<h2 id="methods">Methods</h2>
+
+<h3 id="methods-calling-methods">Methods: Calling Methods</h3>
+
+<ul>
+<li>Object method that are applied to an object use the <code>.</code> notation.</li>
+<li>Object methods can be chained.</li>
+<li>To call a stand-alone method just call it&rsquo;s name, like a variable.</li>
+<li>Methods have to be defined before they are called.</li>
+<li>Parentheses for method parameters are optional.</li>
+<li>When hashes are the last argument in a function call, the curly braces are optional.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">&quot;hello&quot;</span><span class="o">.</span><span class="n">reverse</span><span class="o">.</span><span class="n">capitalize</span>
+<span class="n">method_name</span>
+</code></pre></div>
+<h3 id="methods-defining-methods">Methods: Defining Methods</h3>
+
+<ul>
+<li>Method names can have question marks <code>?</code> - convention for tests and booleans.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">method_name</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">add</span>
+    <span class="nb">puts</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">over_five?</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="nb">puts</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="s1">&#39;over 5&#39;</span> <span class="p">:</span> <span class="s1">&#39;not over 5&#39;</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="methods-variable-scope">Methods: Variable Scope</h3>
+
+<ul>
+<li>Local method variables have the scope local to the method only.</li>
+<li>Method names and variable names can look the same, be careful.</li>
+<li>Global <code>$variable</code>, class <code>@@variable</code> and instance <code>@variable</code> can span the scope of the method.</li>
+</ul>
+
+<h3 id="methods-arguments">Methods: Arguments</h3>
+
+<ul>
+<li>Comma separated list if values that are passed into the methods.</li>
+<li>Values are passed into the method when it is called.</li>
+<li>When multiple arguments are defined, their order is important.</li>
+<li>The parentheses for the arguments are optional.</li>
+<li>Methods with arguments typically use parentheses.</li>
+<li>Methods without arguments typically do not use parentheses.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">welcome</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">&quot;Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">end</span>
+
+<span class="n">welcome</span><span class="p">(</span><span class="s2">&quot;Vadim&quot;</span><span class="p">)</span>
+<span class="c1">#=&gt; Hello Vadim</span>
+
+<span class="n">welcome</span> <span class="s2">&quot;Vadim&quot;</span>     <span class="c1"># without parentheses</span>
+<span class="c1">#=&gt; Hello Vadim</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span>
+<span class="k">end</span>
+
+<span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1">#=&gt; 7</span>
+</code></pre></div>
+<h4 id="methods-argument-default-values">Methods: Argument Default Values</h4>
+
+<ul>
+<li>Default behavior for the method, so it will not break if the argument is missing when the method is called.</li>
+<li>Make the required arguments first in the argument list.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">welcome</span><span class="p">(</span><span class="nb">name</span><span class="o">=</span><span class="s2">&quot;Friend&quot;</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">&quot;Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="methods-return-values">Methods: Return Values</h3>
+
+<ul>
+<li>All methods have a return value.</li>
+<li>Implicit return - the return value for the method is the last operation of the method.</li>
+<li>Explicit return - exits the method and reruns the value using the <code>return</code> keyword.</li>
+<li>Returns can work with <code>if</code> statements &ndash; <code>return if x</code>.</li>
+<li>Can only return 1 object from a method.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">welcome</span><span class="p">(</span><span class="nb">name</span><span class="o">=</span><span class="s2">&quot;Friend&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">add_and_subtract</span><span class="p">(</span><span class="n">n1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n2</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">add</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span>
+    <span class="nb">sub</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">-</span> <span class="n">n2</span>
+    <span class="k">return</span> <span class="n">add</span><span class="p">,</span> <span class="nb">sub</span>     <span class="c1">#=&gt; This is an array, the brackets are optional</span>
+<span class="k">end</span>
+
+<span class="n">add</span><span class="p">,</span> <span class="nb">sub</span> <span class="o">=</span> <span class="n">add_and_subtract</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1">#=&gt; Double assignment to an array</span>
+</code></pre></div>
+<h3 id="methods-operators-are-methods">Methods: Operators are Methods</h3>
+
+<ul>
+<li>Common operators in the Ruby language are methods.</li>
+<li>Ruby uses syntactic sugar to make the common operators appears like operators.</li>
+<li>Common variables can be used as methods with any custom class.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">8</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">8</span><span class="o">.</span><span class="n">+</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">8</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">8</span><span class="o">.</span><span class="n">*</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">8</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">8</span><span class="o">.</span><span class="n">/</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">8</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">8</span><span class="o">.</span><span class="n">*</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span>          <span class="c1"># array.&lt;&lt;(4)</span>
+<span class="n">array</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span>            <span class="c1"># array.[](2)</span>
+<span class="n">array</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>      <span class="c1"># array.[]=(2,&#39;x&#39;)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">&quot;hello&quot;</span> <span class="o">*</span> <span class="mi">5</span>         <span class="c1"># &quot;hello&quot;.*(5)</span>
+<span class="mi">5</span> <span class="o">*</span> <span class="s2">&quot;hello&quot;</span>         <span class="c1"># 5.*(&quot;hello&quot;)</span>
+</code></pre></div>
+<h2 id="classes">Classes</h2>
+
+<ul>
+<li>Classes define what an object is and what an object can do.</li>
+<li>Class names start with a capital letter and use camel case.</li>
+<li>Group code into discreet, well-categorized areas.</li>
+<li>Objects carry around their class&rsquo;s code.</li>
+<li>Allows for complex behaviors using simple statements.</li>
+<li>Correspond to read-world objects.</li>
+</ul>
+
+<h3 id="classes-defining-and-using-classes">Classes: Defining and Using Classes</h3>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">NameOfClass</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Animal</span>
+    <span class="k">def</span> <span class="nf">make_noise</span>
+        <span class="s2">&quot;Moo!&quot;</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">animal</span> <span class="o">=</span> <span class="no">Animal</span><span class="o">.</span><span class="n">new</span>     <span class="c1">#=&gt; #&lt;Animal:0x007f9e7d1a9dc0&gt;</span>
+<span class="n">animal</span><span class="o">.</span><span class="n">make_noise</span>       <span class="c1">#=&gt; &quot;Moo!&quot;</span>
+</code></pre></div>
+<h3 id="classes-instances">Classes: Instances</h3>
+
+<ul>
+<li>An object created from a class.</li>
+<li>The instance is created and returned with the <code>new</code> method.</li>
+<li>Evey time an object is crated it is a different object.</li>
+<li>Like a &ldquo;While You Were Out&rdquo; pad.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">animal1</span> <span class="o">=</span> <span class="no">Animal</span><span class="o">.</span><span class="n">new</span>
+<span class="n">animal2</span> <span class="o">=</span> <span class="no">Animal</span><span class="o">.</span><span class="n">new</span>
+</code></pre></div>
+<h3 id="classes-attributes">Classes: Attributes</h3>
+
+<ul>
+<li>Values that persists inside of an instance. </li>
+<li>A special kind of variable - <code>@variable</code>.</li>
+<li>Never has access to instance variables outside of the instance.</li>
+<li>Only the methods of the class have access to instance variables.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Animal</span>
+    <span class="k">def</span> <span class="nf">set_noise</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>
+        <span class="vi">@noise</span> <span class="o">=</span> <span class="n">noise</span> 
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">make_noise</span>
+        <span class="vi">@noise</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">animal1</span> <span class="o">=</span> <span class="no">Animal</span><span class="o">.</span><span class="n">new</span>
+<span class="n">animal1</span><span class="o">.</span><span class="n">set_noise</span><span class="p">(</span><span class="s2">&quot;Moo!&quot;</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">animal1</span><span class="o">.</span><span class="n">make_noise</span>     <span class="c1">#=&gt; &quot;Moo!&quot;</span>
+
+<span class="n">animal2</span> <span class="o">=</span> <span class="no">Animal</span><span class="o">.</span><span class="n">new</span>
+<span class="n">animal</span><span class="o">.</span><span class="n">set_noise</span><span class="p">(</span><span class="s2">&quot;Whoof!&quot;</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">animal2</span><span class="o">.</span><span class="n">make_noise</span>     <span class="c1">#=&gt; &quot;Whoof!&quot;</span>
+</code></pre></div>
+<h3 id="classes-reader-writer-methods">Classes: Reader / Writer Methods</h3>
+
+<ul>
+<li>Same as getters / setters in other languages.</li>
+<li>Give access control over the instance variables.</li>
+<li>Ruby has syntactic sugar to make the reader and writer method more concise.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Animal</span>
+    <span class="k">def</span> <span class="nf">noise</span><span class="o">=</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>       <span class="c1"># same as above but shorter</span>
+        <span class="vi">@noise</span> <span class="o">=</span> <span class="n">noise</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">noise</span>               <span class="c1"># same as above but shorter</span>
+        <span class="vi">@noise</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">animal</span> <span class="o">=</span> <span class="no">Animal</span><span class="o">.</span><span class="n">new</span>         
+<span class="n">animal</span><span class="o">.</span><span class="n">noise</span> <span class="o">=</span> <span class="s2">&quot;Moo!&quot;</span>       <span class="c1"># like assigning a variable</span>
+<span class="nb">puts</span> <span class="n">animal</span><span class="o">.</span><span class="n">noise</span>
+</code></pre></div>
+<h3 id="classes-attribute-methods">Classes: Attribute Methods</h3>
+
+<ul>
+<li>For classes that have many attributes Ruby provides a shortcut.</li>
+<li>Using the attribute <code>attr_*</code> methods.</li>
+<li><code>attr_reader</code>: creates a reader method.</li>
+<li><code>attr_writer</code>: creates a writer method.</li>
+<li><code>attr_accessor</code>: creates both a reader and a writer method.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="kp">attr_reader</span> <span class="ss">:name</span>
+
+<span class="c1">#same as</span>
+<span class="k">def</span> <span class="nf">name</span>
+    <span class="vi">@name</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">atte_writer</span> <span class="ss">:name</span>
+
+<span class="c1">#same as</span>
+<span class="k">def</span> <span class="nf">name</span><span class="o">=</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="n">value</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="kp">attr_accessor</span> <span class="ss">:name</span>
+
+<span class="c1">#same as both</span>
+<span class="k">def</span> <span class="nf">name</span>
+    <span class="vi">@name</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">name</span><span class="o">=</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="n">value</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#can create multiple instance variables and methods at once</span>
+<span class="kp">attr_accessor</span> <span class="ss">:name</span>
+<span class="kp">attr_writer</span> <span class="ss">:color</span>
+<span class="kp">attr_reader</span> <span class="ss">:legs</span><span class="p">,</span> <span class="ss">:arms</span>
+</code></pre></div>
+<h3 id="classes-initialize-method">Classes: Initialize Method</h3>
+
+<ul>
+<li>Methods that run when the object is being initialized.</li>
+<li>Use the <code>initialize</code> class method.</li>
+<li>Can pass arguments to the <code>initialize</code> method, the <code>new</code> method uses them.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Animal</span>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="n">legs</span><span class="p">,</span> <span class="n">arms</span><span class="p">)</span>
+        <span class="vi">@noise</span> <span class="o">=</span> <span class="n">noise</span>
+        <span class="vi">@legs</span> <span class="o">=</span> <span class="n">legs</span>
+        <span class="vi">@arms</span> <span class="o">=</span> <span class="n">arms</span>
+        <span class="nb">puts</span> <span class="s2">&quot;A new animal has been instantiated.&quot;</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">animal</span> <span class="o">=</span> <span class="no">Animal</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Moo&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="classes-class-methods">Classes: Class Methods</h3>
+
+<ul>
+<li>A method that can be called on a class, even without an instance of the class.</li>
+<li>Example: <code>Animal.new</code>.</li>
+<li>Using the <code>self</code> keyword, that applies to the object that we are currently in.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">method_name</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Animal</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">all_species</span>
+        <span class="o">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;cow&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;duck&#39;</span><span class="p">,</span> <span class="s1">&#39;horse&#39;</span><span class="p">,</span> <span class="s1">&#39;pig&#39;</span><span class="o">]</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">create_with_attributes</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+        <span class="n">animal</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>
+        <span class="n">animal</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="k">return</span> <span class="n">animal</span>
+    <span class="k">end</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="no">Animal</span><span class="o">.</span><span class="n">all_species</span>
+<span class="n">animal2</span> <span class="o">=</span> <span class="no">Animal</span><span class="o">.</span><span class="n">create_with_attributes</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;quack&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="classes-class-attributes">Classes: Class Attributes</h3>
+
+<ul>
+<li>Store values that apply to the class generally.</li>
+<li>Using the class variable <code>@@variable</code>.</li>
+<li>Persists any time we have the class, even without the variables.</li>
+<li>Information that is general for the whole class.</li>
+<li>Keep track of all of the objects with <code>@@total</code>.</li>
+<li>Keep track of all the instances with an array of class attributes.</li>
+<li>Cannot access the class attributes outside of the class, only with class methods.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Animal</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+    <span class="vc">@@species</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;cow&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;duck&#39;</span><span class="p">,</span> <span class="s1">&#39;horse&#39;</span><span class="p">,</span> <span class="s1">&#39;pig&#39;</span><span class="o">]</span>
+    <span class="vc">@@curent_animals</span> <span class="o">=</span> <span class="o">[]</span>
+
+    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">all_species</span>
+        <span class="vc">@@species</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span>
+        <span class="vc">@@current_animals</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+    <span class="k">end</span>
+    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="no">Animal</span><span class="o">.</span><span class="n">all_species</span>
+<span class="nb">puts</span> <span class="no">Animal</span><span class="o">.</span><span class="n">current_animals</span><span class="o">.</span><span class="n">inspect</span>     <span class="c1"># would not work, need class method</span>
+</code></pre></div>
+<h3 id="classes-class-reader-writer-method">Classes: Class Reader / Writer Method</h3>
+
+<ul>
+<li>Same as with instance variables, class variables (attributes) need setter and getter methods.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">animals</span>                <span class="c1"># reader</span>
+    <span class="vc">@@animals</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">animals</span><span class="o">=</span><span class="p">(</span><span class="n">array</span><span class="o">=[]</span><span class="p">)</span>     <span class="c1"># writer</span>
+    <span class="vc">@@animals</span> <span class="o">=</span> <span class="n">array</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="classes-inheritance">Classes: Inheritance</h3>
+
+<ul>
+<li>Bestowal of methods and attributes of another class.</li>
+<li>Superclass / parent =&gt; subclass / children.</li>
+<li>In Ruby we can inherit from only 1 superclass at a time, there are no multiple inheritances.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Cow</span> <span class="o">&lt;</span> <span class="no">Animal</span>
+<span class="k">end</span>
+
+<span class="n">betsy</span> <span class="o">=</span> <span class="no">Cow</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Moo!&quot;</span><span class="p">)</span>
+<span class="n">betst</span><span class="o">.</span><span class="n">class</span>         <span class="c1"># Cow</span>
+</code></pre></div>
+<h3 id="classes-subclass-overriding">Classes: Subclass Overriding</h3>
+
+<ul>
+<li>To overwrite the parent class methods or attributes.</li>
+<li>Methods can be overwritten by using the same method name in the definition of a new method.</li>
+<li>The last definition always wins.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Cow</span> <span class="o">&lt;</span> <span class="no">Animal</span>
+    <span class="k">def</span> <span class="nf">color</span>
+        <span class="s2">&quot;The cow&#39;s color is </span><span class="si">#{</span><span class="vi">@color</span><span class="si">}</span><span class="s2">.&quot;</span> 
+    <span class="k">end</span> 
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Array</span>         <span class="c1"># overriding Ruby&#39;s built in-class</span>
+    <span class="k">def</span> <span class="nf">to_s</span>
+        <span class="nb">self</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="classes-accessing-the-superclass">Classes: Accessing the Superclass</h3>
+
+<ul>
+<li>To change the behavior of a superclass&rsquo; method without completely overriding it.</li>
+<li>The keyword <code>super</code> is used for that.</li>
+<li>It returns the result of the original method to where <code>super</code> is called.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Pig</span> <span class="o">&lt;</span> <span class="no">Animal</span>
+    <span class="k">def</span> <span class="nf">noise</span>
+        <span class="n">parent_noise</span> <span class="o">=</span> <span class="k">super</span>
+        <span class="k">return</span> <span class="s2">&quot;Hello and also </span><span class="si">#{</span><span class="n">parent_noise</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">wilbur</span> <span class="o">=</span> <span class="no">Pig</span><span class="o">.</span><span class="n">new</span>
+<span class="n">wilbur</span><span class="o">.</span><span class="n">make_noise</span>
+</code></pre></div>
+<h2 id="modules">Modules</h2>
+
+<ul>
+<li>Are wrappers around Ruby code.</li>
+<li>Modules can&rsquo;t be instantiated.</li>
+<li>Modules are used in conjunction with classes.</li>
+</ul>
+
+<h3 id="modules-namespaces">Modules: Namespaces</h3>
+
+<ul>
+<li>Namespacing allows for class names that don&rsquo;t conflict.</li>
+<li>Use a namespace wrapper and double colons <code>ModuleName::ClassName</code>.</li>
+<li>Keep class name distinct from standard Ruby classes.</li>
+<li>Disambiguating your own class definitions.</li>
+<li>Ensure classes used in open source code won&rsquo;t conflict.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Romantic</span>         <span class="c1"># Module wrapper</span>
+    <span class="k">class</span> <span class="nc">Date</span>
+        <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">dinner</span> <span class="o">=</span> <span class="no">Romantic</span><span class="o">::</span><span class="no">Date</span><span class="o">.</span><span class="n">new</span>     <span class="c1"># Module date</span>
+<span class="n">dinner</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">new</span>          <span class="c1"># Ruby date</span>
+</code></pre></div>
+<h3 id="modules-mix-ins">Modules: Mix-Ins</h3>
+
+<ul>
+<li>Ruby only allows to inherit from one superclass.</li>
+<li>If additional functionality is needed, it can be placed into a module and mixed in.</li>
+<li>Reuse the same code in multiple places, using the <code>include</code> statement.</li>
+<li>Make sure the module definition comes before the class that it&rsquo;s being used in.</li>
+<li>Can use Ruby&rsquo;s built-in modules like <code>enumerable</code>.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">ContactInfo</span>
+    <span class="kp">attr_accessor</span> <span class="ss">:first_name</span><span class="p">,</span> <span class="ss">:last_name</span><span class="p">,</span> <span class="ss">:city</span><span class="p">,</span> <span class="ss">:state</span><span class="p">,</span> <span class="ss">:zip_code</span>
+
+    <span class="k">def</span> <span class="nf">full_name</span>
+        <span class="k">return</span> <span class="vi">@first_name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="vi">@last_name</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Person</span>
+    <span class="kp">include</span> <span class="no">ContactInfo</span>         <span class="c1"># load the ContactInfo module</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Teacher</span>
+    <span class="kp">include</span> <span class="no">ContactInfo</span>
+    <span class="kp">attr_accessor</span> <span class="ss">:lesson_plans</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Student</span> <span class="o">&lt;</span> <span class="no">Person</span>          <span class="c1"># inherits the module behavior from Person</span>
+    <span class="kp">attr_accessor</span> <span class="ss">:books</span><span class="p">,</span> <span class="ss">:grades</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ToDoList</span>
+
+    <span class="kp">include</span> <span class="no">Enumerable</span>          <span class="c1"># load Ruby&#39;s Enumerable mixin</span>
+
+    <span class="kp">attr_accessor</span> <span class="ss">:items</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span>
+        <span class="vi">@items</span> <span class="o">=</span> <span class="o">[]</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">each</span>
+        <span class="vi">@items</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">item</span><span class="o">|</span> <span class="k">yield</span> <span class="n">item</span><span class="p">}</span>     <span class="c1"># use the each functionality</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">list</span> <span class="o">=</span> <span class="no">ToDoList</span><span class="o">.</span><span class="n">new</span>
+<span class="n">list</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">}</span>      <span class="c1"># use the select method directly on the object</span>
+</code></pre></div>
+<h3 id="modules-load-require-include">Modules: Load, Require, Include</h3>
+
+<ul>
+<li>Modules are usually kept in separate files.</li>
+<li>Modules can be serves as code libraries.</li>
+<li>Need to have a way to load modules and files into other Ruby files.</li>
+<li><code>load</code>: loads a source file every time it is called, returns <code>true</code> if the file loaded successfully.</li>
+<li><code>require</code>: loads a source file only once, keeps track of the file and will not load it again.</li>
+<li><code>include</code>: uses exclusively for including module mixins, nothing to do with files.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">load</span> <span class="s1">&#39;contact_info.rb&#39;</span>      <span class="c1"># loading a dependency</span>
+</code></pre></div>
+<h2 id="working-with-files">Working With Files</h2>
+
+<h3 id="working-with-files-input-output-basics">Working With Files: Input / Output Basics</h3>
+
+<ul>
+<li>Input / Output of a ruby program.</li>
+<li>The <code>gets</code> method receives input from the user.</li>
+<li>Use <code>chomp</code> to remove the trailing <code>\n</code>.</li>
+<li>Use <code>chop</code> to remove the last character.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">input</span> <span class="o">=</span> <span class="nb">gets</span>        <span class="c1">#=&gt; &quot;Hello.\n&quot;</span>
+<span class="n">input</span><span class="o">.</span><span class="n">chomp</span>         <span class="c1">#=&gt; &quot;Hello.&quot;</span>
+<span class="n">input</span><span class="o">.</span><span class="n">chop</span>          <span class="c1">#=&gt; &quot;Hello&quot;</span>
+
+<span class="nb">print</span> <span class="n">input</span>         <span class="c1">#=&gt; &quot;Hello&quot;</span>
+<span class="nb">puts</span> <span class="n">input</span>          <span class="c1">#=&gt; &quot;Hello\n&quot;</span>
+</code></pre></div>
+<h3 id="working-with-files-cross-platform">Working With Files: Cross Platform</h3>
+
+<ul>
+<li>File path separators
+
+<ul>
+<li>Unix, Linux, Mac path separator: <code>/</code></li>
+<li>Windows path separator: <code>\</code></li>
+<li>The <code>File.join()</code> method avoids the OS differences.</li>
+</ul></li>
+<li>File permissions
+
+<ul>
+<li><code>chmod</code>: change permissions on unix.</li>
+<li><code>chown</code>: change owner on unix.</li>
+</ul></li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;folder&#39;</span><span class="p">,</span> <span class="s1">&#39;file.rb&#39;</span><span class="p">)</span>
+
+<span class="c1"># Starting with a blank &#39;&#39; will create a path</span>
+<span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Users&#39;</span><span class="p">,</span> <span class="s1">&#39;vadim&#39;</span><span class="p">,</span> <span class="s1">&#39;Desktop&#39;</span><span class="p">,</span> <span class="s1">&#39;rube_files&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="working-with-files-file-paths">Working With Files: File Paths</h3>
+
+<ul>
+<li>Absolute path: <code>/path/to/file</code></li>
+<li>Relative path: <code>./../../path/to/file</code></li>
+<li>Ruby Special variable <code>__FILE__</code>: the name of the file that we are in right now.</li>
+<li>To get the absolute path use <code>File.expand_path()</code>.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span>      <span class="c1"># Absolute file path</span>
+<span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span>          <span class="c1"># File directory</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># go up one directory with relative paths</span>
+<span class="nb">puts</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s2">&quot;Folder\ With\ Spaces&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="working-with-files-accessing-files">Working With Files: Accessing Files</h3>
+
+<ul>
+<li>Two ways of opening a file.</li>
+<li><code>File.new</code>: 
+
+<ul>
+<li>Creates a new instance of the <code>File</code> object, the file exists while the object exists.</li>
+<li>Accepts the file name and the writing mode.</li>
+</ul></li>
+<li><code>File.open</code>
+
+<ul>
+<li>Uses a block to perform actions.</li>
+<li>At the end it closes the file automatically.</li>
+<li>Accepts the file name and the writing mode.</li>
+</ul></li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;file_name.rb&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;file1.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+    <span class="c1"># read the data from the file</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="working-with-files-file-modes">Working With Files: File Modes</h3>
+
+<ul>
+<li>Most useful are <code>r</code> to read, <code>w</code> to start new file, <code>r+</code> to read and write, <code>a</code> to add something at the end.</li>
+</ul>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Access Mode</th>
+<th style="text-align: left">Description</th>
+<th style="text-align: center">Read &amp; Write</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><code>r</code></td>
+<td style="text-align: left">Read from start (must exist)</td>
+<td style="text-align: center"><code>r+</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>w</code></td>
+<td style="text-align: left">Truncate / Write from start</td>
+<td style="text-align: center"><code>w+</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>a</code></td>
+<td style="text-align: left">Append / Write from end</td>
+<td style="text-align: center"><code>a+</code></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><code>r</code>: reads from the start, the file must exist. </li>
+<li><code>w</code>: writes from the start, will create the file if it doesn&rsquo;t exist. If the file exists it will overwrite it.</li>
+<li><code>a</code>: append to the end of a file</li>
+<li><code>r+</code>: read and write from the file without erasing everything, starting at the beginning of the file.</li>
+<li><code>w+</code>: read and write from the file but will truncate everything first.</li>
+<li><code>a+</code>: read and write from the file without truncating, starting at the end of the file.</li>
+</ul>
+
+<h3 id="working-with-files-writing">Working With Files: Writing</h3>
+
+<ul>
+<li>Before writing the data to the file, Ruby waits for the file to be closed first.</li>
+<li>Write to the hard drive only once in batch.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;test_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;abcd&quot;</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">file</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;abcd&quot;</span>        <span class="c1"># puts string with line break</span>
+<span class="n">file</span><span class="o">.</span><span class="n">print</span> <span class="s2">&quot;abcd&quot;</span>       <span class="c1"># puts string whiteout line break</span>
+<span class="n">file</span><span class="o">.</span><span class="n">write</span> <span class="s2">&quot;abcd&quot;</span>       <span class="c1"># like print but returns the number of characters</span>
+<span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;abcd&quot;</span>          <span class="c1"># like print but returns the object</span>
+</code></pre></div>
+<h3 id="working-with-files-reading">Working With Files: Reading</h3>
+
+<ul>
+<li>Cannot use <code>chomp</code> automatically with <code>gets</code>, if it&rsquo;s the end of the file there is nothing to get &ndash; <code>chomp</code> will cause an error.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;test_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">gets</span>               <span class="c1">#=&gt; &quot;abcd\n&quot;</span>
+<span class="n">file</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">chomp</span>         <span class="c1">#=&gt; &quot;abcdabcdabcd&quot;</span>
+<span class="n">file</span><span class="o">.</span><span class="n">gets</span>               <span class="c1">#=&gt; nil</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">file</span><span class="o">.</span><span class="n">gets</span>           <span class="c1"># reads from the pointer position to end of line</span>
+<span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>        <span class="c1"># read 4 characters</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;file1.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+    <span class="k">while</span> <span class="n">line</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">gets</span>
+        <span class="nb">puts</span> <span class="s2">&quot;** &quot;</span> <span class="o">+</span> <span class="n">line</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">reverse</span> <span class="o">+</span> <span class="s2">&quot; **&quot;</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;file1.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">each_line</span> <span class="p">{</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">line</span><span class="o">.</span><span class="n">upcase</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="working-with-files-file-pointer">Working With Files: File Pointer</h3>
+
+<ul>
+<li>Similar to a file pointer in a text editor.</li>
+<li>Overwrites text at a position.</li>
+<li>Use it for both writing and reading.</li>
+<li>The pointer position: <code>file.pos</code> start with <code>0</code>.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">file</span><span class="o">.</span><span class="n">pos</span>            <span class="c1"># current position of the pointer</span>
+<span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">pos</span>            <span class="c1">#=&gt; 3</span>
+<span class="n">file</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">13</span>       <span class="c1"># move pointer to position 13</span>
+<span class="n">file</span><span class="o">.</span><span class="n">eof?</span>           <span class="c1"># Boolean enf of file check</span>
+<span class="n">file</span><span class="o">.</span><span class="n">rewind</span>         <span class="c1"># Go back to start, sams as assigning 0</span>
+<span class="n">file</span><span class="o">.</span><span class="n">pos</span> <span class="o">+=</span> <span class="mi">6</span>       <span class="c1"># Go forward 6</span>
+<span class="n">file</span><span class="o">.</span><span class="n">pos</span> <span class="o">+=</span> <span class="mi">100</span>     <span class="c1"># set the pointer beyond the end of the file</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">file</span><span class="o">.</span><span class="n">lineno</span>         <span class="c1"># how many times gets was called</span>
+</code></pre></div>
+<h3 id="working-with-files-renaming-and-deleting">Working With Files: Renaming and Deleting</h3>
+
+<ul>
+<li>Need read and write to the file, as well as write permissions for the directory.</li>
+</ul>
+
+<h4 id="file-class">File Class:</h4>
+
+<ul>
+<li>Standard file class.</li>
+<li><code>rename</code></li>
+<li>&lsquo;delete&rsquo;, <code>unlink</code></li>
+</ul>
+
+<h4 id="fileutils-class">FileUtils Class:</h4>
+
+<ul>
+<li>Ruby Standard library: <code>require fileutils</code></li>
+<li><code>cp</code>, <code>copy</code></li>
+<li><code>mv</code>, <code>move</code></li>
+<li><code>rm</code>, <code>remove</code></li>
+<li><code>cd</code>, <code>chmod</code>, <code>chown</code>, <code>pwd</code>, <code>ln</code>, <code>touch</code>, <code>mkdir</code>, <code>rmdir</code></li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;file_to_rename.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;new_file_name.txt&#39;</span><span class="p">)</span>
+<span class="no">File</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;new_file_name.txt&#39;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="n">fileutils</span>       <span class="c1"># Ruby built-in library</span>
+<span class="no">FileUtils</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s1">&#39;file_to_copy.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;copied.txt&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="working-with-files-examining-file-details">Working With Files: Examining File Details</h3>
+
+<ul>
+<li>Class methods on the <code>File</code> class.</li>
+<li>File instance use the <code>stat</code> object to access information.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;testfile.txt&#39;</span>
+<span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>       <span class="c1"># does it exist</span>
+<span class="no">File</span><span class="o">.</span><span class="n">file?</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>        <span class="c1"># is it a file</span>
+<span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>   <span class="c1"># is it a directory</span>
+<span class="no">File</span><span class="o">.</span><span class="n">readable?</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>    <span class="c1"># readable permission</span>
+<span class="no">File</span><span class="o">.</span><span class="n">writable?</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>    <span class="c1"># writable permission</span>
+<span class="no">File</span><span class="o">.</span><span class="n">executable?</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>  <span class="c1"># executable permission</span>
+<span class="no">File</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>         <span class="c1"># in bytes, corresponds to string length</span>
+<span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>      <span class="c1"># folder name</span>
+<span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>  <span class="c1"># full path</span>
+<span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>     <span class="c1"># reverse of expand, file name</span>
+<span class="no">File</span><span class="o">.</span><span class="n">extname</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>      <span class="c1"># extension of the file</span>
+<span class="no">File</span><span class="o">.</span><span class="n">atime</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>        <span class="c1"># last accessed time - read or write</span>
+<span class="no">File</span><span class="o">.</span><span class="n">mtime</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>        <span class="c1"># last modified time - write</span>
+<span class="no">File</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>        <span class="c1"># last status change time, NOT created time</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">myfile</span><span class="o">.</span><span class="n">stat</span>             <span class="c1"># returns a file stat object</span>
+<span class="n">myfile</span><span class="o">.</span><span class="n">stat</span><span class="o">.</span><span class="n">size</span>
+<span class="n">myfile</span><span class="o">.</span><span class="n">stat</span><span class="o">.</span><span class="n">readable?</span>
+</code></pre></div>
+<h3 id="working-with-files-directories">Working With Files: Directories</h3>
+
+<ul>
+<li>Ruby has a direcotry class: <code>Dir</code>.</li>
+<li><code>Dir.pwd</code>: print working directory.</li>
+<li><code>Dir.chdir</code>: change directory, like <code>cd</code> in bash.</li>
+<li><code>Dir.entries(folder name)</code>: array of the files in a folder.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span>
+<span class="no">Dir</span><span class="o">.</span><span class="n">pwd</span>
+<span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Users&#39;</span><span class="p">,</span> <span class="s2">&quot;Desktop&quot;</span><span class="p">)</span>
+<span class="no">Dir</span><span class="o">.</span><span class="n">entries</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Dir</span><span class="o">.</span><span class="n">entries</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">entry</span><span class="o">|</span>
+    <span class="nb">print</span> <span class="n">entry</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span>
+    <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">file?</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="no">File</span><span class="o">.</span><span class="n">readable?</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+        <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+            <span class="nb">puts</span> <span class="n">file</span><span class="o">.</span><span class="n">gets</span>
+        <span class="k">end</span>
+    <span class="k">else</span>
+        <span class="nb">puts</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Dir</span><span class="o">.</span><span class="n">foreach</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">entry</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">entry</span><span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;temp_direcotry&#39;</span><span class="p">)</span>
+<span class="no">Dir</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;temp_direcotry&#39;</span><span class="p">)</span>    <span class="c1"># need permissions and has to be empty</span>
+</code></pre></div>
+<h2 id="ruby-methods">Ruby Methods</h2>
+
+<h3 id="exit">exit!</h3>
+
+<ul>
+<li>Will stop the script and exit to the command line.</li>
+<li>Stops right away.</li>
+<li><code>exit!</code></li>
+</ul>
+
+<h3 id="left-and-right-justify">Left and Right Justify</h3>
+
+<ul>
+<li>Add characters to a string until reaches a defined length.</li>
+<li>Useful for command line output justification.</li>
+</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">&quot;Hello&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span>
+<span class="c1">#=&gt; &quot;Hello#########################&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">&quot;Hello&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span>
+<span class="c1">#=&gt; &quot;#########################Hello&quot;</span>
+</code></pre></div></div>
+        </div>    
+
+  </body>
+
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-31685503-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</html>
