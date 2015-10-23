@@ -1,19 +1,8 @@
 ---
 layout: post
-status: publish
-published: true
-title: Update Ruby Version Definitions in Rbenv
-author:
-  display_name: Vadim
-  login: vadim
-  email: vadim@vadimbrodsky.com
-  url: ''
-author_login: vadim
-author_email: vadim@vadimbrodsky.com
-wordpress_id: 176
-wordpress_url: http://www.vadimbrodsky.com/?p=176
+title: Update Rbenv Ruby Version Definitions
+subhead: Get the Rbenv to install the latest version of Ruby
 date: '2015-09-04 11:02:04 -0400'
-date_gmt: '2015-09-04 15:02:04 -0400'
 categories:
 - Ruby
 - Post

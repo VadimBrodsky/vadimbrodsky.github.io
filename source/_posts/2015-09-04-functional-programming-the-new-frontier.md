@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Functional Programming &ndash; The New Frontier?
+title: Functional Programming 
+subhead: The New Frontier?
 date: '2015-09-04 23:42:51 -0400'
 date_gmt: '2015-09-05 03:42:51 -0400'
 categories:
