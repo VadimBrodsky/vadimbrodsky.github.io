@@ -5,6 +5,15 @@
 
   <body>
 
+    <nav>
+      <ul>
+        {% for link in site.nav %}
+        <li><a href="{{ link[1] | prepend: site.baseurl }}">{{ link[0] }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+
     <div class="page__wrap">
 
       <header class="page__header">
