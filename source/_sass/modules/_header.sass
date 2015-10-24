@@ -1,0 +1,25 @@
+.page__header
+  text-align: center
+  margin: $base-spacing 0 ($base-spacing * 3) 0
+
+  h3
+    margin: 0
+
+    &:hover
+
+  a
+    color: $dark-gray
+    font-size: $base-font-size * 2
+    font-family: $serif
+
+    &:hover
+      color: $action-color
+      font-size: 0
+
+    &:hover:after
+      content: attr(data-alt-text)
+      font-size: $base-font-size * 2
+
+  small
+    display: block
+    font-weight: lighter

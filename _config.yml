@@ -51,10 +51,11 @@ github:
 
 # Custom Vars
 title: VB
+title_expanded: Vadim Brodsky
 author:
   name: Vadim Brodsky
   email: vadim.brodsky@gmail.com
-tagline: Designer, Developer, Thinker
+tagline: Designer, Developer, Human
 description: This a personal blog of Vadim Brodsky, disucssing design, development and all things remarkable.
 twitter_username: vadimbrodsky
 github_username:  vadimbrodsky

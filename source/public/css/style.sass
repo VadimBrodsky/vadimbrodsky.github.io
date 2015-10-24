@@ -23,11 +23,13 @@
 @import 'base/typography'
 
 // layout
-.page-wrap
+.page__wrap
   +outer-container(1000px)
 
-@import 'pages/post'
-@import 'modules/code'
+@import 'modules/header'
 
-// code highlighting
+@import 'modules/code'
 @import 'modules/syntax'
+
+// pages
+@import 'pages/post'

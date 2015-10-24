@@ -5,18 +5,19 @@
 
   <body>
 
-    <div class="page-wrap">
+    <div class="page__wrap">
 
-      <div class="masthead">
-          <h3 class="masthead-title">
-            <a href="/" title="Home">{{ site.title }}</a>
-            <small>{{ site.tagline }}</small>
-          </h3>
-      </div>
+      <header class="page__header">
+        <h3>
+          <a href="/" title="Home" data-alt-text="{{ site.title_expanded }}"> {{ site.title }} </a>
+          <small>{{ site.tagline }}</small>
+        </h3>
+      </header>
 
-      <div class="content">
+
+      <main>
         {{ content }}
-      </div>
+      </main>
 
     </div>
 
