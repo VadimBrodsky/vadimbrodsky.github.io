@@ -53,7 +53,7 @@ twitter_username: vadimbrodsky
 github_username:  vadimbrodsky
 
 nav:
-  Home:   '/'
+  # Home:   '/'
   Posts:  '/posts/'
   Links:  '/links/'
   Videos: '/videos/'
