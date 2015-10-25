@@ -21,7 +21,7 @@ url: "http://vadimbrodsky.github.io" # the base hostname & protocol for your sit
 
 # permalink: pretty
 permalink: /:year/:month/:title
-paginate: 10
+paginate: 20
 paginate_path: 'page:num'
 
 # Publish posts with future date.
