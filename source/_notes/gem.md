@@ -1,11 +1,8 @@
 ---
 layout: note
 title: RubyGems
+subhead: Ruby package manager.
 ---
-
-# Ruby Gems
-- Ruby package manager.
-
 
 ## Gems Version
 - To find out which version of Ruby Gems is installed.
@@ -37,7 +34,7 @@ gem list
 - Or to update the Gems itself.
 
 ```bash
-gem update 
+gem update
 ```
 
 ```bash

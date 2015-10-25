@@ -1,9 +1,7 @@
 ---
 layout: note
-title: MySQL 
+title: MySQL Database
 ---
-
-# MySQL Database
 
 ## Installing MySQL
 - Option 1: From the [MySQL website](http://dev.mysql.com/downloads/mysql/).

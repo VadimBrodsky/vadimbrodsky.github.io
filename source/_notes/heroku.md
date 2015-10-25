@@ -3,7 +3,6 @@ layout: note
 title: Heroku
 ---
 
-# Heroku
 - [Getting Started with Ruby on Heroku](https://devcenter.heroku.com/articles/getting-started-with-ruby#introduction)
 - [Heroku Developer Center](https://devcenter.heroku.com/)
 - [Heroku CLI Commands](https://devcenter.heroku.com/articles/heroku-command)

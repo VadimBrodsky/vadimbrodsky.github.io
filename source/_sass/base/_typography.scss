@@ -23,14 +23,16 @@ p {
 }
 
 a {
-  color: $action-color;
+  color: $base-font-color;
+  border-bottom: 4px solid $medium-gray;
   text-decoration: none;
   transition: color $base-duration $base-timing;
 
   &:active,
   &:focus,
   &:hover {
-    color: shade($action-color, 25%);
+    color: tint($base-font-color, 25%);
+    border-color: tint($base-font-color, 25%);
   }
 }
 
