@@ -1,7 +1,7 @@
 .post__related
-  margin-top: $base-spacing * 4
-  padding-bottom: $base-spacing
-  +outer-container(900px)
+  margin-top: $base-spacing
+  padding-bottom: $base-spacing * 3
+  +outer-container($layout-max-width--wide)
 
   &__item
     border: $medium-gray 4px solid
@@ -24,6 +24,8 @@
     display: block
     font-style: italic
 
+  h2
+    text-transform: uppercase
 
   h3
     margin: 0
