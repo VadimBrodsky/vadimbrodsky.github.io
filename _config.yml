@@ -38,6 +38,10 @@ markdown: redcarpet
 redcarpet:
   extensions: ['fenced_code_blocks', 'smart', 'tables', 'autolink', 'with_toc_data', 'strikethrough']
 
+# Plugins
+# whitelist: []
+gems: ['jekyll-paginate']
+
 github:
   repo: https://github.com/VadimBrodsky/vadimbrodsky.github.io
 
