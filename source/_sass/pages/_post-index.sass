@@ -1,8 +1,11 @@
 .posts__index
   +outer-container($layout-max-width--wide)
   +column-count(3)
-  +column-width(auto)
+  +column-width(250px)
   +column-gap(50px)
+
+  &__section
+    padding: $base-spacing 0
 
   &__link
     border: 0
@@ -19,3 +22,15 @@
     font-size: $base-font-size
     font-style: italic
     margin: 0
+
+  &__collection, &__date
+    display: inline-block
+    font-size: $base-font-size * 0.7
+    font-weight: 800
+    text-transform: uppercase
+
+  &__collection
+    border-bottom: 2px solid
+
+  &__date
+    color: $medium-gray

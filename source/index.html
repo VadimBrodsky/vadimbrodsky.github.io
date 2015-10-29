@@ -5,12 +5,22 @@ layout: default
 
 <div class="posts__index">
   {% for post in paginator.posts %}
-  <section class="">
+  <section class="posts__index__section">
     <a href="{{ post.url }}" class="posts__index__link">
-      {{ post.collection }}
-      <h3 class="posts__index__title">{{ post.title }}</h3>
-      {% if post.subhead %}<h4 class="posts__index__subhead">{{ post.subhead }}</h4>{% endif %}
-      <p>{{ post.date | date_to_string }}</p>
+      <span class="posts__index__collection">
+        {{ post.collection | }}
+      </span>
+      <h3 class="posts__index__title">
+        {{ post.title }}
+      </h3>
+      {% if post.subhead %}
+      <h4 class="posts__index__subhead">
+        {{ post.subhead }}
+      </h4>
+      {% endif %}
+      <span class="posts__index__date">
+        {{ post.date | date_to_string }}
+      </span>
     </a>
   </section>
   {% endfor %}
