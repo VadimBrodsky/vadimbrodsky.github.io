@@ -2,19 +2,19 @@
 layout: default
 ---
 
-{{ content }}
+<div class="content__container">
+  {{ content }}
+</div>
 
-<div class="related">
-  <ul class="related-posts">
-    {% for note in site.notes %}
-      <li>
-        <h3>
-          <a href="{{ note.url }}">
-            {{ note.title }}
-            <small></small>
-          </a>
-        </h3>
+<div class="notes__index">
+  <ol class="">
+    {% assign notes = site.notes | sort: 'title' %}
+    {% for note in notes %}
+      <li class="notes__index__item">
+        <a href="{{ note.url }}" class="notes__index__link">
+          {{ note.title }}
+        </a>
       </li>
     {% endfor %}
-  </ul>
+  </ol>
 </div>
