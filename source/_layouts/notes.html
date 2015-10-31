@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<div class="content__container">
+  {{ content }}
+</div>
+
+<div class="notes__index">
+  <ol class="">
+    {% assign notes = site.notes | sort: 'title' %}
+    {% for note in notes %}
+      <li class="notes__index__item">
+        <a href="{{ note.url }}" class="notes__index__link">
+          {{ note.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ol>
+</div>

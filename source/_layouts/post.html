@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+
+<article class="post__article">
+  <p class="type">{{ page.collection }}</p>
+  <h1 class="post__header">{{ page.title }}</h1>
+  {% if page.subhead %}
+  <h2 class="post__subhead">{{ page.subhead }}</h2>
+  {% endif %}
+  <p class="post__date">{{ page.date | date_to_string }}</p>
+  {{ content }}
+  <hr>
+  <p class="post__author">{{ site.author.name }}</p>
+</article>
+
+{% comment %}
+{% include related_posts.html %}
+{% endcomment %}

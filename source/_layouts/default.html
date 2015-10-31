@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-us">
+
+  {% include head.html %}
+
+  <body>
+
+    <nav class="page__nav">
+      <ul>
+        {% for link in site.nav %}
+        <li><a href="{{ link[1] | prepend: site.baseurl }}">{{ link[0] }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="page__wrap">
+      <header class="page__header">
+        <h3>
+          <a href="/" title="Home" data-alt-text="{{ site.title_expanded }}"> {{ site.title }} </a>
+          <small>{{ site.tagline }}</small>
+        </h3>
+      </header>
+
+      <main>
+        {{ content }}
+      </main>
+    </div>
+
+    {% include footer.html %}
+    {% include analytics.html %}
+  </body>
+</html>
