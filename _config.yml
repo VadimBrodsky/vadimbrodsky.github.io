@@ -40,7 +40,7 @@ redcarpet:
 
 # Plugins
 # whitelist: []
-gems: ['jekyll-paginate']
+gems: ['jekyll-paginate', 'jekyll-youtube']
 
 github:
   repo: https://github.com/VadimBrodsky/vadimbrodsky.github.io
@@ -57,9 +57,9 @@ twitter_username: vadimbrodsky
 github_username:  vadimbrodsky
 
 nav:
-  # Home:   '/'
-  Posts:  '/posts/'
-  Links:  '/links/'
-  Videos: '/videos/'
+  Home:   '/'
+  # Posts:  '/posts/'
+  # Links:  '/links/'
+  # Videos: '/videos/'
   Notes:  '/notes/'
   About:  '/about/'

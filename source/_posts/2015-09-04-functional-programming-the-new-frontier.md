@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Functional Programming 
+title: Functional Programming
 subhead: The New Frontier?
 date: '2015-09-04 23:42:51 -0400'
 date_gmt: '2015-09-05 03:42:51 -0400'
@@ -22,6 +22,6 @@ Is it another programming fad that will come and go? Maybe, but some very wise p
 
 [Robert C. Martin (Uncle Bob)](https://twitter.com/unclebobmartin) has a great presentation on the subject, see below. [Dave Thomas](https://twitter.com/pragdave) strongly advised learning Functional Programming on the [Code Newbie Podcast](http://www.codenewbie.org/podcast/the-pragmatic-programmer-part-ii) (@ 1h 13 minutes).
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7Zlp9rKHGD4" frameborder="0" allowfullscreen></iframe>
+{% youtube "https://www.youtube.com/embed/7Zlp9rKHGD4" %}
 
 I have been curious about Function Programming for a while now, and it sounds like now is a good time to approach the subject.
