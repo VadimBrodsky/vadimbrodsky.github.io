@@ -18,7 +18,8 @@ Alas, the problem of building and deploying an application has been long solved 
 4. Trigger the first build with `git push origin`
 
 
-References:
+## References:
+
 - [Continuous Integration](http://jekyllrb.com/docs/continuous-integration/)
 - [S3 Deployment](http://docs.travis-ci.com/user/deployment/s3/)
 - [Static Site with Jekyll, GitHub, TravisCI, and S3](https://brooksgarrett.com/blog/jekyll-github-travisci-s3/)
