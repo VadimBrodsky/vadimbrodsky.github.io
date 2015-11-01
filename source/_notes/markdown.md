@@ -50,7 +50,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 	1. First ordered list item
 	2. Another item
-	⋅⋅* Unordered sub-list. 
+	⋅⋅* Unordered sub-list.
 	1. Actual numbers don't matter, just that it's a number
 	⋅⋅1. Ordered sub-list
 	4. And another item.
@@ -67,7 +67,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 1. First ordered list item
 2. Another item
-  * Unordered sub-list. 
+  * Unordered sub-list.
 1. Actual numbers don't matter, just that it's a number
   1. Ordered sub-list
 4. And another item.
@@ -105,7 +105,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 [I'm a reference-style link][Arbitrary case-insensitive reference text]
 
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
+[I'm a relative reference to a repository file](../index.html)
 
 [You can use numbers for reference-style link definitions][1]
 
@@ -126,14 +126,14 @@ Some text to show that the reference links can follow later.
 	![](http://placekitten.com/g/400/350)
 
 
-![](http://placekitten.com/g/1200/300 "A kitten")
+![A Kitten](http://placekitten.com/g/1200/300 "A kitten")
 
-![](http://placekitten.com/g/550/450 "First of two kittens")
-![](http://placekitten.com/g/550/450 "Second of two kittens")
+![First of two kittens](http://placekitten.com/g/550/450 "First of two kittens")
+![Second of two kittens](http://placekitten.com/g/550/450 "Second of two kittens")
 
-![](http://placekitten.com/g/400/350)
-![](http://placekitten.com/g/400/350)
-![](http://placekitten.com/g/400/350)
+![kitten](http://placekitten.com/g/400/350)
+![kitten](http://placekitten.com/g/400/350)
+![kitten](http://placekitten.com/g/400/350)
 
 
 ## Images as Links
@@ -143,7 +143,7 @@ Some text to show that the reference links can follow later.
 	Example:
 	[![A kitten](http://placekitten.com/g/400/400)](http://www.placekitten.com)
 
-[![ImageCaption](path/to/image.png)](http://www.linktarget.com)
+[![ImageCaption](http://placekitten.com/g/400/400)](http://www.linktarget.com)
 
 Example:
 [![A kitten](http://placekitten.com/g/400/400)](http://www.placekitten.com)
@@ -197,7 +197,7 @@ var hello = function () {
 
 	Quote break.
 
-	> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
+	> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
 
 
 > Blockquotes are very handy in email to emulate reply text.
