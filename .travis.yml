@@ -2,9 +2,24 @@ language: ruby
 rvm:
 - 2.2
 
-install: bundle install
-script: bundle exec rake test
-
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+
+branches:
+  only:
+    - master
+
+install: bundle install
+script: bundle exec rake test
+# after_success: bundle exec s3_website push --headless
+
+deploy:
+  provider: s3
+  access_key_id: acid
+  secret_access_key: sac
+  bucket: "vbcom"
+  endpoint: "vbcom.s3-website-us-east-1.amazonaws.com"
+  region: us-east-1
+  local-dir: build
+  no_cleanup: true
