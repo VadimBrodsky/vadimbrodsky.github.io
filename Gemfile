@@ -4,6 +4,7 @@ gem 'jekyll', '~> 3.0'
 gem 'redcarpet'
 gem 'rake'
 gem 'html-proofer'
+gem 'travis'
 
 group :jekyll_plugins do
   gem 'jekyll-paginate'

@@ -1,25 +1,21 @@
 language: ruby
 rvm:
 - 2.2
-
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-
+  - secure: tscVUJLS5hMCIt54y55GOVXu1QKn11zeGjI93SzSLVsd7fKhiVcGnUWzAEr0MZfsYc7EOW6EhRTRwz35Ks8/2l3Q8qPBeGprgYqtrpZHBm1arOEIiDgmBn/sZ+I/aUt+yJpCPQSldKIiuoUXwxgIE1S6uqVCVHn91NCeb6AZW8klHVfb7WXZzXVd6rBpXqAQWhnH/Zouv/ONEUG+rfeKE0/Qkdo6ivJfnDbb9/tFmHalqkCuQC8RWoLGf7faw2uSK6Apo6Qp+mQR2FCKzUbVaJ6IwQvWkFvFv2bpxyHVJwVQprPMvL3LoRoOsCNEP+AtfSGzd9qTKYQZ7Qd+64uSA8iCoqU8mChUBpdBmpxaDI1B6qdq8M2srWVdhnR1G9pZzkpqil3z/V1UaHXdGY0lE/OzRsMCM33yEm1urfLvYUeOxD2uqYB4M2TkXjC1DNetfBWMsPZ//d9m6CQVMtj3hQI60ArA2GIESHLhb6Agi3RMrkrlbKdzd1y5q7nUMRcv0iiJqd22/Tg6i4MeexxQPNUoH6AaraX2dc2FTp/9D6rw7DUVN5z+EP2Shv/ZqNe0VU9Eq6ootgaCzJKR9VnlbWleWy6XDwtqhKeFfnmJeI6jV/lkQO+M4DbETJ27dfuT+WbPTOhFJa99XKnq4YIB5vd43wAHYaAs1ufSuzXO3uA=
 branches:
   only:
-    - master
-
+  - master
 install: bundle install
 script: bundle exec rake test
-# after_success: bundle exec s3_website push --headless
-
 deploy:
   provider: s3
-  access_key_id: acid
-  secret_access_key: sac
-  bucket: "vbcom"
-  endpoint: "vbcom.s3-website-us-east-1.amazonaws.com"
+  access_key_id: KEY_ID
+  secret_access_key: SECRET
+  bucket: vbcom
+  endpoint: vbcom.s3-website-us-east-1.amazonaws.com
   region: us-east-1
   local-dir: build
   skip_cleanup: true
