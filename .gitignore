@@ -64,3 +64,4 @@ _sass/bower_components
 # Output folders
 _site/
 build/
+Gemfile.lock
