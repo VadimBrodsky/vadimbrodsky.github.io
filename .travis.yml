@@ -22,4 +22,4 @@ deploy:
   endpoint: "vbcom.s3-website-us-east-1.amazonaws.com"
   region: us-east-1
   local-dir: build
-  no_cleanup: true
+  skip_cleanup: true
