@@ -17,7 +17,7 @@ collections:
 
 # Urls
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://vadimbrodsky.github.io" # the base hostname & protocol for your site
+url: "https://www.vadimbrodsky.com" # the base hostname & protocol for your site
 
 permalink: /:year/:month/:title/
 paginate: 20
