@@ -5,6 +5,7 @@ gem 'redcarpet'
 gem 'rake'
 gem 'html-proofer'
 gem 'travis'
+gem 'octopress'
 
 group :jekyll_plugins do
   gem 'jekyll-paginate'

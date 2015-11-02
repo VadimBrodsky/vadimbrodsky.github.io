@@ -18,6 +18,16 @@ task :build do
   sh "bundle exec jekyll build"
 end
 
+desc "serve site with drafts"
+task :sd do
+  sh "bundle exec jekyll s --draft"
+end
+
+desc "serve site"
+task :s do
+  sh "bundle exec jekyll s"
+end
+
 desc "Default task is to clean and build"
 task :default => [ :clean, :test ] do
   puts "Task complete"
