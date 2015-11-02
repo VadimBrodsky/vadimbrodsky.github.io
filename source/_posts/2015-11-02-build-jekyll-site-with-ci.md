@@ -69,7 +69,7 @@ This article is a brief introduction setting up a CI system to build a Jekyll st
 - [S3 Deployment](http://docs.travis-ci.com/user/deployment/s3/)
 - [Static Site with Jekyll, GitHub, TravisCI, and S3](https://brooksgarrett.com/blog/jekyll-github-travisci-s3/)
 - [practical jekyll workflow](https://www.philipithomas.com/practical-jekyll/)
-- [Deploying your Jekyll Site to S3 with Travis CI](Deploying your Jekyll Site to S3 with Travis CI)
+- [Deploying your Jekyll Site to S3 with Travis CI](http://www.paperplanes.de/2013/8/13/deploying-your-jekyll-blog-to-s3-with-travis-ci.html)
 - [Jekyll blog on Amazon S3 and CloudFront](http://vvv.tobiassjosten.net/development/jekyll-blog-on-amazon-s3-and-cloudfront/)
 - [Deploy Jekyll Pages using Git and Travis CI](http://felixrieseberg.com/deploy-jekyll-pages-using-git-and-travis-ci/)
 - [Deploying a Jekyll Site on GitHub, Travis CI, and Amazon S3](http://thinkshout.com/blog/2014/08/deployment-workflow-travis-jekyll-travis-s3/)
