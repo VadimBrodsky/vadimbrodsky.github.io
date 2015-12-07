@@ -65,3 +65,5 @@ _sass/bower_components
 _site/
 build/
 Gemfile.lock
+
+.jekyll-metadata
