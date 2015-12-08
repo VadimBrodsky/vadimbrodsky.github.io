@@ -103,3 +103,76 @@ An identifier must start with `a-z`, `A-Z`, `$` or `_`. It can then contain any 
 
 ## Hoisting
 AWhen a `var` declaration is conceptually moved to the top of its encolosing scope.
+
+
+## Nested Scopes
+When a variable is declared it is available anywhere in that scope, as well as any lower / inner scopes.
+
+ A `ReferenceError` thrown if you try to access a variable's value in a scope where it's not available.
+
+If you try to set a variable that was not declared, either a global variable will be declared or an error if `strict mode` is on.
+
+In ES6 the keyword `let` creates a variable that only belongs to individual block's scope, pair of `{..}`
+
+
+## Conditionals
+
+The `if` statement
+
+```javascript
+if (..)
+    ...
+else if (..)
+    ...
+else
+    ...
+```
+
+The `switch` statement
+
+```javascript
+switch(a) {
+    case 2;
+        // do something
+        break;
+    default;
+        // do something
+}
+```
+
+The `break` is important if you want only one statement in once case to run, If the `break` is omitted the execution will continue with the next `case` statement regardless of that case matching. This is called "fall through".
+
+The ternary operator, more concise form of a single `if..else` statement
+
+```javascript
+var b = (a > 41) ? 'hello' : 'world';
+```
+
+
+## Strict Mode Pragrma
+Strict mode was added in ES5, adds restrictions to make the code safer and more optimizable by the JS engine.
+
+To use Strict Mode, add `"use strict";` to a function scope or to a global scope. Depending on where it was called.
+
+Strict Mode disallows the implicit auto-global variable declaration from omitting the `var` keyword, will throw a `ReferenceError`
+
+
+## Functions
+A function can be a value that's assigned to variables passed to or returned from other functions.
+
+Function `foo` is just a variable in outer enclosing scope that's given a reference to the function being declared. The function itself is a value.
+
+```javascript
+function foo() {
+    ...
+}
+```
+
+A function value should be thought of as an expression, much like any other value or expression.
+
+```javascript
+var foo = function() {...} 
+var x = function bar() {...} 
+```
+- Anonymous function assigned to value `foo`.
+- Function expression named `bar`, a reference to it is assigned to the `x` variable.
