@@ -44,6 +44,7 @@ gems:
   - 'neat'
   - 'jekyll-paginate'
   - 'jekyll-youtube'
+  - 'jekyll-coffeescript'
 
 # Octopress Settings
 # Default extension for new posts and pages

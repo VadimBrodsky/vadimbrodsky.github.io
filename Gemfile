@@ -12,4 +12,5 @@ group :jekyll_plugins do
   gem 'jekyll-youtube'
   gem 'bourbon'
   gem 'neat'
+  gem 'jekyll-coffeescript'
 end
