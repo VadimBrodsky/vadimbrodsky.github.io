@@ -3,7 +3,7 @@ layout: note
 title: JavaScript
 ---
 
-## YDKJS: Up and Going
+## YDKJS 1: Up and Going
 
 ### JS Built In Variable Types
 1. `string`
@@ -272,3 +272,99 @@ var el = document.getElementById('foo');
 The document variable exists as a global variable where the code is run in the browser. It's not provided by the JS engine. It looks like a normal JS object, but in reality it's a special host object.
 
 Traditionally DOM and it's behavior is implemented by the browser in c/c++.
+
+
+
+## YDKJS 2: Sope and Closures
+Scope - the set of rules for storing variables in some location, the ability to store values in variables and pull values is what gives a program state.
+
+
+### Compiler Theory
+JavaScript is a compiled language. The compilation involves Tokenizing / Lexing, Parsing and Code-Generation. The compilation doesn't happen in a build step, but rather in a microseconds before the code is run.
+
+**Engine** - Responsible for start-to-finish compilation and execution of the JavaScript program.
+
+**Compiler** - Handles the parsing and code-generation.
+
+**Scope** - Collect and maintain a look-up list at all the declared identities and enforces a strict set of rules as how these are accessible to the currently executing code.
+
+```javascript
+var a = 2;
+```
+
+Two distinct actions are taken for variable assignment:
+
+1. Compiler declares a variable if not previously declared in the current scope.
+2. When executing the engine looks up the variable in scope and assigns to it if found.
+
+The type of variable look-up the engine performs affects the outcome of the lookup.
+
+**LHS** - LHS lookup is done when a variable appears on the left hand side of an assignment operation, the LHS is trying to find the variable container itself, so that it can assign. Finds the variable as a target.
+
+**RHS** - RHS lookup is done when a variable appears on the right side of the assignment operation, a look-up of the value of some variable.
+
+```javascript
+// target   source
+       a  =  2;
+//    LHS    RHS
+```
+
+```javascript
+console.log(a);
+//         RHS lookup
+```
+
+
+### Nested Scope
+Just as a block or function is nested inside another block or function, scopes are nested inside other scopes. If a variable cannot be found in the immediate scope the engine looks in the next outer containing scope, until the value is found or until the outmost (`global`) scope has been reached.
+
+### Errors
+If a RHS look-up fails to find a variable the `ReferenceError` would be thrown by the engine.
+
+If a LHS look-up fails, the engine arrives at the global scope without finding the value, 2 things can happen:
+
+1. If the program is running in `"strict mode"` the engine would throw `RefenceError`
+2. If the program is not running in strict mode the global scope will create the variable and hand it back to the engine.
+
+If a variable is found by a RHS look-up but you try to do something with its value that  is impossible, the engine throws a `TypeError`.
+
+`ReferenceError` is scope resolution failure, `TypeError` implies that scope resolution was successful but there was an illegal / impossible action attempted against the result.
+
+
+### Lexical Scope
+Lexical scope is scope that defined at lexing time. It is based on where variables and blocks of scope are authored by the developer at write time. Thus it is mostly set in stone by the time the lexer processes the code.
+
+Scope look-up stop once it finds the first match. The same identifier name can be specified at multiple layers of nested scope. This is called shadowing, the interior identified shadows the outer identifier.
+
+Scope lookup always starts at the innermost scope being executed at the time, and works its way outward / upward until the first match and stops.
+
+Global variables are automatically become properties of the global object - `window` in browsers. It is possible to reference a global variable not directly by though the global object, this overcomes shadowing.
+
+```javascript
+window.foo;
+```
+
+Not matter where a function is invoked from the lexical scope is only defined by where the function was declared.
+
+
+### Cheating Lexical Scope
+Cheating lexical scope leads to poorer performance.
+
+
+#### eval()
+`eval(..)` - runs a string of JavaScript code, when `eval` is used in strict-mode program, the code will execute in it's own lexical scope. The declarations made inside of the `eval()` do not modify the enclosing scope.
+
+#### setTimeOut() / setInverval()
+ Similar to eval, `setTimeOut(..)` and `setInverval(..)` can take a string for their first arguments, the contents of which are evaluated as the code of a dynamically generated function. This is old, legacy behavior that was deprecated.
+
+#### new Function()
+The `new Function(..)` function constructor takes a string of code in its last last argument to turn it into dynamically generated function. It's slightly safer than `eval()` but it should still be avoided.
+
+#### with
+The `with` keyword a shorthand for making multiple property references against an object without repeating the object reference itself each time.
+
+The `with` statement taken an object, one that has zero or more properties, and treats it as if is a wholly new lexical scope. Thus the object's properties are treated as lexically defined in that scope.
+
+Event though a `with`block treats an object like a lexical scope, a normal `var` declaration inside that `with` block will not scope to that `with`, but instead to the containing function scope.
+
+`width` is disabled in strict-mode.
