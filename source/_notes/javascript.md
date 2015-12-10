@@ -367,4 +367,81 @@ The `with` statement taken an object, one that has zero or more properties, and 
 
 Event though a `with`block treats an object like a lexical scope, a normal `var` declaration inside that `with` block will not scope to that `with`, but instead to the containing function scope.
 
-`width` is disabled in strict-mode.
+`with` is disabled in strict-mode.
+
+
+### Functions as Scopes
+Function scope encourages the idea that all variables belong to the function, and can be used and reused through the entirety of the function, including nested scopes. Taking an arbitrary section of code and wrapping it in a function declaration, hides the code.
+
+**Principle of Least Privilege** - least authority or least exposure, In the design of software, such as API for module / object you should *expose* only what is minimally necessary and *hide* everything else.
+
+Benefit of hiding also prevents name collision between two different identifiers with the same name but different intended uses. Collision results in unexpected overwriting of values.
+
+To avoid polluting the global namespace in the aim for function scoping of code, use the IIFE - immediately invoked function expression, with an anonymous function.
+
+```javascript
+var a = 2;
+
+(function foo() {
+    var a = 3;
+    console.log(a);  // 3
+})
+
+console.log(a);      // 2
+```
+
+The function statement starts with `(function..)` as opposed to just `function`, instead of treating the function as a standard declaration, the function is treated as a function expression. If `function` is the first thing in the statement, then it's a function declaration, otherwise it's a function expression.
+
+`(function foo(){..})` as an expression means the identified `foo` is found only in the scope where the `...` indicates, not the outer scope. Hiding the name `foo` inside itself. It does not pollute the enclosing scope. IIFE's are popular as callbacks parameters.
+
+Function expressions can be anonymous, but function declaration cannot omit the name, it would be a JS syntax error.
+
+The best practice is to always name your functions expressions.
+
+```javascript
+setTimeOut(function timeoutHandler() {..}, 100);
+```
+
+
+### Invoking Function Expressions Immediately
+Wrapping a function in `()` creates a function expression executing that function by adding another `()` on the end. The name of this pattern is IIFE.
+
+```javascript
+(function foo(){..})()
+```
+
+Passing arguments to the IIFE is useful to name outer scope objects in the function:
+
+```javascript
+(function IIFE( global ){..})( window );
+```
+
+Pass in the `window` object reference, but name it as parameter `global` to have a clear stylistic delineation for global versus non-global references.
+
+Sometimes it's useful to pass `undefined` to protect the code from an overridden value for `undefined`:
+
+```javascript
+undefined = true;   // very bad
+
+(function IIFE( undefined ){
+    var a;
+    if (a == undefined) {
+    console.log('undefined is safe');
+    }
+})();
+```
+
+### UMD Style IIFE
+The function declaration is given a second, after the invocation of parameters to pass to it.
+
+```javascript
+(function IIFE(def) {
+    def(window);
+})(function def(global) {
+    var a = 3;
+    console.log(a);
+    console.log(global.a);
+});
+```
+
+The `def` function expression is defined in the second half of the snippet passed as a parameter to the IIFE defined in the first half.
