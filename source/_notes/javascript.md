@@ -445,3 +445,161 @@ The function declaration is given a second, after the invocation of parameters t
 ```
 
 The `def` function expression is defined in the second half of the snippet passed as a parameter to the IIFE defined in the first half.
+
+
+### Block Scoping - ES6
+Declaring variables a close as possible as local as possible to where they will be used. For example the `for` loop in JS `var i=0` is defined to the enclosing scope.
+
+Block scoping is extending the principle of Least Privilige from hiding information to hiding informaiton in block.
+
+ES3 specified the variable declaration in `try` / `catch` clause to be block scoped to the catch block.
+
+
+#### The let Keyword - ES6
+ES6 introduced a new keyword `let` which sits alongside `var` as another way to declare variables. The `let` keyword attaches a variable declaration to the scope of whatever block (commonly a `{..}` pairs) it's contained in.
+
+`let` implicitly hijacks any block's scope for its variable declaration.
+
+```javascript
+var foo = true;
+
+if (foo){
+    let bar = foo * 2;
+    bar = something(bar);
+    console.log(bar);
+}
+
+console.log(bar);  // ReferenceError
+```
+
+```javascript
+for(let i = 0; i < 10; i++) {
+    console.log(i);
+}
+```
+
+We can create an arbitrary block for `let` to bind to by simply including a `{..}` pair anywhere a statement is valid. This creates an explicit block scope.
+
+Declarations made with `let` will not hoist to the top of the entire scope of the block they appear in. They will not exist in the block until the declaration statement.
+
+
+### The const Keyword - ES6
+ES6 intoruces `const`, which also creates a block scoped variable, but whose value is fixed (constant). Any attempt to change that value later will result in an error.
+
+```javascript
+var foo = true;
+
+if (foo) {
+    var   a = 2;
+    const b = 3; // block scoped to the if
+    a = 3;       // fine
+    b = 4;       // error
+}
+console.log(a);  // 3
+console.log(b);  // ReferenceError
+```
+
+
+### Hoisting
+All declaration of variables and function are processed first, before any of the code is executed. `var a = 2;` is actually two statements in JavaScript:
+
+1. The declaration during the compilation stage
+2. The assignment is left inplace for the execution stage
+
+Variable and function declarations are moved from where they appear in the flow of the code to the top of the code. This gives riso the name hoisting.
+
+Function declarations which include the implied value of it as an actual function is hoisted, such that the call on the function can execute.
+
+Hoisting is per scope, variable in functions would be hoisted as well within the function scope.
+
+Function declarations are hoisted, but function expressions are not.
+
+```javascript
+foo();  // not ReferenceError but TypeError
+var foo = function bar() {..};
+```
+
+The variable identifier `foo` is hoisted and attached to the top of the enclosing scope. So `foo()` doesn't fails as a `ReferenceError`. But `foo()` has no value yet, so `foo()` is attempting to invoke the `undefined` value, which is a `TypeError` illegal operation.
+
+
+#### Functions First
+Both functions and variable declarations are hoisted. But if the same name is reused in the code, multiple duplicate declarations are ignored. Function declarations are hoisted before normal variables, while multiple `var` declarations are ignored, subsquent function declarations do override previous ones.
+
+```javascript
+foo();    // 3
+function foo() { console.log(1); }
+var foo = function() { console.log(2) };
+function foo() { console.log(3); }
+```
+
+- Function declarations that appear inside normal blocks hoist to the enclosing scope, rather than being confitional as the code implies.
+- Avoid declaring functions in blocks.
+- Avoid multiple definitions within the same scope.
+
+
+### Scope Closure
+A clouse is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope.
+
+```javascript
+function foo() {
+    var a = 2;
+
+    function bar() {
+        console.log(a); // 2
+    }
+    bar();
+}
+foo();
+```
+
+- Function `bar()` has a closure over the scope of `foo()`.
+- Because `bar()` is nested inside of `foo()`.
+
+This closure example is not direclty observable, we can't see the closure excercised.
+
+```javascript
+function foo() {
+    var a = 2;
+
+    function bar() {
+        console.log(a);
+    }
+    return bar;
+}
+var baz = foo();
+baz();  // 2 observed a closure
+```
+
+The funciton `bar()` is executed outsize of its declared lexical scope. The inner scope of `foo()` does not go away and does not get garbage collected, the reference to that scope is called a closure.
+
+Any way that a function can be passed around as a value and invoked in other locations are examples of observing or exercising closures.
+
+```javascript
+function bar(fn) { fn(); } // closure
+```
+
+Whatever facility we use to transport an inner function outsie (`return`, global variable) of its lexical scope, it will maintain a scope to where it was originally declared. Wherever the funciton is executed, that closure will be exercised.
+
+```javascript
+function wait(message){
+    setTimeOut(function timer() {
+        console.log(message);
+    }, 1000);
+}
+wait("Hello, closure!");
+```
+
+Functions that have their own respective lexical sopes.
+
+```javascript
+function setupBot(name, selector) {
+    $(selector).click(function() {
+        activator() {
+        ...
+        }
+    });
+}
+setupBot('CB1', '#bot1');
+setupBot('CB2', '#bot2');
+```
+
