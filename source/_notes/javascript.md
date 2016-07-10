@@ -17,10 +17,10 @@ title: JavaScript
 Use `typeof` operator to examine the type of an object literal or a variable, returns a string representation of one of the 7 types.
 
 - `undefined` is the value of a variable before it gets assigned
-- functions that return nothing reutrn `undefined`
+- functions that return nothing return `undefined`
 - the `void` operator makes a variable undefined
 
-`Array` and `function `are subtypes of `object`, they have special properties such as length.
+`Array` and `function` are subtypes of `object`, they have special properties such as length.
 
 ```javascript
 typeof foo;     // "function"
@@ -28,7 +28,7 @@ typeof foo();   // "number"
 typeof foo.bar; // "string"
 ```
 
-The built-in types and subtypes have properties and methods via "boxing". There is a `String` object wrapper form - called "native" tht pairs with primitive types and defined the methords on it's prototype.
+The built-in types and subtypes have properties and methods via "boxing". There is a `String` object wrapper form - called "native" that pairs with primitive types and defined the methods on it's prototype.
 
 ```javascript
 a.length;
@@ -56,7 +56,7 @@ var b = a * 1;
 
 
 ### Equality Comparisons
-- `==` / `!=` checks for value equality / inequeality
+- `==` / `!=` checks for value equality / inequality
 - `===` / `!== ` checks for value and type (strict)
 
 ```javascript
@@ -66,11 +66,11 @@ a == b;  //true
 a === b; //false
 ```
 
-- If either value (side) in a comparison could be the true coersed or false value, avoid `==` and use `===` instead. 
+- If either value (side) in a comparison could be the true coerced or false value, avoid `==` and use `===` instead.
 - If either value in a comparison could be of value `0`, `""`, `[]` - avoid `==`, use `===` instead.
-- In all other cases it's safe to use `==`. 
+- In all other cases it's safe to use `==`.
 
-All non-primitive values (object, funciton, array) are held by reference, the `==` and `===` comparisons only check if the references match, not the underlying values.
+All non-primitive values (object, function, array) are held by reference, the `==` and `===` comparisons only check if the references match, not the underlying values.
 
 - Two arrays with the same contents are not the same.
 - Arrays are coerced to String by joining all values with commas.
@@ -87,7 +87,7 @@ a == b   // false
 ### Relational Comparisons
 Relational comparison with strings, if both values in the `<` comparison are string, the comparison is made lexicographically. If one or both is not a string, then both values are coerced to be numbers, and a typical numeric comparison occurs.
 
-The `NaN` - invalud number value is neither greater than nor less than any other value. In ES5 `NaN` is the only value that does not equal itself (a bug!). 
+The `NaN` - invalud number value is neither greater than nor less than any other value. In ES5 `NaN` is the only value that does not equal itself (a bug!).
 
 ```javascript
 var a = 42, b = "foo"
@@ -99,18 +99,18 @@ NaN !== NaN; // true
 ```
 
 
-### Varible Names
+### Variable Names
 An identifier must start with `a-z`, `A-Z`, `$` or `_`. It can then contain any of those characters plus the numerals `0-9`.
 
 
 ### Hoisting
-AWhen a `var` declaration is conceptually moved to the top of its encolosing scope.
+When a `var` declaration is conceptually moved to the top of its enclosing scope.
 
 
 ### Nested Scopes
 When a variable is declared it is available anywhere in that scope, as well as any lower / inner scopes.
 
- A `ReferenceError` thrown if you try to access a variable's value in a scope where it's not available.
+A `ReferenceError` thrown if you try to access a variable's value in a scope where it's not available.
 
 If you try to set a variable that was not declared, either a global variable will be declared or an error if `strict mode` is on.
 
@@ -151,8 +151,8 @@ var b = (a > 41) ? 'hello' : 'world';
 ```
 
 
-### Strict Mode Pragrma
-Strict mode was added in ES5, adds restrictions to make the code safer and more optimizable by the JS engine.
+### Strict Mode Pragma
+Strict mode was added in ES5, adds restrictions to make the code safer and more optimizeable by the JS engine.
 
 To use Strict Mode, add `"use strict";` to a function scope or to a global scope. Depending on where it was called.
 
@@ -173,8 +173,8 @@ function foo() {
 A function value should be thought of as an expression, much like any other value or expression.
 
 ```javascript
-var foo = function() {...} 
-var x = function bar() {...} 
+var foo = function() {...}
+var x = function bar() {...}
 ```
 - Anonymous function assigned to value `foo`.
 - Function expression named `bar`, a reference to it is assigned to the `x` variable.
@@ -275,7 +275,7 @@ Traditionally DOM and it's behavior is implemented by the browser in c/c++.
 
 
 
-## YDKJS 2: Sope and Closures
+## YDKJS 2: Scope and Closures
 Scope - the set of rules for storing variables in some location, the ability to store values in variables and pull values is what gives a program state.
 
 
@@ -354,18 +354,18 @@ Cheating lexical scope leads to poorer performance.
 #### eval()
 `eval(..)` - runs a string of JavaScript code, when `eval` is used in strict-mode program, the code will execute in it's own lexical scope. The declarations made inside of the `eval()` do not modify the enclosing scope.
 
-#### setTimeOut() / setInverval()
- Similar to eval, `setTimeOut(..)` and `setInverval(..)` can take a string for their first arguments, the contents of which are evaluated as the code of a dynamically generated function. This is old, legacy behavior that was deprecated.
+#### setTimeout() / setInterval()
+ Similar to eval, `setTimeout(..)` and `setInverval(..)` can take a string for their first arguments, the contents of which are evaluated as the code of a dynamically generated function. This is old, legacy behavior that was deprecated.
 
 #### new Function()
-The `new Function(..)` function constructor takes a string of code in its last last argument to turn it into dynamically generated function. It's slightly safer than `eval()` but it should still be avoided.
+The `new Function(..)` function constructor takes a string of code in its last argument to turn it into dynamically generated function. It's slightly safer than `eval()` but it should still be avoided.
 
 #### with
 The `with` keyword a shorthand for making multiple property references against an object without repeating the object reference itself each time.
 
 The `with` statement taken an object, one that has zero or more properties, and treats it as if is a wholly new lexical scope. Thus the object's properties are treated as lexically defined in that scope.
 
-Event though a `with`block treats an object like a lexical scope, a normal `var` declaration inside that `with` block will not scope to that `with`, but instead to the containing function scope.
+Even though a `with` block treats an object like a lexical scope, a normal `var` declaration inside that `with` block will not scope to that `with`, but instead to the containing function scope.
 
 `with` is disabled in strict-mode.
 
@@ -399,7 +399,7 @@ Function expressions can be anonymous, but function declaration cannot omit the 
 The best practice is to always name your functions expressions.
 
 ```javascript
-setTimeOut(function timeoutHandler() {..}, 100);
+setTimeout(function timeoutHandler() {..}, 100);
 ```
 
 
@@ -450,7 +450,7 @@ The `def` function expression is defined in the second half of the snippet passe
 ### Block Scoping - ES6
 Declaring variables a close as possible as local as possible to where they will be used. For example the `for` loop in JS `var i=0` is defined to the enclosing scope.
 
-Block scoping is extending the principle of Least Privilige from hiding information to hiding informaiton in block.
+Block scoping is extending the principle of Least Privilege from hiding information to hiding information in block.
 
 ES3 specified the variable declaration in `try` / `catch` clause to be block scoped to the catch block.
 
@@ -484,7 +484,7 @@ Declarations made with `let` will not hoist to the top of the entire scope of th
 
 
 ### The const Keyword - ES6
-ES6 intoruces `const`, which also creates a block scoped variable, but whose value is fixed (constant). Any attempt to change that value later will result in an error.
+ES6 introduces `const`, which also creates a block scoped variable, but whose value is fixed (constant). Any attempt to change that value later will result in an error.
 
 ```javascript
 var foo = true;
@@ -504,9 +504,9 @@ console.log(b);  // ReferenceError
 All declaration of variables and function are processed first, before any of the code is executed. `var a = 2;` is actually two statements in JavaScript:
 
 1. The declaration during the compilation stage
-2. The assignment is left inplace for the execution stage
+2. The assignment is left in-place for the execution stage
 
-Variable and function declarations are moved from where they appear in the flow of the code to the top of the code. This gives riso the name hoisting.
+Variable and function declarations are moved from where they appear in the flow of the code to the top of the code. This gives rise to the name hoisting.
 
 Function declarations which include the implied value of it as an actual function is hoisted, such that the call on the function can execute.
 
@@ -523,7 +523,7 @@ The variable identifier `foo` is hoisted and attached to the top of the enclosin
 
 
 #### Functions First
-Both functions and variable declarations are hoisted. But if the same name is reused in the code, multiple duplicate declarations are ignored. Function declarations are hoisted before normal variables, while multiple `var` declarations are ignored, subsquent function declarations do override previous ones.
+Both functions and variable declarations are hoisted. But if the same name is reused in the code, multiple duplicate declarations are ignored. Function declarations are hoisted before normal variables, while multiple `var` declarations are ignored, subsequent function declarations do override previous ones.
 
 ```javascript
 foo();    // 3
@@ -532,13 +532,13 @@ var foo = function() { console.log(2) };
 function foo() { console.log(3); }
 ```
 
-- Function declarations that appear inside normal blocks hoist to the enclosing scope, rather than being confitional as the code implies.
+- Function declarations that appear inside normal blocks hoist to the enclosing scope, rather than being conditional as the code implies.
 - Avoid declaring functions in blocks.
 - Avoid multiple definitions within the same scope.
 
 
 ### Scope Closure
-A clouse is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope.
+A closure is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope.
 
 ```javascript
 function foo() {
@@ -555,7 +555,7 @@ foo();
 - Function `bar()` has a closure over the scope of `foo()`.
 - Because `bar()` is nested inside of `foo()`.
 
-This closure example is not direclty observable, we can't see the closure excercised.
+This closure example is not directly observable, we can't see the closure exercised.
 
 ```javascript
 function foo() {
@@ -570,7 +570,7 @@ var baz = foo();
 baz();  // 2 observed a closure
 ```
 
-The funciton `bar()` is executed outsize of its declared lexical scope. The inner scope of `foo()` does not go away and does not get garbage collected, the reference to that scope is called a closure.
+The function `bar()` is executed outsize of its declared lexical scope. The inner scope of `foo()` does not go away and does not get garbage collected, the reference to that scope is called a closure.
 
 Any way that a function can be passed around as a value and invoked in other locations are examples of observing or exercising closures.
 
@@ -578,18 +578,18 @@ Any way that a function can be passed around as a value and invoked in other loc
 function bar(fn) { fn(); } // closure
 ```
 
-Whatever facility we use to transport an inner function outsie (`return`, global variable) of its lexical scope, it will maintain a scope to where it was originally declared. Wherever the funciton is executed, that closure will be exercised.
+Whatever facility we use to transport an inner function outside (`return`, global variable) of its lexical scope, it will maintain a scope to where it was originally declared. Wherever the function is executed, that closure will be exercised.
 
 ```javascript
 function wait(message){
-    setTimeOut(function timer() {
+    setTimeout(function timer() {
         console.log(message);
     }, 1000);
 }
 wait("Hello, closure!");
 ```
 
-Functions that have their own respective lexical sopes.
+Functions that have their own respective lexical scopes.
 
 ```javascript
 function setupBot(name, selector) {
@@ -603,3 +603,4 @@ setupBot('CB1', '#bot1');
 setupBot('CB2', '#bot2');
 ```
 
+Functions that have their own respective lexical scopes.
