@@ -604,3 +604,128 @@ setupBot('CB2', '#bot2');
 ```
 
 Functions that have their own respective lexical scopes.
+
+
+#### Loops and Closures
+
+```javascript
+for (var i = 1; i <= 5; i++) {
+  setTimeout (function timer() {
+    console.log(i);
+  }, i * 1000);
+}
+// => 6 (5 times)
+```
+
+We are trying to imply that each iteration of the loop captures its own copy of `i`, at the time of the iteration. But all five functions are closed over the same global shared scope, which has only one `i` in it.
+
+We need a new closured scope for each iteration of the loop, or pass j directly into the IIFE.
+
+```javascript
+for (var i = 1; i <= 5; i++) {
+  (function() {
+    var j = i;
+    setTimeout(function timer() {
+      console.log(j);
+    }, j * 1000)
+  })();
+}
+```
+ES6 block scope with closures:
+
+```javascript
+for (var i = 1; i <=5; i++) {
+  let j = i; // block scope for closure
+  setTimeout(function timer() {
+    console.log(j);
+  }, j * 1000);
+}
+```
+
+Or even simpler, use the `let` in the `for` loop variable declaration. This will declare the variable for each iteration. And will initialize it with the value of the subsequent value from the previous iteration.
+
+```javascript
+for(let i = 1; i <= 5; i++) {
+  setTimeout(function timer() {
+    console.log(i);
+  }, i * 1000);
+}
+```
+
+
+### Module pattern
+
+The most common way to implement the module pattern is called the revealing module.
+
+```javascript
+function CoolModule() {
+  var something = 'cool';
+  var another = [1,2,3];
+
+  function doSomething() {
+    console.log(something);
+  }
+
+  function doAnother() {
+    console.log(another.join('!'));
+  }
+
+  return {
+    doSomething: doSomething,
+    doAnother: doAnother
+  };
+}
+```
+
+```javascript
+var foo = CoolModule();
+
+foo.doSomething();   // cool
+foo.doAnother();    // 1!2!3!
+```
+
+`CoolModule()` is just a function, but it has to be invoked for there to be a module instance created.
+
+The `CoolModule()` function returns an object, it references the inner functions but not the inner data variables. The returned object is the public API for the inner module.
+
+It is not required to return an object literal from the module. We could return an inner function directly. jQuery follows this pattern.
+
+The `jQuery` and `$` identifiers are public API for the jQuery module, but they are just functions, which can have properties, since all functions are objects.
+
+Two conditions for the module pattern to exercised:
+
+1. There must be an outer enclosing function, it must be invoked at least once, each time returning a new module instance.
+2. The enclosing function must return back at least the inner function, so that this inner function has a closure over the private scope, and can access or modify that private state.
+
+- Modules are just functions so they can receive parameters.
+- Naming the returned object as Public API increases clarity in the code. It also allows the modification of the module from the inside allowing to remove methods and properties, and changing their values.
+
+```javascript
+var foo = (function CoolModule(id) {
+  function change() {
+    // mark the public API
+    publicAPI.identify = identify2;
+  }
+
+  function identify1() {
+    console.log(id);
+  }
+
+  function identify2() {
+    console.log(id.toUpperCase());
+  }
+
+  var publicAPI = {
+    change: change,
+    identify: identify1
+  };
+
+  return publicAPI;
+})('foo module');
+```
+
+```javascript
+foo.identify();    // foo module
+foo.change();
+foo.identify();    // FOO MODULE
+```
