@@ -845,7 +845,7 @@ obj.foo();  // 2
 - Only the top level of an object property reference chain matters to the call-site.
 
 
-### Losing Implicitly
+### Losing Implicity
 
 The `this` binding from an implicitly bound function can lose that binding, and fall back to the default binding of either the global object or `undefined`, depending on Strict Mode.
 
