@@ -777,3 +777,98 @@ foo.awesome();                    // LET ME INTRODUCE: HIPPO
 These operators can be used as many times as necessary.
 
 The contents of the module file are treated as if enclosed in a scope closure.
+
+
+
+## YDKJS 3: this & Object Prototypes
+
+The `this` keyword allows to implicitly pass along an object reference, leading to cleaner API design and easier reuse.
+
+The more complex the usage pattern is, the messier it is to pass a context parameter rather than the `this` context.
+
+`this` does not refer to the calling function's object like `self` in Rub. `this` does not refer to a function's lexical scope.
+
+Cannot use a `this` reference to look up something in a lexical scope. There is no bridge between `this` and lexical scope.
+
+
+### What is this
+
+`this` is not an author-time binding but a runtime binding. It is contextual based on the conditions at the function's invocation.
+
+The this binding has nothing to do with where a function is declared, but instead everything with the manner in which the function is called.
+
+
+### Call-Site
+
+Call-site - the location in code where a function is called (not where it is declared). It is in the invocation before the currently executing function.
+
+It is derived from the call-stack, the stack at functions that have been called to get to the current moment in execution.
+
+
+### Default this Binding
+
+This rule comes from the most common use case of function calls - standalone function invocation. The default catch-all rule for the `this` binding when none of the others apply.
+
+```javascript
+function foo() {
+  console.log(this.a);
+}
+
+var a = 2;
+foo();  // 2
+```
+
+- global variables are global-object properties.
+- `this.a` resolves to the global variable `a`.
+- default binding for `this` to the global object.
+- `foo()` is called with a plain undecorated function reference.
+- if strict mode, the global object is not eligible for the default binding, the `this` will be set to undefined.
+- the contents of `foo()` need to be strict for the default binding to be strict.
+
+
+### Implicit this binding
+
+When the call-site has a context object.
+
+```javascript
+function foo() {
+  console.log(this.a);
+}
+
+var obj = {a:2, foo: foo};
+obj.foo();  // 2
+```
+
+- The call-site uses `obj` context to reference the function, `obj` owns or contains the function reference at the time the function is called.
+- `foo()` is called, it's preceded by an object reference to `obj`, when there is a context-object for a function reference the implicit binding rule says that it's context object should be used for the function's `this` binding.
+- Because `obj` is the `this` fo the `foo()` call, `this.a` is synonymous with `obj.a`.
+- Only the top level of an object property reference chain matters to the call-site.
+
+
+### Losing Implicitly
+
+The `this` binding from an implicitly bound function can lose that binding, and fall back to the default binding of either the global object or `undefined`, depending on Strict Mode.
+
+```javascript
+function foo() {
+  console.log(this.a);
+}
+
+var obj = {a: 2, foo: foo};
+var bar = obj.foo;   // function alias
+var a = 'global object';
+bar();  // global object
+```
+
+The call-site is what matters, the call site `bar()` is a plain, undecorated call, thus the default binding applies.
+
+```javascript
+function doFoo(fn) {
+  // fn is a reference to foo
+  fn();
+}
+
+doFoo(obj.foo);  // global object
+```
+
+Parameters passing is an implicit assignment, since the function is passed, it's an implicit reference assignment.
