@@ -729,3 +729,51 @@ foo.identify();    // foo module
 foo.change();
 foo.identify();    // FOO MODULE
 ```
+
+
+### ES6 Modules
+
+ES6 adds a first class support for the concept of modules. ES6 treats a file as a separate module. Each module can import other modules or specific API members, as well as export their own public API members.
+
+ES6 module APIs are static, the API cannot change at runtime. The engine during the compilation checks that a reference to a member of in implied module's API actually exit. If it doesn't it throws an error.
+
+ES6 modules do not have an inline format, they must be defined in separate files - one per module.
+
+```javascript
+// bar.js;
+function hello(who) {
+  return 'Let me introduce: ' + who;
+}
+export hello;
+```
+
+```javascript
+// foo.js
+// import only 'hello()' from bar module
+import hello from "bar";
+var hungry = 'hippo';
+
+function awesome() {
+  console.log(hello(hungry).toUpperCase());
+}
+
+export awesome;
+```
+
+```javascript
+// baz.js
+// import the entre foo and bar modules
+module foo from 'foo';
+module bar from 'bar';
+
+console.log(bar.hello('rhino'));  // Let me introduce: rhino
+foo.awesome();                    // LET ME INTRODUCE: HIPPO
+```
+
+- `import` - imports one or more members from a module's API into the current scope, each bound to a variable.
+- `module` - imports an entire module API for the current scope and bound to a variable.
+- `export` - exports an identifier (variable / function) to the public API for the current module.
+
+These operators can be used as many times as necessary.
+
+The contents of the module file are treated as if enclosed in a scope closure.
