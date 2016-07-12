@@ -872,3 +872,176 @@ doFoo(obj.foo);  // global object
 ```
 
 Parameters passing is an implicit assignment, since the function is passed, it's an implicit reference assignment.
+
+
+### Explicit this Binding
+
+To force a function call to use a particular object for the `this` binding, without putting a property function reference on the object.
+
+Functions have `call` and `apply` methods. They both take as their first parameter an object to use for the `this`, and then invoke the function with that `this` specific.
+
+```javascript
+function foo() {
+  console.log(this.a);
+}
+
+var obj = {a: 2};
+
+foo.call(obj);   // 2
+```
+
+- Invoking `foo()` with explicit binding by `foo.call(..)` forces this `this` to be `obj`.
+- If a simple primitive value is passed (string, boolean or number) as the `this` binding, the primitive value is wrapped in its object form (`new String(..)`, `new Boolean(..)` or `new Number(..)`).
+- This is referred to as 'Boxing'.
+
+
+### Hard Binding
+
+```javascript
+function foo() {
+  console.log(this.a);
+}
+
+var obj = {a: 2};
+var bar = function() {
+  foo.call(obj);
+}
+
+bar();                 // 2
+setTimeout(bar, 100);  // 2
+bar.call(window);      // 2
+```
+
+- Create a function `bar()` which internally manually calls `foo.call(obj)`. 
+- Forcing `foo` to bind `this` to `obj`. 
+- No matter how later `bar` is being invoked, it will always manually invoke `foo` with `obj`. 
+- This binding is explicit and strong - called hard binding.
+
+Typical hard-binding - creates a pass-through of any argument passed and any return values received.
+
+```javascript
+function foo(something) {
+  console.log(this.a, something);
+  return this.a + something;
+}
+
+var obj = {a: 2};
+var bar = function() {
+  return foo.apply(obj, arguments);
+}
+
+var b = bar(3);  // 2 3
+console.log(b);  // 5
+```
+
+or create a reusable helper:
+
+```javascript
+function bind(fn, obj) {
+  return function() {
+    return fn.apply(obj, arguments);
+  };
+}
+
+var bar = bind(foo, obj);
+```
+
+
+### ES5 Native Binding
+
+Hard binding is a common pattern and hence ES5 has a built-in utility, `Funcion.prototype.bind`.
+
+```javascript
+function foo(something) {
+  console.log(this.a, something);
+  return this.a + something;
+}
+
+var obj = {a: 2};
+var bar = foo.bind(obj);
+
+var b = bar(3);  // 2 3
+console.log(b);  // 5
+```
+
+The `bind(..)` returns a new function that is hardcoded to call the original function with the `this` context set as you specified.
+
+
+### new Binding
+
+Constructors in JavaScript are just functions that are called with the `new` keyword in from of them.
+
+They are not attached to classes or instantiation of a class. They are regular functions that are hijacked by the use of `new` in their invocation.
+
+```javascript
+something = new MyClass(..);
+```
+
+There is no such thing as "Constructor Functions", but rather construction calls of functions. When a function is invoked with a `new` in front of it (Constructor call), the following things are done automatically:
+
+1. A brand new object is constructed.
+2. The new object is `[Prototype]` linked.
+3. The new object is set as the `this` binding for that function call.
+4. Unless the function returns its own alternate object, the `new` invoked function call will automatically return the newly constructed object.
+
+```javascript
+function foo(a) {
+  this.a = a;
+}
+
+var bar = new foo(2);
+console.log(bar.a);   // 2
+```
+
+- By calling `foo` with new in front of it, a new object is constructed with the `this` is bound to it. 
+- This is referred to as the `new` binding.
+
+
+### Determining this
+
+From a function call's call-site, in order of precedence, ask in order, stop when first rule applies:
+
+1. Is the function called with `new` (new binding)? If so, `this` is the newly constructed object. 
+
+  `var bar = new foo();`
+
+2. Is the function called with `call` or `apply` (explicit binding), even hidden inside a `bind` hard binding? If so, `this` is the explicitly specified object.
+
+  `var bar = foo.call(obj2);``
+
+3. Is the function called with a context (implicit binding), otherwise knows as an owning or containing object? If so, `this` is that context object.
+
+  `var bar = obj1.foo();`
+
+4. Otherwise, default `this` binding. If in Strict Mode, pick `undefined` otherwise pick Global Object.
+
+
+### Binding Exceptions
+
+If you pass `null` or `undefined` as a `this` binding parameter to `call`, `apply` or `bind`. These values are effectively ignored, and instead the default binding rule applies to the invocation.
+
+```javascript
+function foo() {
+  console.log(this.a);
+}
+
+var a = 2;
+foo.call(null);  // 2
+```
+
+This would be done for spreading out arrays of values (`apply(...)`) as parameters in a function call or `bind()` can curry parameters (preset values).
+
+```javascript
+function foo(a, b) {
+  console.log('a: ' + a, 'b: ' + b);
+}
+
+// spreading out array as parameters
+foo.apply(null, [2, 3]);     // a: 2, b:3
+
+// currying with bind
+var bar = foo.bind(null, 2)  // a: 2, b: 3
+bar(3);                      // a: 2, b: 3
+```
+
+Be careful passing the `null` parameter to library code functions, can mutate global object by accident.
