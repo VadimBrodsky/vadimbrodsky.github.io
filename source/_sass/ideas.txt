@@ -1,0 +1,17 @@
+- https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+- https://robots.thoughtbot.com/embedding-elixir-structs-in-ecto-models
+- http://jasonsantamaria.com/
+- https://ia.net/know-how/logo-bullshit-co-inc
+- https://medium.com/
+- https://thegreatdiscontent.com/interview/michael-bierut
+- http://krownthemes.com/jackman/blog/
+- http://pellere.golem.io/
+- http://simplebits.com/
+- https://daneden.me/2015/02/15/the-landscape-of-web-typography/
+- http://alistapart.com/column/nearly-headless-cms
+- http://www.markboulton.co.uk/
+- http://www.newyorker.com/tech/elements/the-strangers-in-your-brain?intcid=mod-latest
+- http://labs.thewebahead.net/thelayoutsahead/
+- https://rachelandrew.co.uk/
+- http://adventurethemes.com/demo/writer/jekyll/v1-d-20-2/
+- http://www.zeldman.com/
