@@ -912,9 +912,9 @@ setTimeout(bar, 100);  // 2
 bar.call(window);      // 2
 ```
 
-- Create a function `bar()` which internally manually calls `foo.call(obj)`. 
-- Forcing `foo` to bind `this` to `obj`. 
-- No matter how later `bar` is being invoked, it will always manually invoke `foo` with `obj`. 
+- Create a function `bar()` which internally manually calls `foo.call(obj)`.
+- Forcing `foo` to bind `this` to `obj`.
+- No matter how later `bar` is being invoked, it will always manually invoke `foo` with `obj`.
 - This binding is explicit and strong - called hard binding.
 
 Typical hard-binding - creates a pass-through of any argument passed and any return values received.
@@ -993,7 +993,7 @@ var bar = new foo(2);
 console.log(bar.a);   // 2
 ```
 
-- By calling `foo` with new in front of it, a new object is constructed with the `this` is bound to it. 
+- By calling `foo` with new in front of it, a new object is constructed with the `this` is bound to it.
 - This is referred to as the `new` binding.
 
 
@@ -1001,7 +1001,7 @@ console.log(bar.a);   // 2
 
 From a function call's call-site, in order of precedence, ask in order, stop when first rule applies:
 
-1. Is the function called with `new` (new binding)? If so, `this` is the newly constructed object. 
+1. Is the function called with `new` (new binding)? If so, `this` is the newly constructed object.
 
   `var bar = new foo();`
 
@@ -1045,3 +1045,77 @@ bar(3);                      // a: 2, b: 3
 ```
 
 Be careful passing the `null` parameter to library code functions, can mutate global object by accident.
+
+
+## Objects
+
+There are two ways to create an object, declarative _literal_ form and the constructed form.
+
+```javascript
+var myObj = {
+  key: value;
+}
+
+var myObj = new Object();
+myObj.key = value;
+```
+
+The literal form can add one or more key/value pairs to the declaration. While with the constructed  form the properties are added one by one.
+
+
+#### Type
+
+The `string`, `boolean`, `number`, `null` and `undefined` types are not objects. There is a bug in the language that returns the string `"object"` for `typeof null`. `null` is it's own primitive type.
+
+Not everything in JavaScript is an object, unlike Ruby.
+
+
+#### Complex Primitives
+
+There are a few special subtypes of objects that are referred as complex primitives.
+
+- `function` is a subtype of `object` - callable object that can be handled like any other plain object in JavaScript.
+- `array` is a subtype of `object` - with extra behavior.
+
+
+#### Built-In Objects
+
+There are also object subtypes, they are related to their primitive counterparts: `String`, `Boolean`, `Object`, `Function`, `Array`, `Date`, `RegExp`, `Error`.
+
+These are built-in functions that can be used as constructors, which result in a newly constructed object of that subtype.
+
+```javascript
+var strPrimitive = "I am a string";
+typeof strPrimitive;                           // string
+strPrimitive instanceof String;                // false
+
+var strObject = new String('I am a string');
+typeof strObject;                              // object
+Object.prototype.toString.call(strObject);     // [object String]
+```
+
+The primitive value `"I am a string"` is not an object, it's a primitive literal and immutable value. To perform operations on it, such as checking length etc. a string object is required.
+
+- The language automatically coerces primitive to a String Object when necessary.
+- String literal construction is preferred in most cases.
+- `null` and `undefined` have no object form wrappers.
+- `Date` has no literal constructor.
+- `Object`, `Array`, `Function`, `RegExp` - are objects regardless of whether the literal or constructed form.
+- `Error` objects are created automatically when an exception is thrown, but can be also be created with the constructor `new Error(..)`.
+
+
+#### Contents / Properties
+
+Objects contents or properties are pointers or references to where the values are stored in memeory.
+
+```javascript
+myObject = {a: 2};
+myObject.a;         // 2   - property access
+myObject['a'];      // 2   - key access
+```
+
+The key access syntax uses a string to specify the location, the program can build up the value of the string to be evaluated.
+
+In object property names are always strings. If any other primitive is used it will always be converted to a string. This also includes numbers.
+
+Functions never belong to objects, functions are accessed on an object reference. Functions and methods are interchangeable in JavaScript.
