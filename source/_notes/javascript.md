@@ -1119,3 +1119,138 @@ The key access syntax uses a string to specify the location, the program can bui
 In object property names are always strings. If any other primitive is used it will always be converted to a string. This also includes numbers.
 
 Functions never belong to objects, functions are accessed on an object reference. Functions and methods are interchangeable in JavaScript.
+
+
+### Arrays
+
+Arrays assume numeric indexing, the values are stored in locations using indices. As positive integers from 0. Arrays are objects, you can add properties to the array:
+
+```javascript```
+var myArray = ["foo", 42, "bar"];
+myArray.baz = "baz";
+myArray.length;   // 3
+```
+
+If a property is added to an Array that can  be coerced to a number, it will become a numeric index and will be part of the array.
+
+
+### Property Descriptors
+
+Prior to ES5, the JavaScript language gave no direct way for the code to inspect and distinguish between the characteristics of properties: ie reusable / writable properties.
+
+```javascript
+var myObject = {a: 2};
+Object.getOwnPropertyDescriptor(myObject, 'a');
+// {value: 2, writable: true, enumerable: true, configurable: true}
+```
+
+Use `Object.defineProperty(..)` to add new properties or modify existing ones.
+
+```javascript
+Object.defineProperty(myObject, "a", {
+  value: 2,
+  writable: false,
+  configurable: true,
+  enumerable: true
+});
+
+myObject.a = 3;
+myObject.a  // 2
+```
+
+- Changing configurable to `false` is a one-way action and cannot be undone.
+- The only exception is changing writable from `true` to `false`.
+- It also prevents the `delete` operator to remove an existing property.
+
+`delete` is used to remove object properties directly from the object in question. If an object property is the last remaining reference to some object or function, it removes the reference and the unreferenced object / function can be garbage collected.
+
+`enumerable` controls whether a property will show in a certain object-property enumerations, such as `for..in` loop
+
+
+#### Object Constraints
+
+By combining `writable: flase` and `configurable: false`, you can create a constant as an object property.
+
+```javascript
+Object.defineProperty(myObject, "FAVOURITE_NUMBER", {
+  value: 42, writable: false, configurable: false
+});
+```
+
+
+#### Prevent Extensions
+
+To prevent an object from having new properties added to it, but otherwise make all other properties unchaged.
+
+```javascript
+var myObject = {a: 3};
+Object.preventExtensions(myObject);
+
+myObject.b = 3;
+myObject.b;  // undefined
+```
+
+#### Seal
+
+`Object.seal(..)` creates a sealed object, refuses extensions and adds `configurable: false`.
+
+- Cannot add any more properties
+- Cannot reconfigure existing properties
+- But can modify values.
+
+
+#### Freeze
+
+`Object.freeze(..)` creates a frozen object, which is the same as sealing the object and making all data properties as `writable: false`, so their values cannot change.
+
+- This is the highest level of immutability that an object can attain.
+- Prevents changes to the object or to any of its direct properties.
+- Contents of any referenced objects are unaffected.
+
+To deep freeze an object call `Object.freeze(..)` on it, then recursively freeze over the object references and call `Object.freeze(..)` on them.
+
+
+### Getters and Setters
+
+The default `[[PUT]]` and `[[GET]]` operators for objects completely control how values are set to existing or new properties, or retrieved from existing properties.
+
+ES5 introduced a way to override part of the default operations on the property level, the use of getters and setters.
+
+- Getters are properties that call a hidden function to retrieve a value.
+- Setters are properties that call a hidden function to set a value.
+- When a property has a defined getter or setter or both, its definition becomes an accessor descriptor.
+
+For accessor descriptors the `value` and `writable` characteristics are ignored, instead JavaScript the `set` and `get` characteristics of the property, as well as `configurable` and `enumerable`.
+
+```javascript
+var myObject = {
+  // define getter for a
+  get a() { return 2; }
+};
+
+Object.defineProperty(
+  myObject,                                 // target
+  "b",                                      // property name
+  {                                         // descriptor
+    get: function() { return this.a * 2 },  // getter for b
+    enumerable: true                        // make sure b shows as a property
+  }
+);
+
+myObject.a;  // 2
+myObject.b;  // 4
+```
+
+The setter can be created either via an object literal or explicit definition syntax.
+
+It is a good practice to define both a setter and a getter for a property, to avoid unexpected behavior.
+
+```javascript
+var myObject = {
+  get a() { return this._a_; },
+  set a(val) { this._a_ = val * 2;}
+};
+
+myObject.a = 2;
+myObject.a;   // 4
+```
