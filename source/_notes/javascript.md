@@ -1254,3 +1254,24 @@ var myObject = {
 myObject.a = 2;
 myObject.a;   // 4
 ```
+
+
+### Existence
+
+Can ask an object if it has a certain property without asking to get that property's value.
+
+```javascript
+var myObject = { a: 2 };
+('a' in myObject);     // true
+('b' in myObject);    // false
+
+myObject.hasOwnProperty('a');  // true
+myObject.hasOwnProperty('b');  // false
+```
+
+- The `in` operator checks if a property is in the object, or if it exists on the prototype chain object traversal.
+- The `hasOwnProperty(..)` function checks to see if only `myObject` has the property or not, without looking in the prototype chain.
+
+`hasOwnProperty(..)` is accessible for all normal objects via delegation to `Object.prototype`, but if an object is created without a link to `Object.prototype` via `Object.create(null)`. The `hasOwnProperty(..)` would fail.
+
+In this scenario use `Object.prototype.hasOwnProperty.call(myObject, 'a')`, which borrows the base `hasOwnProperty(..)` method and uses explicit binding to apply it against `myObject`.
