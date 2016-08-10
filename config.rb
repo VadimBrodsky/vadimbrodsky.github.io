@@ -31,6 +31,7 @@ set :sass_source_maps, true
 # Reload the browser automatically whenever files change
 configure :development do
   activate :livereload
+  config[:host] = 'http://localhost:4567'
 end
 
 ###
@@ -46,6 +47,7 @@ end
 
 # Build-specific configuration
 configure :build do
+  config[:host] = 'http://vadimbrodsky.com'
   # Minify CSS on build
   # activate :minify_css
 
