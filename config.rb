@@ -25,7 +25,7 @@ set :images_dir, "#{ASSETS}/images"
 set :js_dir, "#{ASSETS}/js"
 set :layouts_dir, '_layouts'
 
-set :sass_assets_paths, []
+set :sass_assets_paths, ['bower_components']
 set :sass_source_maps, true
 
 # Reload the browser automatically whenever files change
