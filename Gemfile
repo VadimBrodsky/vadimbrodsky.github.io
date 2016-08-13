@@ -11,3 +11,6 @@ gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 # Middleman Gems
 gem 'middleman', '>= 4.0.0'
 gem 'middleman-livereload'
+
+# Additional Gems
+gem 'bourbon', '~> 4.2', '>= 4.2.7'
