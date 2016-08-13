@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang="en-us">
   <%= partial '_partials/head' %>
-
   <body class="<%= page_classes %>">
+
+    <%= partial '_partials/navigation' %>
     <%= yield %>
+
   </body>
 </html>
