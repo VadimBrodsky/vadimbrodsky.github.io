@@ -1,10 +1,13 @@
 <!doctype html>
 <html lang="en-us">
   <%= partial '_partials/head' %>
-  <body class="<%= page_classes %>">
+  <body class="<%= page_classes %> page__body">
 
     <%= partial '_partials/navigation' %>
-    <%= yield %>
+    <main role="main" class="page__wrap">
+      <%= yield %>
+    </main>
+    <%= partial '_partials/footer' %>
 
   </body>
 </html>
