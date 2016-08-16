@@ -3,44 +3,62 @@ title: Welcome to Middleman
 ---
 
 
-<section class="section__intro">
-  <h2 class="text__large text__light"><%= lorem.paragraph %></h2>
-  <p class="text__medium"><%= lorem.paragraph %></p>
-  <p class="text__medium"><%= lorem.sentence %></p>
-</section>
-
-
-<section class="grid section__secondary">
-  <div class="grid__col grid__col--1-of-2">
-    <h2><%= lorem.words(2).titleize %></h2>
-    <p><%= lorem.paragraph %></p>
-  </div>
-  <div class="grid__col grid__col--1-of-2">
-    <h2><%= lorem.words(2).titleize %></h2>
-    <p><%= lorem.paragraph %></p>
+<section class="grid section__intro">
+  <div class="grid__col grid__col--2-of-2">
+    <div class="section__content">
+      <h2 class="text__large text__light"><%= lorem.paragraph %></h2>
+      <p class="text__medium"><%= lorem.paragraph %></p>
+      <p class="text__medium"><%= lorem.sentence %></p>
+    </div>
   </div>
 </section>
 
 
-<section class="section__blog">
-  <h2><%= lorem.words(2).titleize %></h2>
-  <ul>
-    <% 5.times do %>
-    <li>
-      <article>
-      <time datetime="<%= lorem.date %>" pubdate=""><%= lorem.date %></time>
-      <h2><%= lorem.sentence %></h2>
-      <footer>
-        <ul>
-          <li><a href="#"><%= lorem.word %></a></li>
-          <li><a href="#"><%= lorem.word %></a></li>
-          <li><a href="#"><%= lorem.word %></a></li>
-        </ul>
-      </footer>
-      </article>
-    </li>
-  <% end %>
-  </ul>
+<section class="grid grid--no-gutter section__secondary">
+  <div class="grid__col grid__col--1-of-2">
+    <div class="section__content">
+      <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
+      <p><%= lorem.paragraph %></p>
+    </div>
+  </div>
+  <div class="grid__col grid__col--1-of-2">
+    <div class="section__content">
+      <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
+      <p><%= lorem.paragraph %></p>
+    </div>
+  </div>
+</section>
+
+
+<section class="grid grid--no-gutter section__blog">
+  <div class="grid__col grid__col--2-of-2">
+    <div class="section__content text__center">
+      <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
+      <ul class="blog__posts">
+        <% 5.times do %>
+        <li>
+          <article class="grid blog__post">
+          <div class="grid__col grid__col--1-of-4 blog__date">
+            <time datetime="<%= lorem.date %>" pubdate=""><%= lorem.date %></time>
+          </div>
+          <div class="grid__col grid__col--3-of-4">
+            <h2 class="blog__post-title">
+              <a href="#"> <%= lorem.sentence %> </a>
+            </h2>
+            <footer>
+              <ul class="blog__tags">
+                <li><a href="#">#<%= lorem.word %></a></li>
+                <li><a href="#">#<%= lorem.word %></a></li>
+                <li><a href="#">#<%= lorem.word %></a></li>
+              </ul>
+            </footer>
+          </div>
+          </article>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
 </section>
 
 
