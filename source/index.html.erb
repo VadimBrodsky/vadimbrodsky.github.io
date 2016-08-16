@@ -62,8 +62,22 @@ title: Welcome to Middleman
 </section>
 
 
-<section class="section__work">
-  <h2><%= lorem.words(2).titleize %></h2>
+<section class="grid grid--no-gutter section__work">
+  <div class="grid__col grid__col--2-of-2">
+    <div class="section__content">
+      <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
+        <ul class="work__posts">
+        <% 6.times do %>
+          <li>
+          <figure>
+          <img src="<%= lorem.image('300x400', random_color: true) %>" alt="" />
+          <figcaption><%= lorem.words(3) %></figcaption>
+          </figure>
+          </li>
+        <% end %>
+        </ul>
+    </div>
+  </div>
 </section>
 
 <section class="section__projects">
