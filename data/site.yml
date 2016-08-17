@@ -4,7 +4,7 @@ title_default: Interesting insights
 title_expanded: Vadim Brodsky
 author:
   name: Vadim Brodsky
-  email: vadim.brodsky@gmail.com
+  email: vadim@vadimbrodsky.com
 tagline: Designer, Developer, Human
 description: This a personal blog of Vadim Brodsky, disucssing design, development and all things remarkable.
 twitter_username: vadimbrodsky
@@ -19,3 +19,5 @@ social_media:
   url: 'https://medium.com/@VadimBrodsky'
 - title: LinkedIn
   url: 'https://ca.linkedin.com/in/vbrodsky'
+- title: CodePen
+  url: 'http://codepen.io/VadimBrodsky/'

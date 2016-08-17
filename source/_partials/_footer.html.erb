@@ -1,9 +1,9 @@
 <footer class="page__footer">
   <div class="section__content">
     <h2 class="footer__header">
-      <%= lorem.sentence %>
+      Get in touch, say hello
       <br />
-      <strong> <%= lorem.words 3 %> </strong>
+      <strong> <%= data.site.author[:email] %> </strong>
     </h2>
     <ul class="grid grid--no-gutter footer__social-media">
       <% data.site.social_media.each do |network| %>
