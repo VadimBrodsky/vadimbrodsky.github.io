@@ -60,7 +60,7 @@ title: Welcome to Middleman
 </section>
 
 
-<section class=" section__work">
+<section class="section__work">
   <div class="section__content">
     <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
     <ul class="work__posts grid">
@@ -69,8 +69,8 @@ title: Welcome to Middleman
         <figure class="work__post">
           <a href="#">
             <img src="<%= lorem.image('400x500', random_color: true) %>" alt="" />
-            <figcaption><%= lorem.words(3).titleize %></figcaption>
           </a>
+          <figcaption><%= lorem.words(3).titleize %></figcaption>
         </figure>
       </li>
     <% end %>
@@ -79,5 +79,23 @@ title: Welcome to Middleman
 </section>
 
 <section class="section__projects">
-  <h2><%= lorem.words(2).titleize %></h2>
+  <div class="section__content">
+    <div class="grid">
+      <div class="grid__col grid__col--2-of-6">
+        <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
+        <p><%= lorem.paragraph %></p>
+      </div>
+      <div class="grid__col grid__col--4-of-6 projects__wrap">
+        <ul class="grid">
+          <% 8.times do %>
+            <li class="grid__col grid__col--1-of-3 projects__item">
+              <span class="projects__technology"><%= lorem.words(1).titleize %></span>
+              <h3 class="projects__title"><%= lorem.words(3).titleize %></h3>
+              <p class="projects__description"><%= lorem.sentence %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
