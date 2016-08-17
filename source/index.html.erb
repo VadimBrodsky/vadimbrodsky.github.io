@@ -30,53 +30,51 @@ title: Welcome to Middleman
 </section>
 
 
-<section class="grid grid--no-gutter section__blog">
-  <div class="grid__col grid__col--2-of-2">
-    <div class="section__content text__center">
-      <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
-      <ul class="blog__posts">
-        <% 5.times do %>
-        <li>
-          <article class="grid blog__post">
-          <div class="grid__col grid__col--1-of-4 blog__date">
-            <time datetime="<%= lorem.date %>" pubdate=""><%= lorem.date %></time>
-          </div>
-          <div class="grid__col grid__col--3-of-4">
-            <h2 class="blog__post-title">
-              <a href="#"> <%= lorem.sentence %> </a>
-            </h2>
-            <footer>
-              <ul class="blog__tags">
-                <li><a href="#">#<%= lorem.word %></a></li>
-                <li><a href="#">#<%= lorem.word %></a></li>
-                <li><a href="#">#<%= lorem.word %></a></li>
-              </ul>
-            </footer>
-          </div>
-          </article>
-        </li>
-      <% end %>
-      </ul>
-    </div>
+<section class="section__blog">
+  <div class="section__content text__center">
+    <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
+    <ul class="blog__posts">
+      <% 5.times do %>
+      <li>
+        <article class="grid blog__post">
+        <div class="grid__col grid__col--1-of-4 blog__date">
+          <time datetime="<%= lorem.date %>" pubdate=""><%= lorem.date %></time>
+        </div>
+        <div class="grid__col grid__col--3-of-4">
+          <h2 class="blog__post-title">
+            <a href="#"> <%= lorem.sentence %> </a>
+          </h2>
+          <footer>
+            <ul class="blog__tags">
+              <li><a href="#">#<%= lorem.word %></a></li>
+              <li><a href="#">#<%= lorem.word %></a></li>
+              <li><a href="#">#<%= lorem.word %></a></li>
+            </ul>
+          </footer>
+        </div>
+        </article>
+      </li>
+    <% end %>
+    </ul>
   </div>
 </section>
 
 
-<section class="grid grid--no-gutter section__work">
-  <div class="grid__col grid__col--2-of-2">
-    <div class="section__content">
-      <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
-        <ul class="work__posts">
-        <% 6.times do %>
-          <li>
-          <figure>
-          <img src="<%= lorem.image('300x400', random_color: true) %>" alt="" />
-          <figcaption><%= lorem.words(3) %></figcaption>
-          </figure>
-          </li>
-        <% end %>
-        </ul>
-    </div>
+<section class=" section__work">
+  <div class="section__content">
+    <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
+    <ul class="work__posts grid">
+    <% 6.times do %>
+      <li class="grid__col grid__col--1-of-3">
+        <figure class="work__post">
+          <a href="#">
+            <img src="<%= lorem.image('400x500', random_color: true) %>" alt="" />
+            <figcaption><%= lorem.words(3).titleize %></figcaption>
+          </a>
+        </figure>
+      </li>
+    <% end %>
+    </ul>
   </div>
 </section>
 
