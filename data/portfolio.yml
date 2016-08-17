@@ -1,0 +1,33 @@
+header: Selected Designs
+number_of_works_on_homepage: 6
+
+works:
+- title: Project 1
+  description: 'An awesome project that was fun to do'
+  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
+  link: '#'
+
+- title: Project 2
+  description: 'An awesome project that was fun to do'
+  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
+  link: '#'
+
+- title: Project 3
+  description: 'An awesome project that was fun to do'
+  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
+  link: '#'
+
+- title: Project 4
+  description: 'An awesome project that was fun to do'
+  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
+  link: '#'
+
+- title: Project 5
+  description: 'An awesome project that was fun to do'
+  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
+  link: '#'
+
+- title: Project 6
+  description: 'An awesome project that was fun to do'
+  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
+  link: '#'

@@ -1,0 +1,44 @@
+header: Selected Projects
+lead: 'Possimus ea nostrum impedit officiis inventore ab. accusantium fuga atque autem tenetur eveniet voluptate ducimus debitis et et voluptatibus molestias dolorum. reprehenderit repellendus optio ea delectus omnis. et reprehenderit veniam assumenda a laboriosam sapiente eum tenetur dicta qui officiis ut.'
+number_of_projects_on_homepage: 8
+
+projects:
+- title: Project 1
+  tech: Ruby
+  description: 'A super cool project'
+  link: '#'
+
+- title: Project 2
+  tech: Ruby
+  description: 'A super cool project'
+  link: '#'
+
+- title: Project 3
+  tech: Ruby
+  description: 'A super cool project'
+  link: '#'
+
+- title: Project 4
+  tech: Ruby
+  description: 'A super cool project'
+  link: '#'
+
+- title: Project 5
+  tech: Ruby
+  description: 'A super cool project'
+  link: '#'
+
+- title: Project 6
+  tech: Ruby
+  description: 'A super cool project'
+  link: '#'
+
+- title: Project 7
+  tech: Ruby
+  description: 'A super cool project'
+  link: '#'
+
+- title: Project 8
+  tech: Ruby
+  description: 'A super cool project'
+  link: '#'

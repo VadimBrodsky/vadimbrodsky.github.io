@@ -9,3 +9,13 @@ tagline: Designer, Developer, Human
 description: This a personal blog of Vadim Brodsky, disucssing design, development and all things remarkable.
 twitter_username: vadimbrodsky
 github_username:  vadimbrodsky
+
+social_media:
+- title: Github
+  url: 'https://github.com/VadimBrodsky'
+- title: Twitter
+  url: 'https://twitter.com/vadimbrodsky'
+- title: Medium
+  url: 'https://medium.com/@VadimBrodsky'
+- title: LinkedIn
+  url: 'https://ca.linkedin.com/in/vbrodsky'

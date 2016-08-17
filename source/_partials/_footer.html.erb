@@ -6,8 +6,10 @@
       <strong> <%= lorem.words 3 %> </strong>
     </h2>
     <ul class="grid grid--no-gutter footer__social-media">
-      <% 4.times do %>
-        <li class="grid__col grid__col--1-of-4"><a href=""><%= lorem.word %></a></li>
+      <% data.site.social_media.each do |network| %>
+        <li class="grid__col grid__col--1-of-<%= data.site.social_media.length %>">
+          <%= link_to network[:title], network[:url] %>
+        </li>
       <% end %>
     </ul>
   </div>

@@ -1,0 +1,28 @@
+<section class="section__blog">
+  <div class="section__content text__center">
+    <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
+    <ul class="blog__posts">
+      <% 5.times do %>
+      <li>
+        <article class="grid blog__post">
+        <div class="grid__col grid__col--1-of-4 blog__date">
+          <time datetime="<%= lorem.date %>" pubdate=""><%= lorem.date %></time>
+        </div>
+        <div class="grid__col grid__col--3-of-4">
+          <h2 class="blog__post-title">
+            <a href="#"> <%= lorem.sentence %> </a>
+          </h2>
+          <footer>
+            <ul class="blog__tags">
+              <li><a href="#">#<%= lorem.word %></a></li>
+              <li><a href="#">#<%= lorem.word %></a></li>
+              <li><a href="#">#<%= lorem.word %></a></li>
+            </ul>
+          </footer>
+        </div>
+        </article>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</section>
