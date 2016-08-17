@@ -1,8 +1,8 @@
 <section class="section__blog">
   <div class="section__content text__center">
-    <h2 class="section__header"><%= lorem.words(2).titleize %></h2>
+    <h2 class="section__header"><%= data.blog.header %></h2>
     <ul class="blog__posts">
-      <% 5.times do %>
+      <% data.blog.number_of_posts_on_homepage.times do %>
       <li>
         <article class="grid blog__post">
         <div class="grid__col grid__col--1-of-4 blog__date">
