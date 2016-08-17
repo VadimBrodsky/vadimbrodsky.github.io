@@ -1,3 +1,14 @@
 <footer class="page__footer">
-  This is the footer
+  <div class="section__content">
+    <h2 class="footer__header">
+      <%= lorem.sentence %>
+      <br />
+      <strong> <%= lorem.words 3 %> </strong>
+    </h2>
+    <ul class="grid grid--no-gutter footer__social-media">
+      <% 4.times do %>
+        <li class="grid__col grid__col--1-of-4"><a href=""><%= lorem.word %></a></li>
+      <% end %>
+    </ul>
+  </div>
 </footer>
