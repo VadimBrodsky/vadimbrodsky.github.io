@@ -1,8 +1,23 @@
-.menu__brand
+.menu__brand, .menu__toggle
   color: $neutral
   font-family: $copy
   font-size: 1.6em
+  text-transform: lowercase
+
+.menu__brand
   margin: 1.6em 0
+  a
+    text-decoration: none
+
+.menu__toggle
+  +appearance(none)
+  background-color: transparent
+  border: none
+  // border-bottom: 2px solid $neutral
+  text-decoration: underline
+  cursor: pointer
+  font-weight: 800
+  padding: 0
 
 .menu__links
   display: none
