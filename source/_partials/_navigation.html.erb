@@ -10,11 +10,9 @@
     <nav class="grid__col grid__col--1-of-2 grid__col--am text__right">
       <button class="menu__toggle" name="toggle-menu">Menu</button>
       <ul class="menu__links">
-        <li>Home</li>
-        <li>About</li>
-        <li>Blog</li>
-        <li>Projects</li>
-        <li>Portfolio</li>
+        <% data.site.navigation.each do |link| %>
+        <li><%= link_to link.title, link.url %></li>
+        <% end %>
       </ul>
     </nav>
   </div>

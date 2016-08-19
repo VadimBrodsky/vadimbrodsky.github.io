@@ -10,6 +10,18 @@ description: This a personal blog of Vadim Brodsky, disucssing design, developme
 twitter_username: vadimbrodsky
 github_username:  vadimbrodsky
 
+navigation:
+- title: Home
+  url: ''
+- title: About
+  url: ''
+- title: Blog
+  url: ''
+# - title: Portfolio
+#   url: ''
+# - title: Projects
+#   url: ''
+
 social_media:
 - title: Github
   url: 'https://github.com/VadimBrodsky'
