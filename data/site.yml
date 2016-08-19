@@ -12,9 +12,9 @@ github_username:  vadimbrodsky
 
 navigation:
 - title: Home
-  url: ''
+  url: 'index.html'
 - title: About
-  url: ''
+  url: 'about.html'
 - title: Blog
   url: ''
 # - title: Portfolio
