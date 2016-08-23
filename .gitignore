@@ -76,7 +76,7 @@ test/
 *.sublime-workspace
 *.sublime-projectcompletions
 
-_sass/bower_components
+/bower_components/*
 
 # Output folders
 _site/
