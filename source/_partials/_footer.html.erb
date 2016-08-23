@@ -8,7 +8,7 @@
     <ul class="grid grid--no-gutter footer__social-media">
       <% data.site.social_media.each do |network| %>
         <li class="grid__col grid__col--1-of-<%= data.site.social_media.length %>">
-          <%= link_to network[:title], network[:url] %>
+          <%= link_to network[:title], network[:url], target: "_blank" %>
         </li>
       <% end %>
     </ul>
