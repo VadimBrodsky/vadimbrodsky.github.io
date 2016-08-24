@@ -48,9 +48,10 @@ end
 # Build-specific configuration
 configure :build do
   config[:host] = 'http://vadimbrodsky.com'
-  # Minify CSS on build
   activate :minify_css
-
-  # Minify Javascript on build
-  # activate :minify_javascript
+  activate :directory_indexes
+  activate :minify_javascript
+  activate :asset_hash
+  set :relative_links, true
+  set :relative_assets, true
 end
