@@ -5,11 +5,24 @@
   margin-bottom: $gutter
   text-align: center
 
+  a
+    text-decoration: none
+
+  +breakpoint(m)
+    font-size: 1.1rem
+
+  +breakpoint(s)
+    font-size: 0.9rem
+
+
 .footer__header
   word-break: break-all
   font-weight: 400
   padding-bottom: 2em
   margin: 0
+
+  +breakpoint(s)
+    padding-bottom: 0.5em
 
 .footer__social-media
   margin: 0

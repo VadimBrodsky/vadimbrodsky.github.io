@@ -3,15 +3,29 @@ h1, h2, h3, h4, h5, h6
 
 a
   color: inherit
-  text-decoration: none
+  text-decoration: underline
+  font-weight: 500  
 
 
 .text
   &__large
     font-size: 2.2rem
 
+    +breakpoint(m)
+      font-size: 1.8rem
+
+    +breakpoint(s)
+      font-size: 1.3rem
+
   &__medium
     font-size: 1.4rem
+
+    +breakpoint(m)
+      font-size: 1.2rem
+
+    +breakpoint(s)
+      font-size: 1rem
+
 
   &__light
     font-weight: 300
@@ -32,6 +46,7 @@ a
     border: 1px solid
     display: inline-block
     padding: 0.7em 1em
+    text-decoration: none
     &:hover
       background-color: $neutral
       color: $accent

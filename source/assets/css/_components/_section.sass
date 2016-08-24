@@ -2,8 +2,15 @@
   padding: $gutter
   color: $neutral
 
+  +breakpoint(m)
+    padding: $gutter * 0.5
+  +breakpoint(s)
+    padding: $gutter * 0.3
+
 .section__header
   font-weight: 400
   // border-bottom: 3px solid $neutral
   // padding-bottom: 0.2em
   display: inline-block
+  +breakpoint(s)
+    margin-bottom: 0

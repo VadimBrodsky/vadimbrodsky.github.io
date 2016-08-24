@@ -28,13 +28,12 @@ projects:
   description: 'A command line Rock Paper Scissors Lizard Spock game'
   link: 'https://github.com/VadimBrodsky/rock_paper_scissors'
 
-- title: Blackjack
-  tech: Ruby
-  description: 'A command-line blackjack game'
-  link: 'https://github.com/VadimBrodsky/blacck'
+# - title: Blackjack
+#   tech: Ruby
+#   description: 'A command-line blackjack game'
+#   link: 'https://github.com/VadimBrodsky/blacck'
 
 - title: Project Euler
   tech: 'Ruby / JavaScript'
   description: 'My solutions to the Project Euler problems in Ruby and JavaScript'
   link: 'https://github.com/VadimBrodsky/Project_Euler'
-
