@@ -1,33 +1,33 @@
-header: Selected Designs
+header: Selected Works
 number_of_works_on_homepage: 6
 
 works:
-- title: Project 1
-  description: 'An awesome project that was fun to do'
-  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
-  link: '#'
+- title: 'Metricwire Landing Page & Email'
+  description: ''
+  image_url: 'portfolio-metricwire-landing.jpg'
+  link: '#!'
 
-- title: Project 2
-  description: 'An awesome project that was fun to do'
-  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
-  link: '#'
+- title: 'Nygard Fashion Lookbook'
+  description: ''
+  image_url: 'portfolio-bn-book.jpg'
+  link: '#!'
 
-- title: Project 3
-  description: 'An awesome project that was fun to do'
-  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
-  link: '#'
+- title: 'Chamber of Commerce Microsite'
+  description: ''
+  image_url: 'portfolio-chamber-website.jpg'
+  link: '#!'
 
-- title: Project 4
-  description: 'An awesome project that was fun to do'
-  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
-  link: '#'
+- title: 'Otto Motors Website Development'
+  description: ''
+  image_url: 'portfolio-otto-website.jpg'
+  link: '#!'
 
-- title: Project 5
-  description: 'An awesome project that was fun to do'
-  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
-  link: '#'
+- title: 'Do Process Infographic'
+  description: ''
+  image_url: 'portfolio-do-process-infographic.jpg'
+  link: '#!'
 
-- title: Project 6
-  description: 'An awesome project that was fun to do'
-  image_url: 'http://placehold.it/400x500/f6014e/4b27e0'
-  link: '#'
+- title: 'Eventastic Web App UI'
+  description: ''
+  image_url: 'portfolio-eventastic-ui.jpg'
+  link: '#!'

@@ -1,44 +1,40 @@
 header: Selected Projects
-lead: 'Possimus ea nostrum impedit officiis inventore ab. accusantium fuga atque autem tenetur eveniet voluptate ducimus debitis et et voluptatibus molestias dolorum. reprehenderit repellendus optio ea delectus omnis. et reprehenderit veniam assumenda a laboriosam sapiente eum tenetur dicta qui officiis ut.'
+lead: ' A collection of digital artifacts and projects that I have worked on. Either to solve some problem or as part of learning something new. '
 number_of_projects_on_homepage: 8
 
 projects:
-- title: Project 1
-  tech: Ruby
-  description: 'A super cool project'
-  link: '#'
+- title: YouTube Video Backgrounds
+  tech: 'HTML / CSS / JS'
+  description: 'Using the YouTube iFrame API to play a video as a background'
+  link: 'http://codepen.io/VadimBrodsky/pen/GqoNze'
 
-- title: Project 2
-  tech: Ruby
-  description: 'A super cool project'
-  link: '#'
+- title: Dotfiles
+  tech: Unix
+  description: 'My coding environment, including my VIM and Tmux settings'
+  link: 'https://github.com/VadimBrodsky/dotfiles'
 
-- title: Project 3
-  tech: Ruby
-  description: 'A super cool project'
-  link: '#'
+- title: Flix
+  tech: 'Ruby on Rails'
+  description: 'An excercise Ruby on Rails application, a mini IMDB'
+  link: 'https://github.com/VadimBrodsky/flix'
 
-- title: Project 4
-  tech: Ruby
-  description: 'A super cool project'
-  link: '#'
+- title: 'Blackjack on Sinatra'
+  tech: 'Ruby / Sinatra'
+  description: 'A Sinatra based blackjack game, playable in the browser'
+  link: 'https://github.com/VadimBrodsky/blacck-sinatra'
 
-- title: Project 5
+- title: 'Rock Paper Scissors Lizard Spock'
   tech: Ruby
-  description: 'A super cool project'
-  link: '#'
+  description: 'A command line Rock Paper Scissors Lizard Spock game'
+  link: 'https://github.com/VadimBrodsky/rock_paper_scissors'
 
-- title: Project 6
+- title: Blackjack
   tech: Ruby
-  description: 'A super cool project'
-  link: '#'
+  description: 'A command-line blackjack game'
+  link: 'https://github.com/VadimBrodsky/blacck'
 
-- title: Project 7
-  tech: Ruby
-  description: 'A super cool project'
-  link: '#'
+- title: Project Euler
+  tech: 'Ruby / JavaScript'
+  description: 'My solutions to the Project Euler problems in Ruby and JavaScript'
+  link: 'https://github.com/VadimBrodsky/Project_Euler'
 
-- title: Project 8
-  tech: Ruby
-  description: 'A super cool project'
-  link: '#'
