@@ -11,9 +11,9 @@ title: Hello World
       <p class="text__medium">
         I take pride in creating digital experiences that solve problems and delight users. I am an avid tech enthusiast and geek, I love learning, tinkering and traveling.
       </p>
-      <p class="text__medium">
-        <a href="#">Read my blog</a>, <a href="">see my work</a> or <a href="">connect with me</a>.
-      </p>
+      <%# <p class="text__medium"> %>
+      <%#   <a href="#">Read my blog</a>, <a href="">see my work</a> or <a href="">connect with me</a>. %>
+      <%# </p> %>
     </div>
   </div>
 </section>
@@ -22,13 +22,22 @@ title: Hello World
   <div class="grid__col grid__col--1-of-2">
     <div class="section__content">
       <h2 class="section__header">Designer</h2>
-      <p><%= lorem.paragraph %></p>
+      <p>I have over 8 years of professional Graphic Design experience, designing in both print and digital mediums. I worked on branding projects, magazines, websites, user interfaces, apps, ads, and almost all collateral and marketing materials.</p>
+
+      <p>The contant truth in any kind of design are design principles, no matter if designing for the screen or the printed page, design is design and it has to work.</p>
+
+      <p>My tools of the trade are the Adobe CS Suite, Sketch App, OmniGraffle and my handy notebook.</p>
+      <p><%= link_to 'Read More', 'about.html', class: 'text__button' %></p>
     </div>
   </div>
   <div class="grid__col grid__col--1-of-2">
     <div class="section__content">
       <h2 class="section__header">Developer</h2>
-      <p><%= lorem.paragraph %></p>
+      <p>In the past 4 years I have completely immersed myself in the world of web development. Becoming proficient in all aspects of the web development process: strategy, wire-framing, conceptual design, development, deployment, testing, SEO and performance optimization. With special attention to the small details that delight users.</p>
+
+      <p>I have deep knowledge of modern front-end web technologies. As well as server-side development in different CMS platforms, web application frameworks and third-party API integrations. Enabling me to create engaging end-to-end digital experiences.</p>
+
+      <p><%= link_to 'Read More', 'about.html', class: 'text__button' %></p>
     </div>
   </div>
 </section>
