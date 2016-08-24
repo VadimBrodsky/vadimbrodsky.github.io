@@ -1,0 +1,10 @@
+=breakpoint($point)
+  @if $point == l
+    @media (max-width: $large)
+      @content
+  @else if $point == m
+    @media (max-width: $medium)
+      @content
+  @else if $point == s
+    @media (max-width: $small)
+      @content
