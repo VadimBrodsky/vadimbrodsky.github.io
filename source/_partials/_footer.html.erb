@@ -3,7 +3,7 @@
     <h2 class="footer__header">
       Get in touch, say hello
       <br />
-      <strong> <%= data.site.author[:email] %> </strong>
+      <strong> <%= link_to data.site.author[:email], "mailto:#{data.site.author[:email]}" %> </strong>
     </h2>
     <ul class="grid grid--no-gutter footer__social-media">
       <% data.site.social_media.each do |network| %>
