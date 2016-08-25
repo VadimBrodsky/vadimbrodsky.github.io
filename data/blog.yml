@@ -1,2 +1,22 @@
 header: From the Blog
-number_of_posts_on_homepage: 1
+number_of_posts_on_homepage: 2
+
+articles:
+  - title: Top 7 reasons to try Vue.js in 2016
+    link: 'https://medium.com/@VadimBrodsky/top-7-reasons-to-try-vue-js-in-2016-8c9255e2aa92#.k1nz4m823'
+    date: 'Aug 25 2016'
+    date_raw: '2016-08-25'
+    tags:
+      - 'JavaScript'
+      - 'Vuejs'
+      - 'Web Development'
+      - 'Front End Development'
+      - 'Development'
+  - title: JavaScript Game Development — Where to Start?
+    link: 'https://medium.com/@VadimBrodsky/javascript-game-development-where-to-start-5bdc097cbd6e#.dy9u2k4js'
+    date: 'Mar 5 2016'
+    date_raw: '2016-03-05'
+    tags:
+      - 'JavaScript'
+      - 'Web Development'
+      - 'Game Development'
