@@ -28,9 +28,16 @@ set :layouts_dir, '_layouts'
 set :sass_assets_paths, ['bower_components']
 set :sass_source_maps, true
 
+activate :blog do |blog|
+  blog.sources = "blog/{year}-{month}-{day}-{title}.html"
+  blog.layout = 'article'
+end
+
 # Reload the browser automatically whenever files change
 configure :development do
-  activate :livereload
+  activate :livereload do |lr|
+    lr.no_swf = true
+  end
   config[:host] = 'http://localhost:4567'
 end
 
