@@ -20,7 +20,7 @@ page '/*.txt', layout: false
 
 ASSETS = 'assets'
 set :css_dir, "#{ASSETS}/css"
-set :fonts_dir, "#{ASSETS}/fonts"
+# set :fonts_dir, "#{ASSETS}/fonts"
 set :images_dir, "#{ASSETS}/images"
 set :js_dir, "#{ASSETS}/js"
 set :layouts_dir, '_layouts'
@@ -54,11 +54,14 @@ end
 
 # Build-specific configuration
 configure :build do
-  config[:host] = 'http://vadimbrodsky.com'
+  config[:host] = 'https://vadimbrodsky.com'
   activate :minify_css
-  activate :directory_indexes
   activate :minify_javascript
-  activate :asset_hash
+  # activate :gzip
+  activate :directory_indexes
+  activate :asset_hash do |opts|
+    opts.ignore = ['assets/favicons/*', 'assets/fonts/*']
+  end
   set :relative_links, true
   set :relative_assets, true
 end
