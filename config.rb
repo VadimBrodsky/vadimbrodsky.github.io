@@ -46,11 +46,14 @@ end
 ###
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def amp_img(file_name, options = {})
+    image_path = "#{config[:host]}/assets/images/#{file_name}"
+    size = FastImage.size("source/assets/images/#{file_name}")
+    alt_text = options[:alt] || image_path.gsub(/\.[\w]*/, '')
+    "<amp-img src='#{image_path}' alt='#{alt_text}' width='#{size[0]}' height='#{size[1]}'></amp-img>"
+  end
+end
 
 # Build-specific configuration
 configure :build do

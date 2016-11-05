@@ -15,3 +15,6 @@ gem 'middleman-blog'
 
 # Additional Gems
 gem 'bourbon', '~> 4.2', '>= 4.2.7'
+
+# Image dimensions
+gem 'fastimage', '~> 2.0'

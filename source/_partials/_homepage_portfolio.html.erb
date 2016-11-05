@@ -5,7 +5,7 @@
     <% data.portfolio.works.first(data.portfolio.number_of_works_on_homepage).each do |work| %>
       <li class="grid__col grid__col--1-of-3">
         <figure class="work__post">
-            <%= image_tag work[:image_url] %>
+          <%= amp_img work[:image_url], alt: "Cropped screenshot of #{work[:title]}" %>
           <figcaption><%= work[:title] %></figcaption>
         </figure>
       </li>
