@@ -35,9 +35,9 @@ end
 
 # Reload the browser automatically whenever files change
 configure :development do
-  activate :livereload do |lr|
-    lr.no_swf = true
-  end
+  # activate :livereload do |lr|
+  #   lr.no_swf = true
+  # end
   config[:host] = 'http://localhost:4567'
 end
 

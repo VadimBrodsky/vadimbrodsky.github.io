@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-us">
+<html amp lang="en">
   <%= partial '_partials/head' %>
   <body class="<%= page_classes %> page__body">
 
@@ -8,7 +8,7 @@
       <%= yield %>
     </main>
     <%= partial '_partials/footer' %>
-    <%= partial '_partials/analytics' %>
+    <% partial '_partials/analytics' %>
 
   </body>
 </html>
