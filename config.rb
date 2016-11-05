@@ -39,6 +39,12 @@ configure :development do
   #   lr.no_swf = true
   # end
   config[:host] = 'http://localhost:4567'
+  activate :minify_css
+
+  # app.compass_config do |config|
+  #   # config.sass_options = {:debug_info => true}
+  #   config.output_style = :compressed
+  # end
 end
 
 ###
