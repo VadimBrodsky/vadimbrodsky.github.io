@@ -47,6 +47,14 @@ end
 
 # Methods defined in the helpers block are available in templates
 helpers do
+  def amp_style(name)
+    <<-HEREDOC
+      <style amp-custom>
+      #{sitemap.resources.select { |p| p.source_file.include?(name) }.first.render}
+      </style>
+    HEREDOC
+  end
+
   def amp_img(file_name, options = {})
     image_path = "#{config[:host]}/assets/images/#{file_name}"
     size = FastImage.size("source/assets/images/#{file_name}")

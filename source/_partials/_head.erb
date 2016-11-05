@@ -12,8 +12,8 @@
   <link rel="alternate" type="application/rss+xml" title="<%= data.site.title %>" href="<%= config[:host] + '/feed.xml' %>" >
 
   <%= partial '_partials/amp_style_boilerplate' %>
+  <%= amp_style 'site.css' %>
 
-  <% stylesheet_link_tag :site %>
   <% javascript_include_tag :all %>
   <% partial '_partials/favicon' %>
 </head>
