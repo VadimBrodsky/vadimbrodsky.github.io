@@ -4,6 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+/*
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
@@ -35,3 +36,4 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 };
+*/

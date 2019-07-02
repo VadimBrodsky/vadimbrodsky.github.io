@@ -13,6 +13,7 @@ const PostTemplate = () => {
 
 export default PostLayout;
 
+/*
 export const query = graphql`
   query PostQuery($slug: String!) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
@@ -25,3 +26,4 @@ export const query = graphql`
     }
   }
 `;
+ */
