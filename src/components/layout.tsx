@@ -5,8 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
 import useSiteMetadata from '../hooks/use-site-metadata';
 import Header from './header';
@@ -35,10 +34,6 @@ const Layout = ({ children }) => {
       </div>
     </>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default Layout;
