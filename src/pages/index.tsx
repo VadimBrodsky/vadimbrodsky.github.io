@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import Helmet from 'react-helmet';
 
 import Layout from '../components/layout';
-import Image from '../components/image';
 import SEO from '../components/seo';
 
 const IndexPage = () => (
@@ -14,13 +13,20 @@ const IndexPage = () => (
     </Helmet>
 
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+
+    <div className="section__content">
+      <h2 className="text__large text__light">
+        Hello, I am <a href="about/">Vadim Brodsky</a>, a passionate Full–Stack Web
+        Developer &amp; Designer based in Kitchener-Waterloo. Currently working as a
+        Software Developer at <a href="https://www.vidyard.com">Vidyard</a>, where I help
+        build the video marketing platform that businesses &lt;3
+      </h2>
+      <p className="text__medium">
+        I take pride in creating digital experiences that solve problems and delight
+        users. I am an avid tech enthusiast and geek, I love learning, tinkering and
+        traveling.
+      </p>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
   </Layout>
 );
 
