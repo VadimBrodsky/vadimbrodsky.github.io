@@ -35,7 +35,9 @@ const IndexPage = () => {
       <h2>Recent Blog posts</h2>
       <ul>
         {posts.map((post) => (
-          <li key={post.id}>{post.title} - {post.slug}</li>
+          <li key={post.id}>
+            <Link to={`/posts/${post.slug}`}>{post.title}</Link>
+          </li>
         ))}
       </ul>
     </Layout>
