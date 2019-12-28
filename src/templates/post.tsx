@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+import Layout from '../components/layout';
 
-import Layout from '../layout';
-
-const PostTemplate = () => {
+const PostTemplate = ({ children }) => {
   return (
     <Layout>
       <h1>Post Layout</h1>
+      <div>{children}</div>
     </Layout>
   );
 };
 
-export default PostLayout;
+export default PostTemplate;
 
 /*
 export const query = graphql`
