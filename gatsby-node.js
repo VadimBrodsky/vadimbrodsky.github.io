@@ -4,11 +4,13 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-/*
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const { createPage } = actions;
-
-  const result = await graphql(`
+  const {
+    errors,
+    data: {
+      allMdx: { nodes: posts },
+    },
+  } = await graphql(`
     query {
       allMdx {
         nodes {
@@ -20,20 +22,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `);
 
-  if (result.errors) {
+  if (errors) {
     reporter.panic('Failed to create posts', result.errors);
   }
 
-  const posts = result.data.allMdx.nodes;
-
   posts.forEach((post) => {
-    createPage({
-      path: `/posts${node.frontmatter.slug}`,
-      component: require.resolve('./src/templates/post.js'),
+    actions.createPage({
+      path: `/posts/${post.frontmatter.slug}`,
+      component: require.resolve('./src/templates/post.tsx'),
       context: {
         slug: post.frontmatter.slug,
       },
     });
   });
 };
-*/

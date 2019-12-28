@@ -1,29 +1,27 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../components/layout';
 
-const PostTemplate = ({ children }) => {
+export const query = graphql`
+  query PostQuery($slug: String!) {
+    mdx(frontmatter: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+        slug
+      }
+      body
+    }
+  }
+`;
+
+const PostTemplate = ({ data: { mdx: post } }) => {
   return (
     <Layout>
-      <h1>Post Layout</h1>
-      <div>{children}</div>
+      <h1>{post.title}</h1>
+      <MDXRenderer>{post.body}</MDXRenderer>
     </Layout>
   );
 };
 
 export default PostTemplate;
-
-/*
-export const query = graphql`
-  query PostQuery($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        date
-        slug
-      }
-    }
-  }
-`;
- */
