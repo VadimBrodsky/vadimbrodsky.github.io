@@ -6,8 +6,7 @@ import './layout.css';
 
 const Layout = ({ children }) => {
   const { title } = useSiteMetadata();
-
-      // <footer>© {new Date().getFullYear()}, Built with</footer>
+  // <footer>© {new Date().getFullYear()}, Built with</footer>
 
   return (
     <>

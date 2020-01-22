@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+
 import Layout from '../components/layout';
 
 export const query = graphql`
@@ -18,8 +19,10 @@ export const query = graphql`
 const PostTemplate = ({ data: { mdx: post } }) => {
   return (
     <Layout>
-      <h1>{post.title}</h1>
-      <MDXRenderer>{post.body}</MDXRenderer>
+      <article className="container mx-auto">
+        <h1>{post.title}</h1>
+        <MDXRenderer>{post.body}</MDXRenderer>
+      </article>
     </Layout>
   );
 };

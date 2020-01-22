@@ -13,33 +13,43 @@ const IndexPage = () => {
     <Layout>
       <Helmet>
         <html lang="en" className="text-gray-900 antialiased leading-tight" />
-        <body className="bg-gray-100" />
+        <body className="bg-white" />
       </Helmet>
 
       <SEO title="Home" />
 
-      <div className="section__content">
-        <h2 className="text__large text__light">
-          Hello, I am <a href="about/">Vadim Brodsky</a>, a passionate Full–Stack Web
-          Developer &amp; Designer based in Kitchener-Waterloo. Currently working as a
-          Software Developer at <a href="https://www.vidyard.com">Vidyard</a>, where I
-          help build the video marketing platform that businesses &lt;3
+      <section className="font-display mb-20 container mx-auto">
+        <h2 className="text-4xl mb-10">
+          Hello, I am{' '}
+          <Link to="/about" className="font-bold">
+            Vadim Brodsky
+          </Link>
+          , a passionate Fullstack Web Developer & Designer from Waterloo Canada.
+          Currently working as a Software Developer at{' '}
+          <a href="https://www.vidyard.com" className="font-bold">
+            Vidyard
+          </a>
+          , where I help to build the video marketing platform that businesses
+          &#10084;&#65039;
         </h2>
-        <p className="text__medium">
+
+        <p className="text-xl text-gray-700 mb-10">
           I take pride in creating digital experiences that solve problems and delight
           users. I am an avid tech enthusiast and geek, I love learning, tinkering and
           traveling.
         </p>
-      </div>
+      </section>
 
-      <h2>Recent Blog posts</h2>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id}>
-            <Link to={`/posts/${post.slug}`}>{post.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <section className="container mx-auto">
+        <h2>Recent Blog posts</h2>
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>
+              <Link to={`/posts/${post.slug}`}>{post.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </Layout>
   );
 };
