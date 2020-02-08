@@ -8,6 +8,7 @@ import usePosts from '../hooks/use-posts';
 
 const IndexPage = () => {
   const posts = usePosts();
+  console.log({ posts });
 
   return (
     <Layout>
@@ -35,20 +36,29 @@ const IndexPage = () => {
 
         <p className="text-xl text-gray-700 mb-10">
           I take pride in creating digital experiences that solve problems and delight
-          users. I am an avid tech enthusiast and geek, I love learning, tinkering and
-          traveling.
+          users. I am an avid tech enthusiast, I love learning, tinkering and traveling.
         </p>
       </section>
 
-      <section className="container mx-auto">
-        <h2>Recent Blog posts</h2>
-        <ul>
+      <section className=" bg-gray-200">
+        <div className="container mx-auto">
+          <h2 className="bg-black text-white inline-block font-monospace text-xs p-2 mb-8 ">
+            &lt;BlogPosts limit={2} sort="desc" /&gt;
+          </h2>
+
           {posts.map((post) => (
-            <li key={post.id}>
-              <Link to={`/posts/${post.slug}`}>{post.title}</Link>
-            </li>
+            <article key={post.id} className="pb-8">
+              <header>
+                <h3 className="font-bold font-display text-xl">
+                  <Link to={`/posts/${post.slug}`}>{post.title}</Link>
+                </h3>
+              </header>
+              <div className="text-gray-700">
+                <span className="font-bold">TL;DR</span> {post.tldr}
+              </div>
+            </article>
           ))}
-        </ul>
+        </div>
       </section>
     </Layout>
   );

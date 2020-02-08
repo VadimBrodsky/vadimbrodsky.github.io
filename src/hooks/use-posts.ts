@@ -9,16 +9,18 @@ const usePosts = () => {
           frontmatter {
             title
             slug
+            tldr
           }
         }
       }
     }
   `);
 
-  return data.allMdx.nodes.map((post) => ({
-    id: post.id,
-    title: post.frontmatter.title,
-    slug: post.frontmatter.slug,
+  return data.allMdx.nodes.map(({ id, frontmatter: { title, slug, tldr } }) => ({
+    id,
+    title,
+    slug,
+    tldr,
   }));
 };
 
