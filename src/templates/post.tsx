@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from '../components/layout';
+import './post.css';
 
 export const query = graphql`
   query PostQuery($slug: String!) {
@@ -10,6 +11,7 @@ export const query = graphql`
       frontmatter {
         title
         slug
+        tldr
       }
       body
     }
@@ -17,10 +19,17 @@ export const query = graphql`
 `;
 
 const PostTemplate = ({ data: { mdx: post } }) => {
+  console.log({ post });
   return (
     <Layout>
       <article className="container mx-auto">
-        <MDXRenderer>{post.body}</MDXRenderer>
+        <header>
+          <h1 className="text-4xl font-bold">{post.frontmatter.title}</h1>
+          <p>{post.frontmatter.tldr}</p>
+        </header>
+        <main className="article-content">
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </main>
       </article>
     </Layout>
   );
