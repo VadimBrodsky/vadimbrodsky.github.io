@@ -29,6 +29,14 @@ module.exports = {
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
+            // https://www.gatsbyjs.org/packages/gatsby-remark-images/
+            options: {
+              disableBgImageOnAlpha: true,
+              linkImagesToOriginal: false,
+              maxWidth: 1200,
+              quality: 50,
+              withWebp: true,
+            },
           },
           {
             resolve: 'gatsby-remark-copy-linked-files',
