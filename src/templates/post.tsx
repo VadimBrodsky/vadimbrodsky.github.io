@@ -20,7 +20,6 @@ const PostTemplate = ({ data: { mdx: post } }) => {
   return (
     <Layout>
       <article className="container mx-auto">
-        <h1>{post.title}</h1>
         <MDXRenderer>{post.body}</MDXRenderer>
       </article>
     </Layout>
