@@ -9,8 +9,10 @@ export const query = graphql`
   query PostQuery($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
-        title
+        date: date(formatString: "MMMM Do, Y")
+        datetime: date(formatString: "Y-MM-D")
         slug
+        title
         tldr
       }
       body
@@ -25,11 +27,12 @@ const PostTemplate = ({ data: { mdx: post } }) => {
       <article className="container mx-auto">
         <header>
           <h1 className="text-4xl font-bold">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.tldr}</p>
+          <time dateTime={post.frontmatter.datetime}>{post.frontmatter.date}</time>
+          <section ariaLabel="Quick summary">TL;DR {post.frontmatter.tldr}</section>
         </header>
-        <main className="article-content">
+        <div className="article-content">
           <MDXRenderer>{post.body}</MDXRenderer>
-        </main>
+        </div>
       </article>
     </Layout>
   );
