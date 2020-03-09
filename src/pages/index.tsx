@@ -8,7 +8,6 @@ import usePosts from '../hooks/use-posts';
 
 const IndexPage = () => {
   const posts = usePosts();
-  console.log({ posts });
 
   return (
     <Layout>
