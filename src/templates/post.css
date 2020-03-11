@@ -1,5 +1,5 @@
 .article-content {
-  @apply w-2/3;
+  @apply w-2/3 text-gray-800;
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-bold;
@@ -33,17 +33,5 @@
     @apply float-right;
     margin-right: -50%;
     width: 40%;
-
-    p {
-      @apply text-center my-0 leading-tight text-sm;
-    }
-
-    img {
-      @apply mx-auto mb-3;
-    }
-
-    .gatsby-resp-image-wrapper {
-      @apply mb-3;
-    }
   }
 }
