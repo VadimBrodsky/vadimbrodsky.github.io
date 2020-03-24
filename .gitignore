@@ -81,6 +81,6 @@ test/
 # Output folders
 _site/
 build/
-Gemfile.lock
+public/
 
 .jekyll-metadata
